@@ -1,1 +1,0 @@
-all of my dotfiles and text only plugins. (the few I have at the moment...) append something with .nolink to avoid it being symlinked into your home directory with a period appended before it. (this is for when and if I get around to writing a script to do that for me...)
