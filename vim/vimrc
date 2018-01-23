@@ -1,0 +1,145 @@
+"inital, more techinal settings
+
+"this sets what sort of folding method to use.
+let foldtype="basicindent" 
+set lazyredraw
+set autoread
+set history=5000
+filetype plugin on
+
+"user interface stuff
+    "disables the autocommenting stuff.
+        set formatoptions-=o
+        set formatoptions-=r
+        set formatoptions-=c
+
+    "disable text wrapping via carriage returns, should only wrap visually 
+        set textwidth=0
+        set wrapmargin=0
+        set wrap
+        set linebreak
+        set breakindent
+
+    "adds a ruler to the side of the screen
+    set number
+
+    "makes the ruler show how many lines away a given line is from your cursour
+    "set relativenumber
+
+    "displays the cooridnates of your cursour in the statusbar
+    set ruler
+
+    "scrollofff sets the number of lines from the top or bottom of the screen before vim will scroll. sidescroll off does the same thing for the sides of the window
+    set scrolloff=10
+    set sidescrolloff=10
+
+    "better command line completion
+    set wildmenu
+
+    "ignore cases in search unless you have a capital letter in the search
+    set ignorecase
+    set smartcase
+
+    "this allows puting the cursor just after the last characher fo the line.
+    "set virtualedit=onemore
+
+    "show unfinished commands on the RIGHT side of the statusbar. yes, it is working.
+    set showcmd 
+
+    "make regex a bit easier to type
+        set magic
+        set hidden
+
+    "always display status line
+    set laststatus=2
+
+    "keycodes time out fast, mappings have a bit longer
+    set timeout timeoutlen=1000 ttimeout ttimeoutlen=10
+
+    "make it so the session feature wont overwrite our vimrc if the vimrc has newer bindings than this a session.
+    set sessionoptions-=options 
+
+"tab stuff
+    set tabstop=4
+    set shiftwidth=4
+    set expandtab
+    set autoindent
+
+    "if vim sees 4 whitespaces in a row, backspace will delete all of them at once, as if they were real tabs
+    set smarttab
+
+"highlighting/colour stuff
+    "sets the colorscheme. to get a list of the avalible colors, do :colorscheme <Space> <C-d>
+    colorscheme ron 
+
+    syntax enable
+
+    "highlights trailing spaces
+    highlight extra_white_space ctermbg=red guibg=red
+    match extra_white_space /\s+$/
+
+    "highlight search results
+    set hlsearch
+
+    "search as you type
+    set incsearch
+
+    "<leader> L clears the search highlighting
+    noremap <leader>l :nohls<Enter> 
+
+"folding stuff TODO: implement other folding methods.
+    "give a bit of margin space for fold number
+    set foldcolumn=3
+
+    set foldenable
+
+    "set the minimum number of screen lines for a fold to be closable.
+    set foldminlines=3
+
+    "spacebar opens or closes a fold in normal mode
+    nmap <Space> za
+
+    "insert folding: really baisic fold method. eventually I may make some custom folds, but with the foldtext fixed a bit, this shouldnt annoy me too mutch.
+    if foldtype ==# "basicindent"
+        "make vim fold automatically based on indentation.
+        set foldmethod=indent
+        "set the fold text for this method, in most cases, the line just above our fold is what we want, so we wont put any text into it. just level and linecount.
+        function! Minimal_foldtext()
+            let lines_count = v:foldend - v:foldstart + 1
+            let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+            let line_level_text = '| '.printf("%5s", 'level '.v:foldlevel).' |' 
+            let foldchar = matchstr(&fillchars, 'fold:\zs.')
+            let foldtextstart = lines_count_text 
+            let foldtextend = line_level_text . repeat(foldchar, 8)
+            let foldtextlength = strlen(foldtextstart . foldtextend) + &foldcolumn 
+            return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+        endfunction
+        set foldtext=Minimal_foldtext()
+    endif
+
+"usefull keybinds
+    "spell checking
+        "toggle spell checking
+        map <leader>ss :setlocal spell!<Enter>
+
+       " "shortucts using leader
+       " noremap <leader>sn ]s
+       " noremap <leader>sp [s
+       " noremap <leader>s? z=
+
+    "normal mode keybinds
+        "control o: insert line below
+        nmap <C-o> o<esc> 
+
+        "alt=a: select all
+        nmap <silent> <A-a> :keepjumps normal ggVG<Enter> 
+
+        "navigating splits: Control+hjkl will move from split to split
+            nmap <C-h> <C-w>h
+            nmap <C-j> <C-w>j
+            nmap <C-k> <C-w>k
+            nmap <C-l> <C-w>l
+
+    "command mode keybinds
+        "w!! writes using sudo
+        cnoremap w!! w !sudo tee % >/dev/null
