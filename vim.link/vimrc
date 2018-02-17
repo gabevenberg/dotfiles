@@ -1,4 +1,4 @@
-"inital, more techinal settings
+"initial, more technical settings
 
 "this sets what sort of folding method to use.
 let foldtype="basicindent" 
@@ -23,10 +23,10 @@ filetype plugin on
     "adds a ruler to the side of the screen
     set number
 
-    "makes the ruler show how many lines away a given line is from your cursour
+    "makes the ruler show how many lines away a given line is from your cursor
     "set relativenumber
 
-    "displays the cooridnates of your cursour in the statusbar
+    "displays the coordinates of your cursour in the statusbar
     set ruler
 
     "scrollofff sets the number of lines from the top or bottom of the screen before vim will scroll. sidescroll off does the same thing for the sides of the window
@@ -40,7 +40,7 @@ filetype plugin on
     set ignorecase
     set smartcase
 
-    "this allows puting the cursor just after the last characher fo the line.
+    "this allows putting the cursor just after the last character of the line.
     "set virtualedit=onemore
 
     "show unfinished commands on the RIGHT side of the statusbar. yes, it is working.
@@ -56,7 +56,7 @@ filetype plugin on
     "keycodes time out fast, mappings have a bit longer
     set timeout timeoutlen=1000 ttimeout ttimeoutlen=10
 
-    "make it so the session feature wont overwrite our vimrc if the vimrc has newer bindings than this a session.
+    "make it so the session feature wont overwrite our vimrc if the vimrc has newer bindings than this session.
     set sessionoptions-=options 
 
 "tab stuff
@@ -69,14 +69,11 @@ filetype plugin on
     set smarttab
 
 "highlighting/colour stuff
-    "sets the colorscheme. to get a list of the avalible colors, do :colorscheme <Space> <C-d>
+    "sets the colorscheme. to get a list of the available colors, do :colorscheme <Space> <C-d>
     colorscheme ron 
 
     syntax enable
 
-    "highlights trailing spaces
-    highlight extra_white_space ctermbg=red guibg=red
-    match extra_white_space /\s+$/
 
     "highlight search results
     set hlsearch
@@ -99,7 +96,7 @@ filetype plugin on
     "spacebar opens or closes a fold in normal mode
     nmap <Space> za
 
-    "insert folding: really baisic fold method. eventually I may make some custom folds, but with the foldtext fixed a bit, this shouldnt annoy me too mutch.
+    "insert folding: really basic fold method. eventually I may make some custom folds, but with the foldtext fixed a bit, this shouldn't annoy me too much.
     if foldtype ==# "basicindent"
         "make vim fold automatically based on indentation.
         set foldmethod=indent
@@ -117,24 +114,17 @@ filetype plugin on
         set foldtext=Minimal_foldtext()
     endif
 
-"usefull keybinds
+"useful keybinds
     "spell checking
         "toggle spell checking
         map <leader>ss :setlocal spell!<Enter>
 
-       " "shortucts using leader
+       " shortcuts using leader
        " noremap <leader>sn ]s
        " noremap <leader>sp [s
        " noremap <leader>s? z=
 
-    "normal mode keybinds
-        "control o: insert line below
-        nmap <C-o> o<esc> 
-
-        "alt=a: select all
-        nmap <silent> <A-a> :keepjumps normal ggVG<Enter> 
-
-        "navigating splits: Control+hjkl will move from split to split
+    "navigating splits: Control+hjkl will move from split to split
             nmap <C-h> <C-w>h
             nmap <C-j> <C-w>j
             nmap <C-k> <C-w>k
