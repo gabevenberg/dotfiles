@@ -1,4 +1,4 @@
-"initial, more technical settings
+""initial, more technical settings
 
 "this sets what sort of folding method to use.
 let foldtype="basicindent" 
@@ -119,17 +119,21 @@ filetype plugin on
         "toggle spell checking
         map <leader>ss :setlocal spell!<Enter>
 
+    "splitting pannes with <leader>| or -
+        nmap <leader>\| :vs<Enter>
+        nmap <leader>\- :sp<Enter>
+
        " shortcuts using leader
        " noremap <leader>sn ]s
        " noremap <leader>sp [s
        " noremap <leader>s? z=
 
-    "navigating splits: Control+hjkl will move from split to split
+        "navigating splits: Control+hjkl will move from split to split
             nmap <C-h> <C-w>h
             nmap <C-j> <C-w>j
             nmap <C-k> <C-w>k
             nmap <C-l> <C-w>l
 
-    "command mode keybinds
-        "w!! writes using sudo
-        cnoremap w!! w !sudo tee % >/dev/null
+        "command mode keybinds
+            "w!! writes using sudo
+            "cnoremap w!! w !sudo tee % >/dev/null
