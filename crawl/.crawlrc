@@ -1,0 +1,106 @@
+#this is my configuration file for dungon crawl stone soup, a staple game for my low end machines.
+
+#set the veiwport. may need to be different on different machines
+view_max_width = 81
+view_max_height = 71
+
+#the following section is from the base crawl settings, but it is not inculded by default. I am including it so I dont forget to turn it on on a new install.
+	# For players who are prone to leave labyrinths without picking up the
+	# loot, here is a way to avoid that: put the following snippet in your
+	# options file (init.txt or .crawlrc) and then macro the '<' key to
+	#  ===safe_upstairs (do it in-game by pressing '~' or Ctrl-D).
+
+	{
+	function safe_upstairs()
+	  if you.branch() == "Lab" then
+		 crawl.formatted_mpr("Really leave this labyrinth?", "prompt")
+		 local res = crawl.getch()
+		 if string.lower(string.char(res)) == "y" then
+		   crawl.sendkeys("<")
+		 end
+	  else
+		 crawl.sendkeys("<")
+	  end
+	end
+	}
+
+	######################################################################
+	# Add the following to your options file to automatically pick up
+	# armour for non-body armour slots (gloves, boots, etc.), if you don't
+	# already have an item equipped there.
+	{
+	add_autopickup_func(function(it, name)
+	  if it.is_useless then
+		return
+	  end
+	  if it.class(true) == "armour" then
+		local good_slots = {cloak="Cloak", helmet="Helmet", gloves="Gloves",
+							boots="Boots"}
+		st, _ = it.subtype()
+		if good_slots[st] ~= nil and items.equipped_at(good_slots[st]) == nil then
+		  return true
+		end
+	  end
+	end)
+	}
+
+	######################################################################
+	# To automatically open the skill menu when starting a new game, add
+	# the following to your options file.
+
+	{
+	local need_skills_opened = true
+	function ready()
+	  if you.turns() == 0 and need_skills_opened then
+		need_skills_opened = false
+		crawl.sendkeys("m")
+	  end
+	end
+	}
+
+#speed during variout multi-turn actions
+travel_delay = 20
+explore_delay = 10
+rest_delay = 5
+
+#these should be default, but just to be sure.
+	pickup_thrown = true
+	pickup_menu_limit = 1
+	default_autopickup = true
+	simple_targeting = false
+	easy_door = true
+#colour stuff that should be default
+	friend_brand = hi:green
+	neutral_brand = hi:lightgrey
+	stab_brand = hi:blue
+	may_stab_brand = hi:yellow
+	heap_brand = reverse
+	feature_item_brand = reverse
+	trap_item_brand =  reverse
+#misc stuff
+	#mouse support on tty is strange
+	mouse_input = false
+	#make training manual by default
+	default_manual_training = true
+	#automatically pick up ammo used in starting weapons at game start
+	autopickup_starting_ammo = true
+	#pick up autopickup stuff when exploring
+	explore_greedy =  true
+	#explore the perimiter of rooms first
+	explore_wall_bias = 10
+	#rest untill BOTH MP and HP are full
+	rest_wait_both = true
+	#rest before exploring
+	explore_auto_rest = false
+	#allow you to put on and take off items from the same screen.
+	equip_unequip = true
+	#auto butcher
+	auto_butcher = true
+	#be smart, eat the oldest stuff first
+	easy_eat_chunks = true
+	#ask for confirmation for one way stuff
+	warn_hatches = true
+	#warn on low MP
+	mp_waring = 10
+	#inscribe god gifts
+	show_god_gift = yes

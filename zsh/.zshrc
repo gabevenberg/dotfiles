@@ -13,6 +13,7 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
 
 # Set important shell variables
 	 export EDITOR=nvim                           # Set default editor
+	 export VISUAL=nvim
 	 export WORDCHARS=''                         # This is the oh-my-zsh default, I think I'd like it to be a bit different 
 	 export PAGER=less                           # Set default pager
 	 export LESS="-R"                            # Set the default options for less 
@@ -21,6 +22,8 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
 # Misc
 	# Enable the ZLE line editor, which is default behavior, but to be sure
 	setopt ZLE
+	#Enable vi mode for the ZLE. it should be set by default due to our EDITOR and VISUAL, but this is just to be safe.
+	bindkey -v
 	# prevent duplicate entries in path
 	declare -U path
 	# Uses custom colors for LS, as outlined in dircolors
@@ -39,8 +42,6 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
 	unsetopt FLOW_CONTROL
 	# List jobs in the long format by default. (I dont know what this does but it sounds good)
 	setopt LONG_LIST_JOBS
-	# Make the shell act like vi if i hit escape
-	setopt vi
 
 # ZSH History 
 	alias history='fc -fl 1'
@@ -87,7 +88,6 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
 	setopt NUMERIC_GLOB_SORT                    # Sort globs that expand to numbers numerically, not by letter (i.e. 01 2 03)
    
 # Aliases
-
 	alias vim="nvim"
 
 	#alias -g ...='../..'
@@ -155,3 +155,8 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
     source $LOCAL_ZSHRC
   fi
 
+#launch a tmux session for interactive shells (attaching to an existing tmux session if possible.
+if which tmux > /dev/null 2>&1; then	#checks if tmux is installed. if it is not, do nothing.
+	#try to attach to an exsisting tmux session, or, if that doesnt exist, make a new one.
+	test -z ${TMUX} && (tmux attach || tmux new-session)
+fi
