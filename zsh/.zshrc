@@ -89,6 +89,7 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
    
 # Aliases
 	alias vim="nvim"
+	alias mutt="neomutt"
 
 	#alias -g ...='../..'
 	#alias -g ....='../../..'

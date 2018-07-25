@@ -5,25 +5,6 @@ view_max_width = 81
 view_max_height = 71
 
 #the following section is from the base crawl settings, but it is not inculded by default. I am including it so I dont forget to turn it on on a new install.
-	# For players who are prone to leave labyrinths without picking up the
-	# loot, here is a way to avoid that: put the following snippet in your
-	# options file (init.txt or .crawlrc) and then macro the '<' key to
-	#  ===safe_upstairs (do it in-game by pressing '~' or Ctrl-D).
-
-	{
-	function safe_upstairs()
-	  if you.branch() == "Lab" then
-		 crawl.formatted_mpr("Really leave this labyrinth?", "prompt")
-		 local res = crawl.getch()
-		 if string.lower(string.char(res)) == "y" then
-		   crawl.sendkeys("<")
-		 end
-	  else
-		 crawl.sendkeys("<")
-	  end
-	end
-	}
-
 	######################################################################
 	# Add the following to your options file to automatically pick up
 	# armour for non-body armour slots (gloves, boots, etc.), if you don't
