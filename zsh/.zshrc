@@ -156,8 +156,9 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
     source $LOCAL_ZSHRC
   fi
 
-#launch a tmux session for interactive shells (attaching to an existing tmux session if possible.
-if which tmux > /dev/null 2>&1; then	#checks if tmux is installed. if it is not, do nothing.
-	#try to attach to an exsisting tmux session, or, if that doesnt exist, make a new one.
-	test -z ${TMUX} && (tmux attach || tmux new-session)
-fi
+##launch a tmux session for interactive shells (attaching to an existing tmux session if possible.
+#seems to be buggy for now, sometimes doesnt work. 
+#if which tmux > /dev/null 2>&1; then	#checks if tmux is installed. if it is not, do nothing.
+#	#try to attach to an exsisting tmux session, or, if that doesnt exist, make a new one.
+#	test -z ${TMUX} && (tmux attach || tmux new-session)
+#fi
