@@ -14,7 +14,6 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
 # Set important shell variables
 	 export EDITOR=nvim                           # Set default editor
 	 export VISUAL=nvim
-	 export WORDCHARS=''                         # This is the oh-my-zsh default, I think I'd like it to be a bit different 
 	 export PAGER=less                           # Set default pager
 	 export LESS="-R"                            # Set the default options for less 
 	 export LESSHISTFILE="/dev/null"                    # Prevent the less hist file from being made, I dont want it
