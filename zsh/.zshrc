@@ -1,5 +1,19 @@
 # Based off of the zshrc of Josh Hartwell, with many additions, deletions, and changes from across the outside community.
-
+#Copyright 2018 TheToric
+#
+#This program is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
 local ZSH_CONF=$HOME/.zsh                      # Define the place I store all my zsh config stuff
 local ZSH_CACHE=$ZSH_CONF/cache                # for storing files like history and zcompdump 
 local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have its own overriding zshrc if it wants it

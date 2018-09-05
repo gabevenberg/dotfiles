@@ -1,5 +1,20 @@
 #This file is to set up the ZSH prompt. This is a customized prompt, and, as will all my zsh things, does not rely on an outside plugin.
 #Also like most of my stuff, mutch of this code is taken from another source. in this case, I used the GRML zshrc as a base.
+#Copyright 2018 TheToric
+#
+#This program is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 #this is a WIP.
 #TODO: make this a proper prompt theme file instead of just a sourced file... maybye.
 
