@@ -121,7 +121,7 @@ filetype plugin on
 		set fillchars="fold:-"
 		"set the fold text for this method, in most cases, the line just above our fold is what we want, so we wont put any text into it. just level and linecount.
 		function! Minimal_foldtext()
-			let lines_count = v:foldend - v:foldstart
+			let lines_count = v:foldend - v:foldstart + 1
 			let lines_count_text = '+' . v:folddashes . '| ' . printf("%10S" , lines_count) . ' lines |'
 			let line_level_text = '| ' . printf("%8S" , 'level ' . v:foldlevel) . ' |'
 			let fold_text_end = line_level_text . repeat('-',8)

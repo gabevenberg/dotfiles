@@ -14,9 +14,9 @@
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-local ZSH_CONF=$HOME/.zsh                      # Define the place I store all my zsh config stuff
+local ZSH_CONF=$HOME/.config/zsh                      # Define the place I store all my zsh config stuff
 local ZSH_CACHE=$ZSH_CONF/cache                # for storing files like history and zcompdump 
-local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have its own overriding zshrc if it wants it
+local LOCAL_ZSHRC=$HOME/.config/zshlocal       # Allow the local machine to have its own overriding zshrc if it wants it
 
 # Load external config files and tools
 
@@ -57,7 +57,6 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
 	setopt LONG_LIST_JOBS
 
 # ZSH History 
-	alias history='fc -fl 1'
 	HISTFILE=$ZSH_CACHE/history                 # Keep our home directory neat by keeping the histfile somewhere else
 	SAVEHIST=10000                              # Big history
 	HISTSIZE=10000                              # Big history
@@ -65,7 +64,6 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
 	setopt APPEND_HISTORY                       # Allow multiple terminal sessions to all append to one zsh command history
 	setopt HIST_FIND_NO_DUPS                    # When searching history dont display results already cycled through twice
 	setopt HIST_EXPIRE_DUPS_FIRST               # When duplicates are entered, get rid of the duplicates first when we hit $HISTSIZE 
-	setopt HIST_IGNORE_SPACE                    # Dont enter commands into history if they start with a space
 	setopt HIST_VERIFY                          # makes history substitution commands a bit nicer. I dont fully understand
 	setopt SHARE_HISTORY                        # Shares history across multiple zsh sessions, in real time
 	setopt HIST_IGNORE_DUPS                     # Do not write events to history that are duplicates of the immediately previous event
@@ -73,17 +71,9 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
 	setopt HIST_REDUCE_BLANKS                   # Remove extra blanks from each command line being added to history
 
 # ZSH Auto Completion
-	# Figure out the short hostname
-	if [[ "$OSTYPE" = darwin* ]]; then          
-	   # OS X's $HOST changes with dhcp, etc., so use ComputerName if possible.
-	   SHORT_HOST=$(scutil --get ComputerName 2>/dev/null) || SHORT_HOST=${HOST/.*/}
-	else
 	   SHORT_HOST=${HOST/.*/}
-	fi
-
 	#the auto complete dump is a cache file where ZSH stores its auto complete data, for faster load times
 	local ZSH_COMPDUMP="$ZSH_CACHE/acdump-${SHORT_HOST}-${ZSH_VERSION}"  #where to store autocomplete data
-
 	autoload -Uz compinit
 	compinit -i -d "${ZSH_COMPDUMP}"                        # Init auto completion; tell where to store autocomplete dump
 	zstyle ':completion:*' menu select                      # Have the menu highlight as we cycle through options
@@ -102,6 +92,7 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
    
 # Aliases
 	alias vim="nvim"
+	alias vimdiff="nvim -d"
 	alias mutt="neomutt"
 
 	#alias -g ...='../..'
@@ -168,10 +159,3 @@ local LOCAL_ZSHRC=$HOME/.zshlocal/.zshrc       # Allow the local machine to have
   if [[ -r $LOCAL_ZSHRC ]]; then
     source $LOCAL_ZSHRC
   fi
-
-##launch a tmux session for interactive shells (attaching to an existing tmux session if possible.
-#seems to be buggy for now, sometimes doesnt work. 
-#if which tmux > /dev/null 2>&1; then	#checks if tmux is installed. if it is not, do nothing.
-#	#try to attach to an exsisting tmux session, or, if that doesnt exist, make a new one.
-#	test -z ${TMUX} && (tmux attach || tmux new-session)
-#fi
