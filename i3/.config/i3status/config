@@ -1,4 +1,4 @@
-# i3status configuration file.
+# i3status configuration file, derived from the stock config provided in default i3.
 #Copyright 2018 TheToric
 #
 #This program is free software: you can redistribute it and/or modify
@@ -20,8 +20,8 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
-        interval = 5
+	colors = true
+	interval = 5
 }
 
 order += "wireless _first_"
@@ -31,24 +31,26 @@ order += "load"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+	format_up = "W: (%quality at %essid) %ip"
+	format_down = "W: down"
 }
 
 ethernet _first_ {
-        # if you use %speed, i3status requires root privileges
-        format_up = "E: %ip"
-        format_down = "E: down"
+	format_up = "E: %ip"
+	format_down = "E: down"
 }
 
 battery all {
-        format = "%status %percentage %remaining"
+	format = "%status %percentage %remaining"
+	low_threshold = 10
+	integer_battery_capacity = true
+	last_full_capacity = true
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+	format = "%Y-%m-%d %H:%M:%S"
 }
 
 load {
-        format = "%1min"
+	format = "%1min"
 }
