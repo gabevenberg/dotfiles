@@ -170,6 +170,11 @@ font pango:DejaVu Sans Mono 8
 
 	bindsym $mod+r mode "resize"
 
+#make certan windwows always floating
+	#volume controll
+	for_window [class="Pavucontrol"] floating enable
+
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
