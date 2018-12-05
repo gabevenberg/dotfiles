@@ -94,6 +94,8 @@ local LOCAL_ZSHRC=$HOME/.config/zshlocal       # Allow the local machine to have
 	alias vim="nvim"
 	alias vimdiff="nvim -d"
 	alias mutt="neomutt"
+	#i3sleep locks the screen and puts the system to sleep
+	alias i3sleep="i3lock && systemctl suspend"
 
 	#alias -g ...='../..'
 	#alias -g ....='../../..'
