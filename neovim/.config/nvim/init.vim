@@ -20,6 +20,7 @@ set lazyredraw
 set autoread
 set history=5000
 filetype plugin on
+set noswapfile "disables creation of swap files
 
 "user interface stuff
 	"disables the autocommenting stuff.
