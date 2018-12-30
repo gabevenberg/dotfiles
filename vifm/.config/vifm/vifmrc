@@ -214,7 +214,7 @@ set vicmd=nvim
 			 \ ffprobe -pretty %c 2>&1
 
 	" Web
-	filetype *.html,*.htm links, lynx
+	filetype *.html,*.htm links
 
 	" Object
 	filetype *.o nm %f | less
@@ -356,7 +356,7 @@ set vicmd=nvim
 	" uncommenting one of lines below will result in ignoring 'vi[x]cmd' option
 	" for unknown file types.
 	" For *nix:
-	filetype * xdg-open &
+	filetype * xdg-open
 
 " ------------------------------------------------------------------------------
 
