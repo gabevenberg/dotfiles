@@ -214,7 +214,7 @@ set vicmd=nvim
 			 \ ffprobe -pretty %c 2>&1
 
 	" Web
-	filetype *.html,*.htm links, lynx
+	filetype *.html,*.htm links
 
 	" Object
 	filetype *.o nm %f | less
