@@ -35,10 +35,12 @@ font pango:DejaVu Sans Mono 8
 	# kill focused window
 	bindsym $mod+Shift+q kill
 
-	# start dmenu (or rofi) (a program launcher)
+	# start dmenu (a program launcher)
 	#bindsym $mod+d exec dmenu
 	#start i3-dmenu, to only see .desktop entries.
-	bindsym $mod+d exec i3-dmenu-desktop
+	#bindsym $mod+d exec i3-dmenu-desktop
+	#start rofi in desktop app mode
+	bindsym $mod+d exec rofi -modi window#run#drun -theme solarized -show drun
 
 	# change focus
 		bindsym $mod+h focus left
