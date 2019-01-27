@@ -35,11 +35,10 @@ font pango:DejaVu Sans Mono 8
 	# kill focused window
 	bindsym $mod+Shift+q kill
 
-	# start dmenu (a program launcher)
-	#bindsym $mod+d exec dmenu_run
-	#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-	# or to launch j4-dmenu-desktop
-	bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i"
+	# start dmenu (or rofi) (a program launcher)
+	#bindsym $mod+d exec dmenu
+	#start i3-dmenu, to only see .desktop entries.
+	bindsym $mod+d exec i3-dmenu-desktop
 
 	# change focus
 		bindsym $mod+h focus left
