@@ -20,8 +20,6 @@ c.spellcheck.languages = ["en-US"]
 c.confirm_quit = ["downloads"]
 #block 3rd party cookies
 c.content.cookies.accept = "no-3rdparty"
-#at first, always open pdfs with pdfjs
-c.content.pdfjs = True
 #remove finished downloads after 5 seconds
 c.downloads.remove_finished = 5000
 #open neovin in a urxvt terminal window when calling for an internal editor
