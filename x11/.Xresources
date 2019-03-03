@@ -12,6 +12,12 @@ URxvt*termName: rxvt-unicode
 URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: waterfox
 URxvt.matcher.button: 1
+!!keybindings for urxvt-resize-font-git.
+URxvt.keysim.C-minus: resize-font:smaller
+URxvt.keysym.C-equal: resize-font:bigger
+URxvt.keysym.C-0: resize-font:reset
+URxvt.keysym.C-question: resize-font:show
+
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 

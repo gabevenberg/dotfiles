@@ -8,4 +8,5 @@ setmouse () {
 }
 #setmouse
 xrdb -merge ~/.Xresources
-exec i3
+udiskie
+i3
