@@ -171,6 +171,11 @@ font pango:DejaVu Sans Mono 8
 
 	bindsym $mod+r mode "resize"
 
+	# lock the screen with mod+x, and lock+sleep computer with mod+shift+x
+		set $lock_command "i3lock" # avoid repetition
+		bindsym $mod+x exec $lock_command
+		bindsym $mod+shift+x exec $lock_command && systemctl suspend
+
 #make certan windwows always floating
 	#volume controll
 	for_window [class="Pavucontrol"] floating enable
