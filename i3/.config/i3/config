@@ -172,9 +172,9 @@ font pango:DejaVu Sans Mono 8
 	bindsym $mod+r mode "resize"
 
 	# lock the screen with mod+x, and lock+sleep computer with mod+shift+x
-		set $lock_command "i3lock"
-		bindsym $mod+x exec $lock_command
-		bindsym $mod+shift+x exec $lock_command && systemctl suspend
+		set $lock_command i3lock
+		bindsym $mod+x exec "$lock_command"
+		bindsym $mod+shift+x exec "$lock_command"; exec "systemctl suspend"
 
 #make certan windwows always floating
 	#volume controll
