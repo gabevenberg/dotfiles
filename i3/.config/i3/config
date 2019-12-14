@@ -48,24 +48,24 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+k focus up
 		bindsym $mod+l focus right
 
-	# alternatively, you can use the cursor keys:
-		bindsym $mod+Left focus left
-		bindsym $mod+Down focus down
-		bindsym $mod+Up focus up
-		bindsym $mod+Right focus right
-
 	# move focused window
 		bindsym $mod+Shift+h move left
 		bindsym $mod+Shift+j move down
 		bindsym $mod+Shift+k move up
 		bindsym $mod+Shift+l move right
 
-	# alternatively, you can use the cursor keys:
-		bindsym $mod+Shift+Left move left
-		bindsym $mod+Shift+Down move down
-		bindsym $mod+Shift+Up move up
-		bindsym $mod+Shift+Right move right
+	# move workspace between monitors
+		bindsym $mod+mod1+Shift+h move workspace to output left
+		bindsym $mod+mod1+Shift+j move workspace to output down
+		bindsym $mod+mod1+Shift+k move workspace to output up
+		bindsym $mod+mod1+Shift+l move workspace to output right
 
+	# move container between monitors
+		bindsym $mod+mod1+h move container to output left
+		bindsym $mod+mod1+j move container to output down
+		bindsym $mod+mod1+k move container to output up
+		bindsym $mod+mod1+l move container to output right
+		
 	## split in horizontal orientation
 	bindsym $mod+shift+backslash  split h
 
@@ -76,7 +76,7 @@ font pango:DejaVu Sans Mono 8
 	bindsym $mod+f fullscreen toggle
 
 	# change container layout (stacked, tabbed, toggle split)
-		bindsym $mod+s layout stacking
+		bindsym $mod+q layout stacking
 		bindsym $mod+w layout tabbed
 		bindsym $mod+e layout toggle split
 
@@ -93,7 +93,7 @@ font pango:DejaVu Sans Mono 8
 	bindsym $mod+z focus child
 
 	#make a floating window sticky (moves workspaces with you)
-	bindsym $mod+Shift+s sticky toggle
+	bindsym $mod+Shift+a sticky toggle
 
 	#make currently focused window a scratchpad
 	bindsym $mod+shift+plus move scratchpad
@@ -175,6 +175,10 @@ font pango:DejaVu Sans Mono 8
 		set $lock_command i3lock
 		bindsym $mod+x exec "$lock_command"
 		bindsym $mod+shift+x exec "$lock_command"; exec "systemctl suspend"
+
+	#screenshot everything with mod+s, current window with mod+shift+x
+		bindsym $mod+s exec "maim ~/Pictures/$(date +%s).png"
+		bindsym $mod+shift+s exec "maim -i $(xdotool getactivewindow) ~/$(date +%s).png"
 
 #make certan windwows always floating
 	#volume controll
