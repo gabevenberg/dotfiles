@@ -1,0 +1,147 @@
+ncmpcpp_directory = ~/.ncmpcpp
+lyrics_directory = ~/Music/.lyrics
+mpd_host = localhost
+mpd_port = 6600
+mpd_connection_timeout = 5
+mpd_music_dir = ~/Music
+mpd_crossfade_time = 5
+
+#music visualizer
+visualizer_fifo_path = "/tmp/mpd.fifo"
+visualizer_output_name = "my_fifo"
+visualizer_sync_interval = "30" 
+visualizer_in_stereo = "yes"
+visualizer_type = "spectrum"
+visualizer_look = "+|"
+
+#look
+playlist_display_mode = columns
+
+browser_display_mode = classic
+
+search_engine_display_mode = classic
+
+playlist_editor_display_mode = classic
+
+# Note: You can specify third character which will be used to build 'empty'
+# part of progressbar.
+
+progressbar_look = =>
+
+# Available values: database, playlist.
+
+default_place_to_search_in = database
+
+# Available values: classic, alternative.
+
+user_interface = classic
+
+data_fetching_delay = yes
+
+# Available values: artist, album_artist, date, genre, composer, performer.
+
+media_library_primary_tag = artist
+
+media_library_albums_split_by_date = yes
+
+# Available values: wrapped, normal.
+
+default_find_mode = wrapped
+
+default_tag_editor_pattern = %n - %t
+
+header_visibility = yes
+
+statusbar_visibility = yes
+
+titles_visibility = yes
+
+display_volume_level = yes
+
+header_text_scrolling = yes
+
+cyclic_scrolling = no
+
+lines_scrolled = 2
+
+lyrics_fetchers = lyricwiki, azlyrics, genius, sing365, lyricsmania, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, internet
+
+follow_now_playing_lyrics = no
+
+fetch_lyrics_for_current_song_in_background = no
+
+store_lyrics_in_song_dir = no
+
+allow_for_physical_item_deletion = no
+
+mouse_support = yes
+
+external_editor = nvim
+# Note: set to yes if external editor is a console application.
+
+use_console_editor = yes
+
+
+##### colors definitions #####
+##
+## It is possible to set a background color by setting a color value
+## "<foreground>_<background>", e.g. red_black will set foregound color to red
+## and background color to black.
+##
+## In addition, for terminals that support 256 colors it is possible to set one
+## of them by using a number in range [1, 256] instead of color name,
+## e.g. numerical value corresponding to red_black is 2_1. To find out if the
+## terminal supports 256 colors, run ncmpcpp and check out the bottom of the
+## help screen for list of available colors and their numerical values.
+##
+## What is more, there are two special values for the background color:
+## "transparent" and "current". The first one explicitly sets the background to
+## be transparent, while the second one allows you to preserve current
+## background color and change only the foreground one. It's used implicitly
+## when background color is not specified.
+##
+## Moreover, it is possible to attach format information to selected color
+## variables by appending to their end a colon followed by one or more format
+## flags, e.g. black:b or red:ur. The following variables support this syntax:
+## visualizer_color, color1, color2, empty_tag_color, volume_color,
+## state_line_color, state_flags_color, progressbar_color,
+## progressbar_elapsed_color, player_state_color, statusbar_time_color,
+## alternative_ui_separator_color.
+##
+## Note: due to technical limitations of older ncurses version, if 256 colors
+## are used there is a possibility that you'll be able to use only colors with
+## transparent background.
+#
+#colors_enabled = yes
+#
+#empty_tag_color = cyan
+#
+#header_window_color = default
+#
+#volume_color = default
+#
+#state_line_color = default
+#
+#state_flags_color = default:b
+#
+#main_window_color = yellow
+#
+#color1 = white
+#
+#color2 = green
+#
+#progressbar_color = black:b
+#
+#progressbar_elapsed_color = green:b
+#
+#statusbar_color = default
+#
+#statusbar_time_color = default:b
+#
+#player_state_color = default:b
+#
+#alternative_ui_separator_color = black:b
+#
+#window_border_color = green
+#
+#active_window_border = red
