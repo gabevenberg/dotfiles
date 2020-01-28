@@ -96,9 +96,9 @@ font pango:DejaVu Sans Mono 8
 	bindsym $mod+Shift+a sticky toggle
 
 	#make currently focused window a scratchpad
-	bindsym $mod+shift+backslash move scratchpad
+	bindsym $mod+shift+` move scratchpad
 	#and hide and show it
-	bindsym $mod+backslash scratchpad show
+	bindsym $mod+` scratchpad show
 
 	#workspace switching
 		# Define names for default workspaces for which we configure key bindings later on. We use variables to avoid repeating the names in multiple places.
@@ -181,12 +181,12 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+shift+s exec "maim -i $(xdotool getactivewindow) ~/$(date +%s).png"
 	
 	#mpd controls
-		bindsym $mod+space mpc toggle
-		bindsym $mod+plus mpc volume +
-		bindsym $mod+minus mpc volume -
+		bindsym $mod+p exec "mpc toggle"
+		bindsym $mod+plus exec "mpc volume +1"
+		bindsym $mod+minus exec "mpc volume -1"
 	
 	#open volume control
-		bindsym $mod p exec pavucontrol
+		bindsym $mod+shift+p exec pavucontrol
 
 #make certan windwows always floating
 	#volume controll
