@@ -173,17 +173,17 @@ font pango:DejaVu Sans Mono 8
 
 	# lock the screen with mod+x, and lock+sleep computer with mod+shift+x
 		set $lock_command i3lock
-		bindsym $mod+x exec "$lock_command"
-		bindsym $mod+shift+x exec "$lock_command"; exec "systemctl suspend"
+		bindsym $mod+x exec --no-startup-id "$lock_command"
+		bindsym $mod+shift+x exec --no-startup-id "$lock_command"; exec "systemctl suspend"
 
 	#screenshot everything with mod+s, current window with mod+shift+x
-		bindsym $mod+s exec "maim ~/Pictures/$(date +%s).png"
-		bindsym $mod+shift+s exec "maim -i $(xdotool getactivewindow) ~/$(date +%s).png"
+		bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png"
+		bindsym $mod+shift+s exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/$(date +%s).png"
 	
 	#mpd controls
-		bindsym $mod+p exec "mpc toggle"
-		bindsym $mod+plus exec "mpc volume +1"
-		bindsym $mod+minus exec "mpc volume -1"
+		bindsym $mod+p exec --no-startup-id "mpc toggle"
+		bindsym $mod+plus exec --no-startup-id "mpc volume +1"
+		bindsym $mod+minus exec --no-startup-id "mpc volume -1"
 	
 	#open volume control
 		bindsym $mod+shift+p exec pavucontrol
