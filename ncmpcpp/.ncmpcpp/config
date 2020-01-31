@@ -15,6 +15,7 @@ visualizer_type = "spectrum"
 visualizer_look = "+|"
 
 #look
+
 playlist_display_mode = columns
 
 browser_display_mode = classic
@@ -40,7 +41,7 @@ data_fetching_delay = yes
 
 # Available values: artist, album_artist, date, genre, composer, performer.
 
-media_library_primary_tag = artist
+media_library_primary_tag = album_artist
 
 media_library_albums_split_by_date = yes
 
