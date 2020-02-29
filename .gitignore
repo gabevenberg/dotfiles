@@ -1,5 +1,6 @@
 *.swp
 *.directory
 .netrwhist
-vifminfo
 *.log
+vifminfo
+vifm-help.txt

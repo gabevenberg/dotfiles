@@ -1,0 +1,19 @@
+#! /bin/bash
+
+#warning! $locker MUST NOT FORK! It must wait to exit until after the screen has been unlocked. 
+
+#arguments
+
+locker=$@
+
+#make sure we set screen back to defaults if we force close the script
+cleanup() {
+	xset dpms 0 0 60 #&& echo "cleaned up!"
+	exit
+}
+
+trap "cleanup" EXIT
+
+#runs the locker, than makes the screen time out after 1 sec of inactivity
+xset dpms 0 0 1
+$locker
