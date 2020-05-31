@@ -146,6 +146,8 @@ PROMPT='%F{cyan}[%m@%n]%f%F{red}├────┤%f${vcs_info_msg_0_}
 	setopt ALWAYS_TO_END
 	#complete aliases as well
 	setopt COMPLETE_ALIASES
+	#select first item when you press tab the first time.
+	setopt MENU_COMPLETE
 
 #globbing
 	#case insensitive globbing
@@ -158,6 +160,9 @@ PROMPT='%F{cyan}[%m@%n]%f%F{red}├────┤%f${vcs_info_msg_0_}
 	alias vimdiff="nvim -d"
 	alias mutt="neomutt"
 	alias fuck='sudo $(fc -ln -1)'
+	alias la='ls -la'
+	alias ll='ls -l'
+
 
 	#web searches
 	alias ddg='web_search ddg'
