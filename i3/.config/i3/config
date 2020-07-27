@@ -214,3 +214,6 @@ bar {
 
 	#resetting the wallpaper. We are not setting it here, so we can have different wallpapers on different machines. use feh --bg-fill FILE to set it. it will write a .fehbg file.
 	exec --no-startup-id ~/.fehbg
+
+	#dunst
+	exec --no-startup-id /usr/bin/dunst
