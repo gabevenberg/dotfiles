@@ -182,9 +182,9 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+x exec --no-startup-id "~/dotfiles/scripts/screen_off $lock_command_nof"
 		bindsym $mod+shift+x exec --no-startup-id "$lock_command"; exec "systemctl suspend"
 
-	#screenshot everything with mod+s, current window with mod+shift+x
+	#screenshot everything with mod+s, current window with mod+shift+s
 		bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png"
-		bindsym $mod+shift+s exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/$(date +%s).png"
+		bindsym $mod+shift+s exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/Pictures/$(date +%s).png"
 	
 	#mpd controls
 		bindsym $mod+p exec --no-startup-id "mpc toggle"
