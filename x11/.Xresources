@@ -18,7 +18,6 @@ URxvt.keysym.C-equal: resize-font:bigger
 URxvt.keysym.C-0: resize-font:reset
 URxvt.keysym.C-question: resize-font:show
 
-
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB

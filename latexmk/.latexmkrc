@@ -1,3 +1,3 @@
-$dvi_previewer = 'start xdvi -watchfile 1.5';
-$ps_previewer  = 'start gv --watch';
-$pdf_previewer = 'start zathura';
+$dvi_previewer = 'xdvi -watchfile 1.5';
+$ps_previewer  = 'gv --watch';
+$pdf_previewer = 'zathura';
