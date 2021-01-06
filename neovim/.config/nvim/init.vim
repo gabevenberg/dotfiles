@@ -22,6 +22,31 @@ set history=5000
 filetype plugin on
 set noswapfile "disables creation of swap files
 
+"useful keybinds
+	let mapleader = "\\"
+	"spell checking
+		"toggle spell checking
+		nmap <leader>ss :setlocal spell!<Enter>
+
+	"splitting panels with <leader>| or -
+		nmap <leader>\| :vs<Enter>
+		nmap <leader>\- :sp<Enter>
+
+		" shortcuts using leader
+		" noremap <leader>sn ]s
+		" noremap <leader>sp [s
+		" noremap <leader>s? z=
+
+		"navigating splits: Control+hjkl will move from split to split
+			nmap <C-h> <C-w>h
+			nmap <C-j> <C-w>j
+			nmap <C-k> <C-w>k
+			nmap <C-l> <C-w>l
+
+		"command mode keybinds
+			"w!! writes using sudo
+			"cnoremap w!! w !sudo tee % >/dev/null
+
 "user interface stuff
 	"disables the autocommenting stuff.
 		set formatoptions-=o
@@ -69,7 +94,7 @@ set noswapfile "disables creation of swap files
 	set laststatus=2
 
 	"keycodes time out fast, mappings have a bit longer
-	set timeout timeoutlen=50 ttimeout ttimeoutlen=5
+	set timeout timeoutlen=1000 ttimeout ttimeoutlen=100
 
 	"make it so the session feature wont overwrite our vimrc if the vimrc has newer bindings than this session.
 	set sessionoptions-=options 
@@ -131,27 +156,3 @@ set noswapfile "disables creation of swap files
 		endfunction
 		set foldtext=Minimal_foldtext()
 	endif
-
-"useful keybinds
-	"spell checking
-		"toggle spell checking
-		map <leader>ss :setlocal spell!<Enter>
-
-	"splitting panels with <leader>| or -
-		nmap <leader>\| :vs<Enter>
-		nmap <leader>\- :sp<Enter>
-
-		" shortcuts using leader
-		" noremap <leader>sn ]s
-		" noremap <leader>sp [s
-		" noremap <leader>s? z=
-
-		"navigating splits: Control+hjkl will move from split to split
-			nmap <C-h> <C-w>h
-			nmap <C-j> <C-w>j
-			nmap <C-k> <C-w>k
-			nmap <C-l> <C-w>l
-
-		"command mode keybinds
-			"w!! writes using sudo
-			"cnoremap w!! w !sudo tee % >/dev/null

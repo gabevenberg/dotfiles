@@ -11,6 +11,19 @@
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+
+#set important shell variables
+	export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+	#set default editor and pager.
+	export EDITOR=nvim
+	export VISUAL=nvim
+	export PAGER=less
+	#default options for less
+	export LESS="-R"
+	export LESSHISTFILE="/dev/null"
+	#set the w3m homepage
+	export WWW_HOME="duckduckgo.com/lite/"
+
 #web_search from terminal
 	function web_search() {
 	  emulate -L zsh
@@ -83,17 +96,6 @@ PROMPT='%F{cyan}[%n@%m]%f%F{red}├────┤%f${vcs_info_msg_0_}
 	}
 	zle -N expand-or-complete-with-dots
 	bindkey "^I" expand-or-complete-with-dots
-
-#set important shell variables
-	#set default editor and pager.
-	export EDITOR=nvim
-	export VISUAL=nvim
-	export PAGER=less
-	#default options for less
-	export LESS="-R"
-	export LESSHISTFILE="/dev/null"
-	#set the w3m homepage
-	export WWW_HOME="duckduckgo.com/lite/"
 
 #misc
 	# Enable the ZLE line editor, which is default behavior, but to be sure
