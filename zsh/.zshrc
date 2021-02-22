@@ -14,6 +14,7 @@
 
 #set important shell variables
 	export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+	export PATH="$PATH:$HOME/scripts"
 	#set default editor and pager.
 	export EDITOR=nvim
 	export VISUAL=nvim
