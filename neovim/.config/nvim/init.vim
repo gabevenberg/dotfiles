@@ -63,9 +63,6 @@ set noswapfile "disables creation of swap files
 	"adds a ruler to the side of the screen
 	set number
 
-	"makes the ruler show how many lines away a given line is from your cursor
-	set relativenumber
-
 	"displays the coordinates of your cursour in the statusbar
 	set ruler
 
