@@ -192,11 +192,11 @@ PROMPT='%F{cyan}[%n@%m]%f%F{red}├────┤%f${vcs_info_msg_0_}
 	alias grep="grep $GREP_OPTIONS"
 
 #fzf stuff
-#zsh key bindings (different distros put these in different places.)
+	#zsh key bindings (different distros put these in different places.)
 	source $(find /usr/share -path '*fzf/*key-bindings.zsh')
 	#zsh completions, if it exists.
-	testPath = $(find /usr/share -path '*fzf/*completion.zsh')
-	if test $(echo $testPath | wc -c) -ne 0
+	testPath=$(find /usr/share -path '*fzf/*completion.zsh')
+	if test $(echo $testPath | wc -c) -eq 0
 	then
 		source $testPath
 	fi
