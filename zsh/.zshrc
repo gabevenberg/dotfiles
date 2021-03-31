@@ -197,7 +197,7 @@ PROMPT='%F{cyan}[%n@%m]%f%F{red}├────┤%f${vcs_info_msg_0_}
 	source $(find /usr/share -path '*fzf/*key-bindings.zsh' -print -quit 2> /dev/null)
 	#zsh completions, if it exists.
 	testPath=$(find /usr/share -path '*fzf/*completion.zsh' -print -quit 2> /dev/null)
-	if test $(echo $testPath | wc -c) -ne 0
+	if test $(echo $testPath | wc -c) -eq 0
 	then
 		source $testPath
 	fi
