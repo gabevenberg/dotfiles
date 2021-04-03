@@ -13,9 +13,12 @@
 
 
 #set important shell variables
-	export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
-	export PATH="$PATH:$HOME/.local/bin"
-	export PATH="$PATH:$HOME/scripts"
+	#fancy way of testing if a command exists
+	(($+command[ruby])) && export PATH="$PATH:$(ruby -e 'puts Gem.user_dir' 2> /dev/null)/bin"
+	testPath="$HOME/.local/bin"
+	[ -f $testPath ] && export PATH="$PATH:$testPath"
+	testPath="$HOME/scripts"
+	[ -f $testPath ] && export PATH="$PATH:$testPath"
 	#set default editor and pager.
 	export EDITOR=nvim
 	export VISUAL=nvim
@@ -194,10 +197,8 @@ PROMPT='%F{cyan}[%n@%m]%f%F{red}├────┤%f${vcs_info_msg_0_}
 
 #fzf stuff
 	#zsh key bindings (different distros put these in different places.)
-	source $(find /usr/share -path '*fzf/*key-bindings.zsh' -print -quit 2> /dev/null)
+	testPath=$(find /usr/share -path '*fzf/*key-bindings.zsh' -print -quit 2> /dev/null)
+	[ -f $testPath ] && source $testPath
 	#zsh completions, if it exists.
 	testPath=$(find /usr/share -path '*fzf/*completion.zsh' -print -quit 2> /dev/null)
-	if test $(echo $testPath | wc -c) -ne 0
-	then
-		source $testPath
-	fi
+	[ -f $testPath ] && source $testPath
