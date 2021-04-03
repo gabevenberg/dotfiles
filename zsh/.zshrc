@@ -15,6 +15,7 @@
 #set important shell variables
 	#fancy way of testing if a command exists
 	(($+command[ruby])) && export PATH="$PATH:$(ruby -e 'puts Gem.user_dir' 2> /dev/null)/bin"
+	#test that these nonstandard paths exist before adding to PATH.
 	testPath="$HOME/.local/bin"
 	[ -f $testPath ] && export PATH="$PATH:$testPath"
 	testPath="$HOME/scripts"
@@ -86,8 +87,7 @@
 	RPROMPT=
 
 	#on the top line, show a whole bunch of info. botton line should be as minimal as possilbe (just a single char to  input next to...)
-	PROMPT='%F{cyan}[%n@%m]%f%F{red}├────┤%f${vcs_info_msg_0_}
-	»'
+	PROMPT=$'%F{cyan}[%n@%m]%f%F{red}├────┤%f${vcs_info_msg_0_}\n»'
 
 #show dots while waiting for tab-completion
 	expand-or-complete-with-dots() {
