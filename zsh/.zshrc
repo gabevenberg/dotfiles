@@ -17,9 +17,9 @@
 	(($+command[ruby])) && export PATH="$PATH:$(ruby -e 'puts Gem.user_dir' 2> /dev/null)/bin"
 	#test that these nonstandard paths exist before adding to PATH.
 	testPath="$HOME/.local/bin"
-	[ -f $testPath ] && export PATH="$PATH:$testPath"
+	[ -f "$testPath" ] && export PATH="$PATH:$testPath"
 	testPath="$HOME/scripts"
-	[ -f $testPath ] && export PATH="$PATH:$testPath"
+	[ -f "$testPath" ] && export PATH="$PATH:$testPath"
 	#set default editor and pager.
 	export EDITOR=nvim
 	export VISUAL=nvim
@@ -198,7 +198,7 @@
 #fzf stuff
 	#zsh key bindings (different distros put these in different places.)
 	testPath=$(find /usr/share -path '*fzf/*key-bindings.zsh' -print -quit 2> /dev/null)
-	[ -f $testPath ] && source $testPath
+	[ -f "$testPath" ] && source $testPath
 	#zsh completions, if it exists.
 	testPath=$(find /usr/share -path '*fzf/*completion.zsh' -print -quit 2> /dev/null)
-	[ -f $testPath ] && source $testPath
+	[ -f "$testPath" ] && source $testPath
