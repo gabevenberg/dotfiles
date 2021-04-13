@@ -17,9 +17,9 @@
 	(($+command[ruby])) && export PATH="$PATH:$(ruby -e 'puts Gem.user_dir' 2> /dev/null)/bin"
 	#test that these nonstandard paths exist before adding to PATH.
 	testPath="$HOME/.local/bin"
-	[ -f "$testPath" ] && export PATH="$PATH:$testPath"
+	[ -d "$testPath" ] && export PATH="$PATH:$testPath"
 	testPath="$HOME/scripts"
-	[ -f "$testPath" ] && export PATH="$PATH:$testPath"
+	[ -d "$testPath" ] && export PATH="$PATH:$testPath"
 	#set default editor and pager.
 	export EDITOR=nvim
 	export VISUAL=nvim
