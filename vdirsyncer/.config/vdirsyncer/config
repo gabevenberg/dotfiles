@@ -35,7 +35,7 @@ path = "~/.contacts/"
 fileext = ".vcf"
 [storage nextcloud_contacts_remote]
 type = "carddav"
-url = "https://nextcloud.gabevenberg.com"
+url = "https://gabevenberg.com/nextcloud/remote.php/dav"
 username = "Toric"
 # The password can also be fetched from the system password storage, netrc or a
 # custom command. See http://vdirsyncer.pimutils.org/en/stable/keyring.html
@@ -53,6 +53,6 @@ path = "~/.calendars/"
 fileext = ".ics"
 [storage nextcloud_calendar_remote]
 type = "caldav"
-url = "https://nextcloud.gabevenberg.com/"
+url = "https://gabevenberg.com/nextcloud/remote.php/dav"
 username = "Toric"
 password.fetch = ["command", "pass", "nextcloud.gabevenberg.com/Toric"]
