@@ -183,8 +183,8 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+shift+x exec --no-startup-id "$lock_command"; exec "systemctl suspend"
 
 	# disable screen going to sleep with mod+c, enable screen going to sleep with mod+shift+c
-		bindsym $mod+c exec "xset s off -dpms; notify-send 'screen blanking off'"
-		bindsym $mod+shift+c exec "xset +dpms; notify-send 'screen blanking on'"
+		bindsym $mod+c exec --no-startup-id "xset s off -dpms; notify-send 'screen blanking off'"
+		bindsym $mod+shift+c exec --no-startup-id "xset +dpms; notify-send 'screen blanking on'"
 
 	#screenshot everything with mod+s, current window with mod+shift+s
 		bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png"
