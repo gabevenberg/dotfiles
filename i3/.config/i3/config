@@ -143,7 +143,7 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+Shift+0 move container to workspace $ws10
 
 	# reload the configuration file
-	bindsym $mod+Shift+c reload
+	bindsym $mod+Shift+n reload
 	# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 	bindsym $mod+Shift+r restart
 	# exit i3 (logs you out of your X session)
@@ -181,6 +181,10 @@ font pango:DejaVu Sans Mono 8
 		set $lock_command_nof i3lock -n #versuon of $lock_command that does not fork.
 		bindsym $mod+x exec --no-startup-id "~/dotfiles/scripts/screen_off $lock_command_nof"
 		bindsym $mod+shift+x exec --no-startup-id "$lock_command"; exec "systemctl suspend"
+
+	# disable screen going to sleep with mod+c, enable screen going to sleep with mod+shift+c
+		bindsym $mod+c exec "xset s off -dpms; notify-send 'screen blanking off'"
+		bindsym $mod+shift+c exec "xset +dpms; notify-send 'screen blanking on'"
 
 	#screenshot everything with mod+s, current window with mod+shift+s
 		bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png"
