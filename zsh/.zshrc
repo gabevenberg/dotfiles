@@ -166,9 +166,10 @@
 	alias vim="nvim"
 	alias vimdiff="nvim -d"
 	alias mutt="neomutt"
-	alias fuck='sudo $(fc -ln -1)'
+	alias please='sudo $(fc -ln -1)'
 	alias la='ls -la'
 	alias ll='ls -l'
+	alias say='espeak -g 1 -v default'
 
 
 	#web searches
