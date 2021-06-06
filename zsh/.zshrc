@@ -169,7 +169,7 @@
 	alias please='sudo $(fc -ln -1)'
 	alias la='ls -la'
 	alias ll='ls -l'
-	alias say='espeak -g 1 -v default 2> /dev/null'
+	alias say='espeak -v default  -p 10 -s 150 -a 200 2> /dev/null'
 
 
 	#web searches
