@@ -4,3 +4,4 @@
 *.log
 vifminfo
 vifm-help.txt
+__pycache__/
