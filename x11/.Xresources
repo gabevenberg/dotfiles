@@ -1,4 +1,4 @@
-! urxvt
+! urxvt stuff.
 URxvt*buffered: true
 URxvt*cursorBlink: true
 URxvt*underlineColor: yellow

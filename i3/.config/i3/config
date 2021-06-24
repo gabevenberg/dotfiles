@@ -33,8 +33,9 @@ font pango:DejaVu Sans Mono 8
 	# Use Mouse+$mod to drag floating windows to their wanted position
 	floating_modifier $mod
 
-	# start a terminal
-	bindsym $mod+Return exec i3-sensible-terminal
+	# start a terminal (uncomment urxvt/alacritty, but not both!)
+	bindsym $mod+Return exec --no-startup-id alacritty
+	# bindsym $mod+Return exec --no-startup-id urxvt
 	bindsym $mod+Shift+Return exec cool-retro-term
 
 	# kill focused window
