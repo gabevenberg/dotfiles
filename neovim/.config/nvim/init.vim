@@ -1,5 +1,5 @@
 "Customized vim/neovim config
-"Copyright 2018 TheToric
+"Copyright 2018 Gabe Venberg
 
 "This program is free software: you can redistribute it and/or modify
 "it under the terms of the GNU General Public License as published by
@@ -26,11 +26,11 @@ set noswapfile "disables creation of swap files
 	let mapleader = "\\"
 	"spell checking
 		"toggle spell checking
-		nmap <leader>ss :setlocal spell!<Enter>
+		noremap <leader>ss :setlocal spell!<CR>
 
 	"splitting panels with <leader>| or -
-		nmap <leader>\| :vs<Enter>
-		nmap <leader>\- :sp<Enter>
+		nnoremap <leader>\| :vs<Enter>
+		nnoremap <leader>\- :sp<Enter>
 
 		" shortcuts using leader
 		" noremap <leader>sn ]s
@@ -38,10 +38,10 @@ set noswapfile "disables creation of swap files
 		" noremap <leader>s? z=
 
 		"navigating splits: Control+hjkl will move from split to split
-			nmap <C-h> <C-w>h
-			nmap <C-j> <C-w>j
-			nmap <C-k> <C-w>k
-			nmap <C-l> <C-w>l
+			nnoremap <C-h> <C-w>h
+			nnoremap <C-j> <C-w>j
+			nnoremap <C-k> <C-w>k
+			nnoremap <C-l> <C-w>l
 
 		"command mode keybinds
 			"w!! writes using sudo
@@ -115,7 +115,7 @@ set noswapfile "disables creation of swap files
 	set incsearch
 
 	"<leader> L clears the search highlighting
-	noremap <leader>l :nohls<Enter> 
+	noremap <leader>l :nohls<CR>
 
 "neovim stuff
 	if has('nvim')
@@ -132,8 +132,7 @@ set noswapfile "disables creation of swap files
 	set foldminlines=3
 
 	"spacebar opens or closes a fold in normal mode
-	nnoremap <Space> za
-	vnoremap <Space> za
+	noremap <Space> za
 
 	"indent folding: really basic fold method. eventually I may make some custom folds, but with the foldtext fixed a bit, this shouldn't annoy me too much.
 	if foldtype ==# "basicindent"
