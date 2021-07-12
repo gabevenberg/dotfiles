@@ -18,8 +18,7 @@
 	#test that these nonstandard paths exist before adding to PATH.
 	testPath="$HOME/.local/bin"
 	[ -d "$testPath" ] && export PATH="$PATH:$testPath"
-	testPath="$HOME/scripts"
-	[ -d "$testPath" ] && export PATH="$PATH:$testPath"
+	export PATH="$PATH:/opt"
 	#set default editor and pager.
 	export EDITOR=nvim
 	export VISUAL=nvim
