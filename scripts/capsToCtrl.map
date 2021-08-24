@@ -1,0 +1,6 @@
+#put this in /usr/share/kbd/keymaps and run sudo localectl set-keymap capsToCtrl
+keymaps 0-15
+#need 16 entries to define it for all combinations of shift, altGr, control, and alt.
+#there seems to be a bug in loadkeys that necesitates this.
+#giving exactly one action code after the equals sign should implicitly replicate the action code over all coulumns (all 256 of them), but loadkeys does not seem to respect this...
+keycode 58 = Control Control Control Control Control Control Control Control Control Control Control Control Control Control Control Control
