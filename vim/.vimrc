@@ -15,7 +15,7 @@
 "along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 "this sets what sort of folding method to use.
-let foldtype="basicindent" 
+let foldtype="indent" 
 set lazyredraw
 set autoread
 set history=5000
@@ -116,39 +116,3 @@ set noswapfile "disables creation of swap files
 
 	"<leader> L clears the search highlighting
 	noremap <leader>l :nohls<CR>
-
-"neovim stuff
-	if has('nvim')
-		set guicursor=
-	endif
-
-"folding stuff TODO: implement other folding methods.
-	"give a bit of margin space for fold number
-	set foldcolumn=4
-
-	set foldenable
-
-	"set the minimum number of screen lines for a fold to be closable.
-	set foldminlines=3
-
-	"spacebar opens or closes a fold in normal mode
-	noremap <Space> za
-
-	"indent folding: really basic fold method. eventually I may make some custom folds, but with the foldtext fixed a bit, this shouldn't annoy me too much.
-	if foldtype ==# "basicindent"
-		"make vim fold automatically based on indentation.
-		set foldmethod=indent
-		"make sure that comment are counted in indent folding!
-		set foldignore=
-		set fillchars="fold:-"
-		"set the fold text for this method, in most cases, the line just above our fold is what we want, so we wont put any text into it. just level and linecount.
-		function! Minimal_foldtext()
-			let lines_count = v:foldend - v:foldstart + 1
-			let lines_count_text = '+' . v:folddashes . '| ' . printf("%10S" , lines_count) . ' lines |'
-			let line_level_text = '| ' . printf("%8S" , 'level ' . v:foldlevel) . ' |'
-			let fold_text_end = line_level_text . repeat('-',8)
-			let fold_text_length = strlen(lines_count_text . fold_text_end) + &foldcolumn
-			return lines_count_text . repeat('-' , winwidth(0) - fold_text_length - 4) . fold_text_end
-		endfunction
-		set foldtext=Minimal_foldtext()
-	endif
