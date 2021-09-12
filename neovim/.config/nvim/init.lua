@@ -2,8 +2,18 @@
 local cmd=vim.cmd
 local opt=vim.opt
 local fn=vim.fn
---source any legacy code that I havent ported to lua yet.
-cmd([[source ~/.config/nvim/legacy.vimrc]])
+local map=vim.api.nvim_set_keymap
+
+--helper functions
+	local function keyCode(string)
+		return vim.api.nvim_replace_termcodes(str, true, true, true, true)
+	end
+
+--bootstrapping paq-nvim
+	local install_path = fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
+	if fn.empty(fn.glob(install_path)) > 0 then
+	  fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
+	end
 
 --options using vim.opt (aliased, of course.)
 	opt.lazyredraw=true
@@ -51,3 +61,25 @@ cmd([[source ~/.config/nvim/legacy.vimrc]])
 	opt.foldenable=true
 	opt.foldminlines=2
 	opt.foldignore=''
+
+--leader key is set through a variable, for some reason.
+vim.g.mapleader = '\\'
+
+--sets colorscheme. to get a list of avalible options, do colorscheme <Space> <C-d>
+vim.g.colors_name='default'
+
+--keyboard mappings
+	--toggle spell check
+	map('', '<leader>ss', ':setlocal spell!<CR>', {noremap=true, silent=true})
+	--easily create splits
+	map('', '<leader>|', ':vs<CR>', {noremap=true, silent=true})
+	map('', '<leader>-', ':sp<CR>', {noremap=true, silent=true})
+	--use ctrl+direction to move between splits.
+	map('', '<C-h>', '<C-w>h', {noremap=true, silent=true})
+	map('', '<C-j>', '<C-w>j', {noremap=true, silent=true})
+	map('', '<C-k>', '<C-w>k', {noremap=true, silent=true})
+	map('', '<C-l>', '<C-w>l', {noremap=true, silent=true})
+	--toggle folds with space.
+	map('', '<Space>', 'za', {noremap=true, silent=true})
+	--clear highlighting with leader+l
+	map('', '<leader>l', ':nohls<CR>', {noremap=true, silent=true})
