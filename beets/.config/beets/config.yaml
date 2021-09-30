@@ -1,0 +1,6 @@
+directory: ~/Music
+library: ~/Music/library.db
+import:
+  move: yes
+plugins: [edit, fetchart]
+asciify_paths: yes
