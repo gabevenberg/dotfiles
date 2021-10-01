@@ -2,5 +2,9 @@ directory: ~/Music
 library: ~/Music/library.db
 import:
   move: yes
-plugins: [edit, fetchart]
+  write: yes
+plugins: [edit, fetchart, chroma, thumbnails, replaygain, mbsync, fuzzy, duplicates]
+replaygain:
+  auto: no
+  backend: ffmpeg
 asciify_paths: yes
