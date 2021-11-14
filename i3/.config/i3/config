@@ -61,16 +61,16 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+Shift+l move right
 
 	# move workspace between monitors
-		bindsym $mod+mod1+Shift+h move workspace to output left
-		bindsym $mod+mod1+Shift+j move workspace to output down
-		bindsym $mod+mod1+Shift+k move workspace to output up
-		bindsym $mod+mod1+Shift+l move workspace to output right
+		bindsym $mod+ctrl+Shift+h move workspace to output left
+		bindsym $mod+ctrl+Shift+j move workspace to output down
+		bindsym $mod+ctrl+Shift+k move workspace to output up
+		bindsym $mod+ctrl+Shift+l move workspace to output right
 
 	# move container between monitors
-		bindsym $mod+mod1+h move container to output left
-		bindsym $mod+mod1+j move container to output down
-		bindsym $mod+mod1+k move container to output up
-		bindsym $mod+mod1+l move container to output right
+		bindsym $mod+ctrl+h move container to output left
+		bindsym $mod+ctrl+j move container to output down
+		bindsym $mod+ctrl+k move container to output up
+		bindsym $mod+ctrl+l move container to output right
 		
 	## split in horizontal orientation
 	bindsym $mod+shift+backslash  split h
@@ -152,27 +152,27 @@ font pango:DejaVu Sans Mono 8
 
 	# resize window (you can also use the mouse for that)
 	mode "resize" {
-			# These bindings trigger as soon as you enter the resize mode
+		# These bindings trigger as soon as you enter the resize mode
 
-			# Pressing left will shrink the window’s width.
-			# Pressing right will grow the window’s width.
-			# Pressing up will shrink the window’s height.
-			# Pressing down will grow the window’s height.
-			bindsym h resize shrink width 10 px or 10 ppt
-			bindsym j resize grow height 10 px or 10 ppt
-			bindsym k resize shrink height 10 px or 10 ppt
-			bindsym l resize grow width 10 px or 10 ppt
+		# Pressing left will shrink the window’s width.
+		# Pressing right will grow the window’s width.
+		# Pressing up will shrink the window’s height.
+		# Pressing down will grow the window’s height.
+		bindsym h resize shrink width 10 px or 10 ppt
+		bindsym j resize grow height 10 px or 10 ppt
+		bindsym k resize shrink height 10 px or 10 ppt
+		bindsym l resize grow width 10 px or 10 ppt
 
-			# same bindings, but for the arrow keys
-			bindsym Left resize shrink width 10 px or 10 ppt
-			bindsym Down resize grow height 10 px or 10 ppt
-			bindsym Up resize shrink height 10 px or 10 ppt
-			bindsym Right resize grow width 10 px or 10 ppt
+		# same bindings, but for the arrow keys
+		bindsym Left resize shrink width 10 px or 10 ppt
+		bindsym Down resize grow height 10 px or 10 ppt
+		bindsym Up resize shrink height 10 px or 10 ppt
+		bindsym Right resize grow width 10 px or 10 ppt
 
-			# back to normal: Enter or Escape or $mod+r
-			bindsym Return mode "default"
-			bindsym Escape mode "default"
-			bindsym $mod+r mode "default"
+		# back to normal: Enter or Escape or $mod+r
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+		bindsym $mod+r mode "default"
 	}
 
 	bindsym $mod+r mode "resize"
@@ -184,23 +184,27 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+shift+x exec --no-startup-id "$lock_command"; exec --no-startup-id "systemctl suspend"
 
 	# disable screen going to sleep with mod+c, enable screen going to sleep with mod+shift+c
-		bindsym $mod+c exec --no-startup-id "xset s off -dpms; notify-send 'screen blanking off'"
-		bindsym $mod+shift+c exec --no-startup-id "xset +dpms; notify-send 'screen blanking on'"
+		bindsym $mod+c exec --no-startup-id "xset s off -dpms; notify-send --expire-time=500 'screen blanking off'"
+		bindsym $mod+shift+c exec --no-startup-id "xset +dpms; notify-send --expire-time=500 'screen blanking on'"
+
+	# change brightness
+		bindsym $mod+plus exec --no-startup-id "xbacklight -inc 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
+		bindsym $mod+minus exec --no-startup-id "xbacklight -dec 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
 
 	#screenshot everything with mod+s, current window with mod+shift+s
 		bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png"
 		bindsym $mod+shift+s exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/Pictures/$(date +%s).png"
 	
 	#mpd controls
-		bindsym $mod+p exec --no-startup-id "mpc toggle"
-		bindsym $mod+plus exec --no-startup-id "mpc volume +1"
-		bindsym $mod+minus exec --no-startup-id "mpc volume -1"
+		bindsym $mod+mod1+p exec --no-startup-id "mpc toggle"
+		bindsym $mod+mod1+plus exec --no-startup-id "mpc volume +1"
+		bindsym $mod+mod1+minus exec --no-startup-id "mpc volume -1"
 	
 	#open volume control
 		bindsym $mod+shift+p exec pavucontrol
 
 #make certan windwows always floating
-	#volume controll
+	#volume control
 	for_window [class="Pavucontrol"] floating enable
 
 
