@@ -188,8 +188,8 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+shift+c exec --no-startup-id "xset +dpms; notify-send --expire-time=500 'screen blanking on'"
 
 	# change brightness
-		bindsym $mod+plus exec --no-startup-id "xbacklight -inc 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
-		bindsym $mod+minus exec --no-startup-id "xbacklight -dec 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
+		bindsym $mod+control+plus exec --no-startup-id "xbacklight -inc 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
+		bindsym $mod+control+minus exec --no-startup-id "xbacklight -dec 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
 
 	#screenshot everything with mod+s, current window with mod+shift+s
 		bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png"
