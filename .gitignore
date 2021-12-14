@@ -7,3 +7,4 @@ vifm-help.txt
 __pycache__/
 *.pickle
 *.spl
+neovim/.config/nvim/plugin/

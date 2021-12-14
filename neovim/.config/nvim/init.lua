@@ -4,19 +4,21 @@ local opt=vim.opt
 local fn=vim.fn
 local map=vim.api.nvim_set_keymap
 
+--do package management
+require('packages')
+require('LSPconfig')
+require('cmp-lsp')
+
+
 --helper functions
 	local function keyCode(string)
 		return vim.api.nvim_replace_termcodes(str, true, true, true, true)
 	end
 
---bootstrapping paq-nvim
-	local install_path = fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
-	if fn.empty(fn.glob(install_path)) > 0 then
-	  fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
-	end
-
 --options using vim.opt (aliased, of course.)
+	opt.mouse='a'
 	opt.lazyredraw=true
+	opt.termguicolors=true
 	opt.autoread=true
 	opt.swapfile=false
 	opt.history=500
@@ -53,33 +55,56 @@ local map=vim.api.nvim_set_keymap
 	opt.hlsearch=true
 	opt.incsearch=true
 	--foling stuff
-	cmd([[source ~/.config/nvim/foldtext.vimrc]])
-	opt.foldmethod='indent'
-	opt.foldtext='minimal_foldtext()'
-	opt.fillchars='stl:=,stlnc: ,vert:|,fold:-'
-	opt.foldcolumn='4'
-	opt.foldenable=true
-	opt.foldminlines=2
-	opt.foldignore=''
+	opt.foldmethod='expr'
+	opt.foldexpr='nvim_treesitter#foldexpr()'
+	-- cmd([[source ~/.config/nvim/foldtext.vimrc]])
+	-- opt.foldmethod='indent'
+	-- opt.foldtext='minimal_foldtext()'
+	-- opt.fillchars='stl:=,stlnc: ,vert:|,fold:-'
+	-- opt.foldcolumn='4'
+	-- opt.foldenable=true
+	-- opt.foldminlines=2
+	-- opt.foldignore=''
 
 --leader key is set through a variable, for some reason.
-vim.g.mapleader = '\\'
+vim.g.mapleader = ';'
 
 --sets colorscheme. to get a list of avalible options, do colorscheme <Space> <C-d>
-vim.g.colors_name='default'
+vim.cmd 'colorscheme moonfly'
 
 --keyboard mappings
+	local opts = { noremap=true, silent=true }
 	--toggle spell check
-	map('', '<leader>ss', ':setlocal spell!<CR>', {noremap=true, silent=true})
-	--easily create splits
-	map('', '<leader>|', ':vs<CR>', {noremap=true, silent=true})
-	map('', '<leader>-', ':sp<CR>', {noremap=true, silent=true})
-	--use ctrl+direction to move between splits.
-	map('', '<C-h>', '<C-w>h', {noremap=true, silent=true})
-	map('', '<C-j>', '<C-w>j', {noremap=true, silent=true})
-	map('', '<C-k>', '<C-w>k', {noremap=true, silent=true})
-	map('', '<C-l>', '<C-w>l', {noremap=true, silent=true})
+	map('n', '<leader>ss', ':setlocal spell!<CR>', opts)
+	--[[ --easily create splits
+	map('n', '<leader>|', ':vs<CR>', opts) ]]
+	--[[ map('n', '<leader>-', ':sp<CR>', opts)
+	--use ctrl+direction to move between splits. ]]
+	map('n', '<C-h>', '<C-w>h', opts)
+	map('n', '<C-j>', '<C-w>j', opts)
+	map('n', '<C-k>', '<C-w>k', opts)
+	map('n', '<C-l>', '<C-w>l', opts)
 	--toggle folds with space.
-	map('', '<Space>', 'za', {noremap=true, silent=true})
-	--clear highlighting with leader+l
-	map('', '<leader>l', ':nohls<CR>', {noremap=true, silent=true})
+	map('', '<Space>', 'za', opts)
+	--clear highlighting with leader+h
+	map('n', '<leader>h', ':nohls<CR>', opts)
+	--open nvim-tree with leader+t
+	map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
+	--telescope stuff
+	map('n', '<leader>ff', ':Telescope file_browser<CR>', opts)
+	map('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
+	map('n', '<leader>fb', ':Telescope buffers<CR>', opts)
+	map('n', '<leader>fm', ':Telescope marks<CR>', opts)
+	map('n', '<leader>fp', ':Telescope registers<CR>', opts)
+	map('n', '<leader>fs', ':Telescope spell_suggest<CR>', opts)
+	map('n', '<leader>fh', ':Telescope keymaps<CR>', opts)
+	map('n', '<leader>fz', ':Telescope current_buffer_fuzzy_find<CR>', opts)
+	map('n', '<leader>fgc', ':Telescope git_commits<CR>', opts)
+	map('n', '<leader>fgb', ':Telescope git_branches<CR>', opts)
+	map('n', '<leader>fgs', ':Telescope git_stash<CR>', opts)
+	map('n', '<leader>ft', ':Telescope treesitter<CR>', opts)
+	--Treesitter context
+	map('n', '<leader>c', ':TSContextToggle<CR>', opts)
+	--tabline stuff (gt and gT are prev/next tab in stock vim)
+	map('n', 'gf', ':TablineBufferNext<CR>', opts)
+	map('n', 'gF', ':TablineBufferPrevious<CR>', opts)
