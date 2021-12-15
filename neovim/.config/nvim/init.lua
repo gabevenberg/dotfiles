@@ -87,7 +87,7 @@ vim.cmd 'colorscheme moonfly'
 	--toggle folds with space.
 	map('', '<Space>', 'za', opts)
 	--clear highlighting with leader+h
-	map('n', '<leader>h', ':nohls<CR>', opts)
+	map('', '<leader>h', ':nohls<CR>', opts)
 	--open nvim-tree with leader+t
 	map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
 	--telescope stuff

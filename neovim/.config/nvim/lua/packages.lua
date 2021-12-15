@@ -88,10 +88,8 @@ return require('packer').startup(function(use)
 
 	use {'hrsh7th/nvim-cmp',
 		requires = {
-			-- 'neovim/nvim-lspconfig',
+			'neovim/nvim-lspconfig',
 			'hrsh7th/cmp-nvim-lsp',
-			'saadparwaiz1/cmp_luasnip',
-			'L3MON4D3/LuaSnip'
 		}
 	}
 
@@ -158,7 +156,16 @@ return require('packer').startup(function(use)
 		config=function() require('spellsitter').setup() end
 	}
 
-	use 'lukas-reineke/indent-blankline.nvim'
+	use {'lukas-reineke/indent-blankline.nvim',
+		config=function()
+			vim.opt.list = true
+			vim.opt.listchars:append("eol:↴")
+			require('indent_blankline').setup{
+				show_end_of_line=true,
+				show_current_context=true
+			}
+		end
+	}
 
 	use 'bluz71/vim-moonfly-colors'
 

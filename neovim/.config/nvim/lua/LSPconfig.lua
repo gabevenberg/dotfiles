@@ -36,6 +36,7 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = { 'pyright', 'rust_analyzer', 'texlab'}
 for _, lsp in ipairs(servers) do
+	on_attach()
 	nvim_lsp[lsp].setup {
 		flags = {
 			debounce_text_changes = 150,
@@ -43,11 +44,11 @@ for _, lsp in ipairs(servers) do
 	}
 end
 
-on_attach()
 --lua-language-server needs seperate config.
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
+on_attach()
 require'lspconfig'.sumneko_lua.setup {
 	settings = {
 		Lua = {
