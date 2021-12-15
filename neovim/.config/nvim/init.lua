@@ -109,3 +109,5 @@ vim.cmd 'colorscheme moonfly'
 	--tabline stuff (gt and gT are prev/next tab in stock vim)
 	map('n', 'gf', ':TablineBufferNext<CR>', opts)
 	map('n', 'gF', ':TablineBufferPrevious<CR>', opts)
+	--gitsigns
+	map('n', '<leader>hl', ':Gitsigns toggle_current_line_blame<CR>', opts)
