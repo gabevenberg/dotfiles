@@ -57,6 +57,7 @@ require('cmp-lsp')
 	--foling stuff
 	opt.foldmethod='expr'
 	opt.foldexpr='nvim_treesitter#foldexpr()'
+	opt.foldlevelstart=5
 	-- cmd([[source ~/.config/nvim/foldtext.vimrc]])
 	-- opt.foldmethod='indent'
 	-- opt.foldtext='minimal_foldtext()'
