@@ -115,13 +115,6 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	use {'Shatur/neovim-session-manager',
-		requires = 'nvim-telescope/telescope.nvim',
-		config = function()
-			require('telescope').load_extension('sessions')
-		end
-	}
-
 	use {'romgrk/nvim-treesitter-context',
 		requires = 'nvim-treesitter/nvim-treesitter',
 		config=function() require('treesitter-context').setup() end,
