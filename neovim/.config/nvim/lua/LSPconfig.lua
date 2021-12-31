@@ -34,6 +34,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
+-- the packages for these servers are: pyright, rust-analyzer, texlab, and lua-language-server
 local servers = { 'pyright', 'rust_analyzer', 'texlab'}
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup {
