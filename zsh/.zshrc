@@ -171,6 +171,8 @@
 	alias ll='ls -l'
 	alias say='espeak -v default  -p 10 -s 150 -a 200 2> /dev/null'
 	alias tmux='tmux -u'
+	# needs to have a number immediately after it.
+	alias slideshow='feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay'
 
 
 	#web searches
