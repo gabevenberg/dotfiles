@@ -109,6 +109,7 @@ return require('packer').startup(function(use)
 			{'nvim-treesitter/nvim-treesitter'},
 			{'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 			{'nvim-telescope/telescope-symbols.nvim'},
+			{'https://github.com/nvim-telescope/telescope-file-browser.nvim'},
 		},
 		config=function()
 			require'telescope'.load_extension('fzf')

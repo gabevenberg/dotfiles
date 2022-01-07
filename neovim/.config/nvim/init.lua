@@ -92,7 +92,7 @@ vim.cmd 'colorscheme moonfly'
 	--open nvim-tree with leader+t
 	map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
 	--telescope stuff
-	map('n', '<leader>ff', ':Telescope file_browser<CR>', opts)
+	map('n', '<leader>ff', ':lua require "telescope".extensions.file_browser.file_browser()<CR>', opts)
 	map('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
 	map('n', '<leader>fb', ':Telescope buffers<CR>', opts)
 	map('n', '<leader>fm', ':Telescope marks<CR>', opts)
