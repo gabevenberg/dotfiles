@@ -19,7 +19,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt='menu,menuone,preview,noinsert'
 
 -- nvim-cmp setup
 local cmp = require 'cmp'

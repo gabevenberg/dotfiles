@@ -17,6 +17,8 @@ return require('packer').startup(function(use)
 
 	use 'yamatsum/nvim-cursorline'
 
+	use 'simrat39/rust-tools.nvim'
+
 	use {'stevearc/dressing.nvim',
 		config=function()
 			require('dressing').setup{}
@@ -84,6 +86,12 @@ return require('packer').startup(function(use)
 		config = function()
 			require('Comment').setup()
 		end
+	}
+
+	use {'glepnir/lspsaga.nvim',
+		requires = {
+			'neovim/nvim-lspconfig',
+		}
 	}
 
 	use {'hrsh7th/nvim-cmp',
