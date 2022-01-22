@@ -6,18 +6,50 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
+
+	--base plugins.
+
 	use 'wbthomason/packer.nvim'
 
-	use {
-		'nvim-treesitter/nvim-treesitter',
+	use {'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
 
 	use 'neovim/nvim-lspconfig'
 
-	use 'yamatsum/nvim-cursorline'
+	use {'hrsh7th/nvim-cmp',
+		requires = {
+			'neovim/nvim-lspconfig',
+			'hrsh7th/cmp-nvim-lsp',
+			'saadparwaiz1/cmp_luasnip',
+			'L3MON4D3/LuaSnip'
+		}
+	}
 
-	use 'simrat39/rust-tools.nvim'
+	use {'nvim-telescope/telescope.nvim',
+		requires = {
+			{'nvim-lua/plenary.nvim'},
+			{'nvim-lua/popup.nvim'},
+			{'nvim-treesitter/nvim-treesitter'},
+			{'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+			{'nvim-telescope/telescope-symbols.nvim'},
+			{'nvim-telescope/telescope-file-browser.nvim'},
+		},
+		config=function()
+			require'telescope'.load_extension('fzf')
+		end
+	}
+
+	use {'kyazdani42/nvim-tree.lua',
+		requires = {
+		  'kyazdani42/nvim-web-devicons', -- optional, for file icon
+		},
+		config = function() require'nvim-tree'.setup {} end
+	}
+
+	--UI stuff
+
+	use 'yamatsum/nvim-cursorline'
 
 	use {'stevearc/dressing.nvim',
 		config=function()
@@ -56,6 +88,7 @@ return require('packer').startup(function(use)
 			extensions = {}
 		} end,
 	}
+
 	use {'kdheepak/tabline.nvim',
 		config = function()
 			require'tabline'.setup {
@@ -81,59 +114,17 @@ return require('packer').startup(function(use)
 		requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
 	}
 
-
-	use {'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup()
-		end
-	}
-
-	use {'glepnir/lspsaga.nvim',
-		requires = {
-			'neovim/nvim-lspconfig',
+	use {
+	  "folke/trouble.nvim",
+	  requires = "kyazdani42/nvim-web-devicons",
+	  config = function()
+		require("trouble").setup {
 		}
-	}
-
-	use {'hrsh7th/nvim-cmp',
-		requires = {
-			'neovim/nvim-lspconfig',
-			'hrsh7th/cmp-nvim-lsp',
-			'saadparwaiz1/cmp_luasnip',
-			'L3MON4D3/LuaSnip'
-		}
-	}
-
-	use {'folke/todo-comments.nvim',
-		requires = 'nvim-lua/plenary.nvim',
-		config = function()
-			require('todo-comments').setup()
-		end
-	}
-
-	use {'nvim-telescope/telescope.nvim',
-		requires = {
-			{'nvim-lua/plenary.nvim'},
-			{'nvim-lua/popup.nvim'},
-			{'nvim-treesitter/nvim-treesitter'},
-			{'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-			{'nvim-telescope/telescope-symbols.nvim'},
-			{'https://github.com/nvim-telescope/telescope-file-browser.nvim'},
-		},
-		config=function()
-			require'telescope'.load_extension('fzf')
-		end
+	  end
 	}
 
 	use {'romgrk/nvim-treesitter-context',
 		requires = 'nvim-treesitter/nvim-treesitter',
-		config=function() require('treesitter-context').setup() end,
-	}
-
-	use {'kyazdani42/nvim-tree.lua',
-		requires = {
-		  'kyazdani42/nvim-web-devicons', -- optional, for file icon
-		},
-		config = function() require'nvim-tree'.setup {} end
 	}
 
 	use {'lewis6991/gitsigns.nvim',
@@ -145,16 +136,6 @@ return require('packer').startup(function(use)
 	use 'chentau/marks.nvim'
 
 	use 'tversteeg/registers.nvim'
-
-	use {
-		'sudormrfbin/cheatsheet.nvim',
-
-		requires = {
-			{'nvim-telescope/telescope.nvim'},
-			{'nvim-lua/popup.nvim'},
-			{'nvim-lua/plenary.nvim'},
-		}
-	}
 
 	use {'lewis6991/spellsitter.nvim',
 		config=function() require('spellsitter').setup() end
@@ -171,9 +152,52 @@ return require('packer').startup(function(use)
 		end
 	}
 
+	--editing utilities
+
+	use {'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	}
+
+	--misc
+
+	use {'folke/todo-comments.nvim',
+		requires = 'nvim-lua/plenary.nvim',
+		config = function()
+			require('todo-comments').setup()
+		end
+	}
+
+	use {'sudormrfbin/cheatsheet.nvim',
+
+		requires = {
+			{'nvim-telescope/telescope.nvim'},
+			{'nvim-lua/popup.nvim'},
+			{'nvim-lua/plenary.nvim'},
+		}
+	}
+
+	--color scheme stuff.
+
 	use 'bluz71/vim-moonfly-colors'
 
 	use 'bluz71/vim-nightfly-guicolors'
+
+	--language specific tools.
+
+	use{'eddiebergman/nvim-treesitter-pyfold',
+		config=function ()
+			require('nvim-treesitter.configs').setup {
+				pyfold = {
+					enable = true,
+					custom_foldtext = true -- Sets provided foldtext on window where module is active
+				}
+			}
+		end
+	}
+
+	use 'simrat39/rust-tools.nvim'
 
 	if Packer_Bootstrap then
 		require('packer').sync()
