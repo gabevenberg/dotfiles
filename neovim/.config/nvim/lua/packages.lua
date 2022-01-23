@@ -10,7 +10,13 @@ return require('packer').startup(function(use)
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
+		run = ':TSUpdate',
+		config=function() require('nvim-treesitter').setup{
+			ensure_installed='maintained',
+			highlight={enable=true},
+			indent={enable=true},
+			incremental_selection={enable=true},
+		}end,
 	}
 
 	use 'neovim/nvim-lspconfig'
