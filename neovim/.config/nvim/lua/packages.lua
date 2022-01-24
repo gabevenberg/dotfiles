@@ -162,6 +162,12 @@ return require('packer').startup(function(use)
 
 	--misc
 
+	use {
+		'xeluxee/competitest.nvim',
+		requires = 'MunifTanjim/nui.nvim',
+		config = function() require'competitest'.setup() end
+	}
+
 	use {'folke/todo-comments.nvim',
 		requires = 'nvim-lua/plenary.nvim',
 		config = function()
