@@ -11,8 +11,16 @@ return require('packer').startup(function(use)
 
 	use 'wbthomason/packer.nvim'
 
-	use {'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate',
+		config=function() require('nvim-treesitter').setup{
+			ensure_installed='maintained',
+			highlight={enable=true},
+			indent={enable=true},
+			incremental_selection={enable=true},
+		}end,
+
 	}
 
 	use 'neovim/nvim-lspconfig'
