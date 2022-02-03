@@ -76,7 +76,7 @@ vim.cmd 'colorscheme moonfly'
 --keyboard mappings
 	local opts = { noremap=true, silent=true }
 	--toggle spell check
-	map('n', '<leader>ss', ':setlocal spell!<CR>', opts)
+	map('n', '<leader>sp', ':setlocal spell!<CR>', opts)
 	--[[ --easily create splits
 	map('n', '<leader>|', ':vs<CR>', opts) ]]
 	--[[ map('n', '<leader>-', ':sp<CR>', opts)
@@ -91,6 +91,8 @@ vim.cmd 'colorscheme moonfly'
 	map('', '<leader>h', ':nohls<CR>', opts)
 	--open nvim-tree with leader+t
 	map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
+	--open symbols-outline with leader+s
+	map('n', '<leader>o', ':SymbolsOutline<CR>', opts)
 	--telescope stuff
 	map('n', '<leader>ff', ':lua require "telescope".extensions.file_browser.file_browser()<CR>', opts)
 	map('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
@@ -110,4 +112,4 @@ vim.cmd 'colorscheme moonfly'
 	map('n', 'gf', ':TablineBufferNext<CR>', opts)
 	map('n', 'gF', ':TablineBufferPrevious<CR>', opts)
 	--gitsigns
-	map('n', '<leader>hl', ':Gitsigns toggle_current_line_blame<CR>', opts)
+	map('n', '<leader>bl', ':Gitsigns toggle_current_line_blame<CR>', opts)

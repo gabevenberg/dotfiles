@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
 			ensure_installed='maintained',
 			highlight={enable=true},
 			indent={enable=true},
-			incremental_selection={enable=true},
+			incremental_selection={enable=true}
 		}end,
 
 	}
@@ -56,6 +56,13 @@ return require('packer').startup(function(use)
 	}
 
 	--UI stuff
+
+	use {'simrat39/symbols-outline.nvim',
+	config=function() vim.g.symbols_outline={
+		width=25,
+		relative_width=false
+	}end
+	}
 
 	use 'yamatsum/nvim-cursorline'
 
