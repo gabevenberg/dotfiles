@@ -19,6 +19,9 @@
 	testPath="$HOME/.local/bin"
 	[ -d "$testPath" ] && export PATH="$PATH:$testPath"
 	export PATH="$PATH:/opt"
+	testPath="$HOME/.cargo/bin"
+	[ -d "$testPath" ] && export PATH="$PATH:$testPath"
+	export PATH="$PATH:/opt"
 	#set default editor and pager.
 	export EDITOR=nvim
 	export VISUAL=nvim
