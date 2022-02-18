@@ -163,6 +163,8 @@
 	setopt NO_CASE_GLOB
 	#sort globs that expand to numbers by number rather than alphabeticly
 	setopt NUMERIC_GLOB_SORT
+	#allows for some neat globbing.
+	setopt EXTENDED_GLOB
 
 #aliases
 	alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
@@ -176,6 +178,8 @@
 	alias tmux='tmux -u'
 	# needs to have a number immediately after it.
 	alias slideshow='feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay'
+	# converts all .doc and .docx files in the local directory to pdfs using libreoffice
+	alias doc2pdf='loffice --convert-to pdf --headless *.docx#'
 
 
 	#web searches
