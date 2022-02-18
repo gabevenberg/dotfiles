@@ -218,17 +218,6 @@ return require('packer').startup(function(use)
 
 	--language specific tools.
 
-	use{'eddiebergman/nvim-treesitter-pyfold',
-		config=function ()
-			require('nvim-treesitter.configs').setup {
-				pyfold = {
-					enable = true,
-					custom_foldtext = true -- Sets provided foldtext on window where module is active
-				}
-			}
-		end
-	}
-
 	use 'simrat39/rust-tools.nvim'
 
 	if Packer_Bootstrap then

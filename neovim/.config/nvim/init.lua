@@ -55,17 +55,14 @@ require('cmp-lsp')
 	opt.hlsearch=true
 	opt.incsearch=true
 	--foling stuff
-	opt.foldmethod='expr'
-	opt.foldexpr='nvim_treesitter#foldexpr()'
 	opt.foldlevelstart=5
-	-- cmd([[source ~/.config/nvim/foldtext.vimrc]])
-	-- opt.foldmethod='indent'
-	-- opt.foldtext='minimal_foldtext()'
-	-- opt.fillchars='stl:=,stlnc: ,vert:|,fold:-'
-	-- opt.foldcolumn='4'
-	-- opt.foldenable=true
-	-- opt.foldminlines=2
-	-- opt.foldignore=''
+	cmd([[source ~/.config/nvim/foldtext.vimrc]])
+	opt.foldmethod='indent'
+	opt.foldtext='minimal_foldtext()'
+	opt.fillchars='stl:=,stlnc: ,vert:|,fold:-'
+	opt.foldcolumn='4'
+	opt.foldenable=true
+	opt.foldignore=''
 
 --leader key is set through a variable, for some reason.
 vim.g.mapleader = ';'
