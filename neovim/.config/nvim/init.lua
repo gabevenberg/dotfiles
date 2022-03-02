@@ -88,7 +88,7 @@ vim.cmd 'colorscheme moonfly'
 	map('', '<leader>h', ':nohls<CR>', opts)
 	--open nvim-tree with leader+t
 	map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
-	--open symbols-outline with leader+s
+	--open symbols-outline with leader+o
 	map('n', '<leader>o', ':SymbolsOutline<CR>', opts)
 	--telescope stuff
 	map('n', '<leader>ff', ':lua require "telescope".extensions.file_browser.file_browser()<CR>', opts)

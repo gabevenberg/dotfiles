@@ -183,9 +183,9 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+x exec --no-startup-id "~/dotfiles/scripts/screen_off $lock_command_nof"
 		bindsym $mod+shift+x exec --no-startup-id "$lock_command"; exec --no-startup-id "systemctl suspend"
 
-	# disable screen going to sleep with mod+c, enable screen going to sleep with mod+shift+c
-		bindsym $mod+c exec --no-startup-id "xset s off -dpms; notify-send --expire-time=500 'screen blanking off'"
-		bindsym $mod+shift+c exec --no-startup-id "xset +dpms; notify-send --expire-time=500 'screen blanking on'"
+	# disable screen going to sleep with mod+b, enable screen going to sleep with mod+shift+c
+		bindsym $mod+b exec --no-startup-id "xset s off -dpms; notify-send --expire-time=500 'screen blanking off'"
+		bindsym $mod+shift+b  exec --no-startup-id "xset +dpms; notify-send --expire-time=500 'screen blanking on'"
 
 	# change brightness
 		bindsym $mod+control+plus exec --no-startup-id "xbacklight -inc 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
@@ -194,6 +194,9 @@ font pango:DejaVu Sans Mono 8
 	#screenshot everything with mod+s, current window with mod+shift+s
 		bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png"
 		bindsym $mod+shift+s exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/Pictures/$(date +%s).png"
+
+	#colour picker with xcolor
+		bindsym --release $mod+c exec --no-startup-id "xcolor -s"
 	
 	#mpd controls
 		bindsym $mod+mod1+p exec --no-startup-id "mpc toggle"
