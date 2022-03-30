@@ -50,13 +50,9 @@ return require('packer').startup(function(use)
 			{'nvim-lua/plenary.nvim'},
 			{'nvim-lua/popup.nvim'},
 			{'nvim-treesitter/nvim-treesitter'},
-			{'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 			{'nvim-telescope/telescope-symbols.nvim'},
 			{'nvim-telescope/telescope-file-browser.nvim'},
 		},
-		config=function()
-			require'telescope'.load_extension('fzf')
-		end
 	}
 
 	use {'kyazdani42/nvim-tree.lua',
