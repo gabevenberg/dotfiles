@@ -1,6 +1,5 @@
 --configure nvim-cmp for use with lsp and luasnip.
 
-
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -10,7 +9,7 @@ local luasnip = require 'luasnip'
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = {'texlab', 'rust_analyzer', 'pyright', 'denols'}
+local servers = {'texlab', 'rust_analyzer', 'pyright'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		-- on_attach = my_custom_on_attach,
@@ -61,7 +60,29 @@ cmp.setup {
 	},
 	sources = {
 		{ name = 'nvim_lsp' },
+		{ name = 'path' },
 		{ name = 'luasnip' },
-		{ name = 'buffer' }
+		{ name = 'buffer' },
+		{ name = 'dictionary' },
+		{ name = 'digraphs' },
+		{ name = 'spell' },
+		{ name = 'nvim_lsp_signature_help' },
+		{ name = 'emoji' },
+		{ name = 'latex_symbols' },
+		{ name = 'treesitter' },
 	},
 }
+
+cmp.setup.cmdline(':', {
+  sources = {
+    { name = 'cmdline' }
+  }
+})
+
+cmp.setup.cmdline('/', {
+	sources = cmp.config.sources({
+		{ name = 'nvim_lsp_document_symbol' }
+	}, {
+		{ name = 'buffer' }
+	})
+})

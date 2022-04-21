@@ -8,3 +8,5 @@ __pycache__/
 *.pickle
 *.spl
 neovim/.config/nvim/plugin/
+wget-log*
+*log*

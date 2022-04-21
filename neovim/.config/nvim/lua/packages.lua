@@ -20,17 +20,29 @@ return require('packer').startup(function(use)
 			indent={enable=true},
 			incremental_selection={enable=true}
 		}end,
-
 	}
 
-	use 'neovim/nvim-lspconfig'
+	use {
+		'neovim/nvim-lspconfig',
+		'williamboman/nvim-lsp-installer',
+	}
 
 	use {'hrsh7th/nvim-cmp',
 		requires = {
 			'neovim/nvim-lspconfig',
 			'hrsh7th/cmp-nvim-lsp',
 			'saadparwaiz1/cmp_luasnip',
-			'L3MON4D3/LuaSnip'
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline',
+			'L3MON4D3/LuaSnip',
+			'f3fora/cmp-spell',
+			'dmitmel/cmp-digraphs',
+			'hrsh7th/cmp-nvim-lsp-signature-help',
+			'kdheepak/cmp-latex-symbols',
+			'hrsh7th/cmp-emoji',
+			'ray-x/cmp-treesitter',
+			'uga-rosa/cmp-dictionary',
 		}
 	}
 

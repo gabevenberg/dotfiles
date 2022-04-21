@@ -4,6 +4,9 @@ local opt=vim.opt
 local fn=vim.fn
 local map=vim.api.nvim_set_keymap
 
+--leader key is set through a variable, for some reason.
+vim.g.mapleader = ';'
+
 --do package management
 require('packages')
 require('LSPconfig')
@@ -63,9 +66,6 @@ require('cmp-lsp')
 	opt.foldcolumn='4'
 	opt.foldenable=true
 	opt.foldignore=''
-
---leader key is set through a variable, for some reason.
-vim.g.mapleader = ';'
 
 --sets colorscheme. to get a list of avalible options, do colorscheme <Space> <C-d>
 vim.cmd 'colorscheme moonfly'
