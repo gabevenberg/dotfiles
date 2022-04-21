@@ -64,12 +64,11 @@ cmp.setup {
 		{ name = 'luasnip' },
 		{ name = 'buffer' },
 		{ name = 'dictionary' },
-		{ name = 'digraphs' },
 		{ name = 'spell' },
 		{ name = 'nvim_lsp_signature_help' },
 		{ name = 'emoji' },
 		{ name = 'latex_symbols' },
-		{ name = 'treesitter' },
+		-- { name = 'digraphs' },
 	},
 }
 
@@ -81,7 +80,8 @@ cmp.setup.cmdline(':', {
 
 cmp.setup.cmdline('/', {
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp_document_symbol' }
+		{ name = 'nvim_lsp_document_symbol' },
+		{ name = 'treesitter' },
 	}, {
 		{ name = 'buffer' }
 	})
