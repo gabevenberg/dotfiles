@@ -7,6 +7,9 @@ end
 
 return require('packer').startup(function(use)
 
+	--startup speed
+	use 'lewis6991/impatient.nvim'
+
 	--base plugins.
 
 	use 'wbthomason/packer.nvim'

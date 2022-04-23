@@ -8,6 +8,7 @@ local map=vim.api.nvim_set_keymap
 vim.g.mapleader = ';'
 
 --do package management
+require('impatient')
 require('packages')
 require('LSPconfig')
 require('cmp-lsp')

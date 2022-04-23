@@ -83,6 +83,6 @@ cmp.setup.cmdline('/', {
 		{ name = 'nvim_lsp_document_symbol' },
 		{ name = 'treesitter' },
 	}, {
-		{ name = 'buffer' }
+		-- { name = 'buffer' }
 	})
 })
