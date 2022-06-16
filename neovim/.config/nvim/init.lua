@@ -10,9 +10,6 @@ vim.g.mapleader = ';'
 --do package management
 require('impatient')
 require('packages')
-require('LSPconfig')
-require('cmp-lsp')
-
 
 --helper functions
 	local function keyCode(string)
