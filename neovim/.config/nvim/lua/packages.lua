@@ -33,7 +33,7 @@ return require('packer').startup(function(use)
 						'pyright',
 						'bashls',
 						'rust_analyzer',
-						'sumenko_lua',
+						'sumneko_lua',
 						'texlab',
 					},
 					automatic_installation = false,
@@ -272,13 +272,6 @@ return require('packer').startup(function(use)
 		config = function() require'competitest'.setup() end
 	}
 
-	use {'folke/todo-comments.nvim',
-		requires = 'nvim-lua/plenary.nvim',
-		config = function()
-			require('todo-comments').setup()
-		end
-	}
-
 	use {'sudormrfbin/cheatsheet.nvim',
 
 		requires = {
@@ -296,7 +289,11 @@ return require('packer').startup(function(use)
 
 	--language specific tools.
 
-	use 'simrat39/rust-tools.nvim'
+	use{'simrat39/rust-tools.nvim',
+		config=function()
+			require('rust-tools-setup')
+		end
+	}
 
 	if Packer_Bootstrap then
 		require('packer').sync()

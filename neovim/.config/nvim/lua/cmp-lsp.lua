@@ -3,7 +3,7 @@
 local luasnip = require 'luasnip'
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt='menu,menuone,preview,noinsert'
+vim.o.completeopt='menu,menuone,preview,noinsert,noselect'
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -21,8 +21,10 @@ cmp.setup {
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.close(),
 		['<CR>'] = cmp.mapping.confirm {
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = false,
+			behavior = cmp.ConfirmBehavior.Insert,
+			select = true,
+			-- behavior = cmp.ConfirmBehavior.Replace,
+			-- select = false,
 		},
 		['<Tab>'] = function(fallback)
 			if cmp.visible() then
