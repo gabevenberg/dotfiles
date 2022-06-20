@@ -7,8 +7,9 @@ local map=vim.api.nvim_set_keymap
 --leader key is set through a variable, for some reason.
 vim.g.mapleader = ';'
 
---do package management
+--this plugin makes startup time a bit faster. To bootsrap configuration, you need to comment this one out, ignore any errors you get, do packersync, then uncomment it.
 require('impatient')
+--do package management
 require('packages')
 
 --helper functions
