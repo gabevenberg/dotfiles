@@ -51,8 +51,13 @@ require('packages')
 	opt.laststatus=2
 	--tab stuff
 	opt.tabstop=4
-	opt.shiftwidth=4
+	opt.shiftwidth=0 --zero inherrits tabstop.
 	opt.autoindent=true
+	opt.smartindent=true
+	opt.smarttab=true
+	--space based tabs.
+	-- opt.softtabstop=-1 --negative value inherrits shiftwidth.
+	-- opt.expandtab=true
 	--highlight search results as you type.
 	opt.hlsearch=true
 	opt.incsearch=true
