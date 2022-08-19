@@ -209,6 +209,7 @@ font pango:DejaVu Sans Mono 8
 #make certan windwows always floating
 	#volume control
 	for_window [class="Pavucontrol"] floating enable
+	for_window [title="Origin"] floating enable
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
