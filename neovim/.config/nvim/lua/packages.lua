@@ -58,12 +58,12 @@ return require('packer').startup(function(use)
 		{
 			"neovim/nvim-lspconfig",
 			after = "mason-lspconfig.nvim",
+			after = "rust-tools.nvim",
 			config = function()
 				require('LSPconfig')
 			end
 		},
 		{'simrat39/rust-tools.nvim',
-			after = "nvim-lspconfig",
 		}
 	}
 
