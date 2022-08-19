@@ -1,5 +1,3 @@
-local lsp_installer = require("nvim-lsp-installer")
-
 local opts = {}
 
 local on_attach = function()
@@ -30,4 +28,25 @@ local on_attach = function()
 	set_keymap('', ';lp', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 	set_keymap('', ';lm', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
-on_attach()
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		require("lspconfig")[server_name].setup{}
+		on_attach()
+	end,
+	["rust_analyzer"] = function()
+		require('rust-tools-setup')
+		on_attach()
+	end,
+	["sumneko_lua"] = function ()
+		require('lspconfig').sumneko_lua.setup {
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" }
+					}
+				}
+			}
+		}
+		on_attach()
+	end,
+})
