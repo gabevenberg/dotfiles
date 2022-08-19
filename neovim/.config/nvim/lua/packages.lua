@@ -26,33 +26,44 @@ return require('packer').startup(function(use)
 	}
 	use {
 		{
-			"williamboman/nvim-lsp-installer",
-			config = function ()
-				require("nvim-lsp-installer").setup {
-					ensure_installed = {
-						'pyright',
-						'bashls',
-						'rust_analyzer',
-						'sumneko_lua',
-						'texlab',
-					},
-					automatic_installation = false,
+			"williamboman/mason.nvim",
+			config = function()
+				require("mason").setup({
 					ui = {
 						icons = {
-							server_installed = "✓",
-							server_pending = "➜",
-							server_uninstalled = "✗"
+							package_installed = "✓",
+							package_pending = "➜",
+							package_uninstalled = "✗"
 						}
 					}
-				}
+				})
+			end
+		},
+		{
+		    "williamboman/mason-lspconfig.nvim",
+			after = "mason.nvim",
+			config = function()
+				require("mason-lspconfig").setup({
+					ensure_installed = {
+						"sumneko_lua",
+						"rust_analyzer",
+						'pyright',
+						'bashls',
+						'texlab'
+					},
+					automatic_installation=true
+				})
 			end
 		},
 		{
 			"neovim/nvim-lspconfig",
-			after = "nvim-lsp-installer",
+			after = "mason-lspconfig.nvim",
 			config = function()
 				require('LSPconfig')
 			end
+		},
+		{'simrat39/rust-tools.nvim',
+			after = "nvim-lspconfig",
 		}
 	}
 
@@ -289,11 +300,6 @@ return require('packer').startup(function(use)
 
 	--language specific tools.
 
-	use{'simrat39/rust-tools.nvim',
-		config=function()
-			require('rust-tools-setup')
-		end
-	}
 
 	if Packer_Bootstrap then
 		require('packer').sync()

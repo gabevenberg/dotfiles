@@ -2,7 +2,7 @@ local nvim_lsp = require'lspconfig'
 local opts = {
 	tools = {
 	autoSetHints = true,
-	hover_with_actions = true,
+	RustHoverActions = true,
 
 	-- how to execute terminal commands
 	executor = require("rust-tools/executors").termopen,
