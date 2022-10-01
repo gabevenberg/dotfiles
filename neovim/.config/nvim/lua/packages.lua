@@ -243,8 +243,7 @@ return require('packer').startup(function(use)
 	}
 
 	use {'lewis6991/gitsigns.nvim',
-		requires = {'nvim-lua/plenary.nvim'},
-		tag = 'release', -- To use the latest release
+		-- tag = 'release', -- To use the latest release. currently bugged
 		config=function() require('gitsigns').setup() end
 	}
 
