@@ -74,6 +74,27 @@ require('packages')
 --sets colorscheme. to get a list of avalible options, do colorscheme <Space> <C-d>
 vim.cmd 'colorscheme moonfly'
 
+--function for venn.nvim
+-- venn.nvim: enable or disable keymappings
+function _G.Toggle_venn()
+    local venn_enabled = vim.inspect(vim.b.venn_enabled)
+    if venn_enabled == "nil" then
+        vim.b.venn_enabled = true
+        vim.cmd[[setlocal ve=all]]
+        -- draw a line on HJKL keystokes
+        vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", {noremap = true})
+        -- draw a box by pressing "f" with visual selection
+        vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", {noremap = true})
+    else
+        vim.cmd[[setlocal ve=]]
+        vim.cmd[[mapclear <buffer>]]
+        vim.b.venn_enabled = nil
+    end
+end
+
 --keyboard mappings
 	local opts = { noremap=true, silent=true }
 	--toggle spell check
@@ -114,3 +135,13 @@ vim.cmd 'colorscheme moonfly'
 	map('n', 'gF', ':TablineBufferPrevious<CR>', opts)
 	--gitsigns
 	map('n', '<leader>bl', ':Gitsigns toggle_current_line_blame<CR>', opts)
+	--trouble plugin.
+	vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
+	vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
+	vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
+	vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
+	vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
+	vim.keymap.set("n", "<leader>lR", "<cmd>TroubleToggle lsp_references<cr>", opts)
+	vim.keymap.set("n", "<leader>lD", "<cmd>TroubleToggle lsp_definitions<cr>", opts)
+	-- toggle keymappings for venn using <leader>v
+	vim.api.nvim_set_keymap('n', '<leader>v', ":lua Toggle_venn()<CR>", { noremap = true})

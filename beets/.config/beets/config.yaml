@@ -3,7 +3,7 @@ library: ~/Music/library.db
 import:
   move: yes
   write: yes
-plugins: [edit, fetchart, chroma, thumbnails, replaygain, mbsync, fuzzy, duplicates, badfiles]
+plugins: [edit, fetchart, chroma, thumbnails, replaygain, mbsync, fuzzy, duplicates, badfiles, fromfilename]
 replaygain:
   auto: no
   backend: ffmpeg
