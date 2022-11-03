@@ -2,17 +2,18 @@ local opts = {}
 
 local on_attach = function()
 	local function set_keymap(...) vim.api.nvim_set_keymap(...) end
+
 	local function set_option(...) vim.api.nvim_set_option(...) end
 
 	-- Enable completion triggered by <c-x><c-o>
 	set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	-- Mappings.
-	local opts = { noremap=true, silent=true }
+	local opts = { noremap = true, silent = true }
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	set_keymap('', '<leader>lc', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-	set_keymap('', '<leader>lf', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+	set_keymap('', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 	set_keymap('', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 	set_keymap('', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 	set_keymap('', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -26,18 +27,18 @@ local on_attach = function()
 	set_keymap('', '<leader>lo', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 	set_keymap('', '<leader>ln', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 	set_keymap('', '<leader>lp', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-	set_keymap('', '<leader>lm', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+	set_keymap('', '<leader>lm', '<cmd>lua vim.lsp.buf.format {async=true}<CR>', opts)
 end
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
-		require("lspconfig")[server_name].setup{}
+		require("lspconfig")[server_name].setup {}
 		on_attach()
 	end,
 	["rust_analyzer"] = function()
 		require('rust-tools-setup')
 		on_attach()
 	end,
-	["sumneko_lua"] = function ()
+	["sumneko_lua"] = function()
 		require('lspconfig').sumneko_lua.setup {
 			settings = {
 				Lua = {
