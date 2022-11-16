@@ -14,8 +14,7 @@ return require('packer').startup(function(use)
 
 	use 'wbthomason/packer.nvim'
 
-	use {
-		'nvim-treesitter/nvim-treesitter',
+	use { 'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate',
 		config=function() require('nvim-treesitter').setup{
 			ensure_installed='maintained',
@@ -170,13 +169,27 @@ return require('packer').startup(function(use)
 	--UI stuff
 
 	use {'simrat39/symbols-outline.nvim',
-		config=function() vim.g.symbols_outline={
-			width=25,
-			relative_width=false
-		}end
+		config=function()
+			local opts = {
+				highlight_hovered_item = true,
+				show_guides = true,
+				auto_preview = false,
+				position = 'right',
+				relative_width = true,
+				width = 30,
+				auto_close = false,
+				show_numbers = false,
+				show_relative_numbers = false,
+				show_symbol_details = true,
+				preview_bg_highlight = 'Pmenu',
+				autofold_depth = nil,
+				auto_unfold_hover = true,
+				fold_markers = { '', '' },
+				wrap = false,
+			}
+			require("symbols-outline").setup(opts)
+		end
 	}
-
-	use 'yamatsum/nvim-cursorline'
 
 	use {'stevearc/dressing.nvim',
 		config=function()
@@ -211,7 +224,6 @@ return require('packer').startup(function(use)
 				lualine_y = {},
 				lualine_z = {}
 			},
-			tabline = {},
 			extensions = {}
 		} end,
 	}
@@ -295,6 +307,17 @@ return require('packer').startup(function(use)
 
 	use {'romgrk/nvim-treesitter-context',
 		requires = 'nvim-treesitter/nvim-treesitter',
+		config=function() require('treesitter-context').setup{
+			enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+			max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+			trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+			min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+			zindex = 200, -- The Z-index of the context window
+			mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+			-- Separator between context and content. Should be a single character string, like '-'.
+			-- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+			separator = nil,
+		} end
 	}
 
 	use {'lewis6991/gitsigns.nvim',
@@ -305,10 +328,6 @@ return require('packer').startup(function(use)
 	use 'chentau/marks.nvim'
 
 	use 'tversteeg/registers.nvim'
-
-	use {'lewis6991/spellsitter.nvim',
-		config=function() require('spellsitter').setup() end
-	}
 
 	use {'lukas-reineke/indent-blankline.nvim',
 		config=function()
@@ -330,22 +349,6 @@ return require('packer').startup(function(use)
 	}
 
 	use "jbyuki/venn.nvim"
-
-	--misc
-
-	use {
-		'xeluxee/competitest.nvim',
-		requires = 'MunifTanjim/nui.nvim',
-		config = function() require'competitest'.setup() end
-	}
-
-	use {'sudormrfbin/cheatsheet.nvim',
-		requires = {
-			{'nvim-telescope/telescope.nvim'},
-			{'nvim-lua/popup.nvim'},
-			{'nvim-lua/plenary.nvim'},
-		}
-	}
 
 	--color scheme stuff.
 
