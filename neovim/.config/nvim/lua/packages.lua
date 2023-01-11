@@ -62,8 +62,8 @@ return require('packer').startup(function(use)
 				require('LSPconfig')
 			end
 		},
-		{'simrat39/rust-tools.nvim',
-		}
+		{'simrat39/rust-tools.nvim',},
+		{'mfussenegger/nvim-jdtls',},
 	}
 
 	use {'hrsh7th/nvim-cmp',
