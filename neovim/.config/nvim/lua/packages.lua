@@ -48,7 +48,8 @@ return require('packer').startup(function(use)
 						"rust_analyzer",
 						'pyright',
 						'bashls',
-						'texlab'
+						'texlab',
+						'clangd',
 					},
 					automatic_installation=true
 				})

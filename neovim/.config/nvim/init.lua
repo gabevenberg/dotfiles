@@ -33,11 +33,11 @@ opt.linebreak = true
 opt.breakindent = true
 --add ruler to side of screen.
 opt.number = true
+opt.numberwidth=2
 --displays cordinates of your cursor in statusbar
 opt.ruler = true
 --always leave 5 cells between cursor and side of window.
 opt.scrolloff = 5
-opt.sidescrolloff = 5
 --better command line completion
 opt.wildmenu = true
 --ignore case in search if search is all lowercase.
