@@ -1,6 +1,6 @@
 [user]
 	email = gabevenberg@gmail.com
-	name = gabe
+	name = Gabe Venberg
 [alias]
 	hist = log --graph --date-order --date=short --pretty=format:'%C(auto)%h%d %C(reset)%s %C(bold blue)%ce %C(reset)%C(green)%cr (%cd)'
 	graph = log --graph --date-order --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) (%C(bold red)%an%C(reset)/%C(bold cyan)%ae%C(reset)) - %C(white)%s%C(reset)%C(yellow)%d%C(reset)' --all
