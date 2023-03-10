@@ -44,8 +44,8 @@ return require('packer').startup(function(use)
 			config = function()
 				require("mason-lspconfig").setup({
 					ensure_installed = {
-						"sumneko_lua",
-						"rust_analyzer",
+						'lua_ls',
+						'rust_analyzer',
 						'pyright',
 						'bashls',
 						'texlab',
