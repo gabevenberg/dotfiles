@@ -328,8 +328,6 @@ return require('packer').startup(function(use)
 
 	use 'chentau/marks.nvim'
 
-	use 'tversteeg/registers.nvim'
-
 	use {'lukas-reineke/indent-blankline.nvim',
 		config=function()
 			vim.opt.list = true
@@ -347,6 +345,25 @@ return require('packer').startup(function(use)
 		config = function()
 			require('Comment').setup()
 		end
+	}
+
+	use {
+		"tversteeg/registers.nvim",
+		config = function()
+			require("registers").setup()
+		end,
+	}
+
+	use { 'Wansmer/treesj',
+		requires = { 'nvim-treesitter' },
+		config = function()
+			require('treesj').setup({
+				-- Use default keymaps
+				-- (<space>m - toggle, <space>j - join, <space>s - split)
+				use_default_keymaps = false,
+				max_join_length = 256,
+			})
+		end,
 	}
 
 	use "jbyuki/venn.nvim"

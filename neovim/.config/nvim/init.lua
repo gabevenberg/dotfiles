@@ -99,10 +99,7 @@ end
 local opts = { noremap = true, silent = true }
 --toggle spell check
 map('n', '<leader>sp', ':setlocal spell!<CR>', opts)
---[[ --easily create splits
-	map('n', '<leader>|', ':vs<CR>', opts) ]]
---[[ map('n', '<leader>-', ':sp<CR>', opts)
-	--use ctrl+direction to move between splits. ]]
+--use ctrl+direction to move between splits.
 map('n', '<C-h>', '<C-w>h', opts)
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
@@ -144,4 +141,6 @@ vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
 vim.keymap.set("n", "<leader>lR", "<cmd>TroubleToggle lsp_references<cr>", opts)
 vim.keymap.set("n", "<leader>lD", "<cmd>TroubleToggle lsp_definitions<cr>", opts)
 -- toggle keymappings for venn using <leader>v
-vim.api.nvim_set_keymap('n', '<leader>v', ":lua Toggle_venn()<CR>", { noremap = true })
+map('n', '<leader>v', ":lua Toggle_venn()<CR>", { noremap = true })
+-- treesj
+map('n', '<leader>j', ':TSJToggle<CR>', opts)
