@@ -138,7 +138,6 @@
 	setopt EXTENDED_GLOB
 
 #aliases
-	alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 	alias vim="nvim"
 	alias vimdiff="nvim -d"
 	alias mutt="neomutt"
