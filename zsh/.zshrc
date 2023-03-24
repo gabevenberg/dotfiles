@@ -34,37 +34,6 @@
 	#set ssh-agent to play nice with systemd.
 	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-#web_search from terminal
-	function web_search() {
-	  emulate -L zsh
-
-	  # define search engine URLS
-	  typeset -A urls
-	  urls=(
-		ddg         "https://www.duckduckgo.com/?q="
-		github      "https://github.com/search?q="
-	  )
-
-	  # check whether the search engine is supported
-	  if [[ -z "$urls[$1]" ]]; then
-		echo "Search engine $1 not supported."
-		return 1
-	  fi
-
-	  # search or go to main page depending on number of arguments passed
-	  if [[ $# -gt 1 ]]; then
-		# build search url:
-		# join arguments passed with '+', then append to search engine URL
-		url="${urls[$1]}${(j:+:)@[2,-1]}"
-	  else
-		# build main page url:
-		# split by '/', then rejoin protocol (1) and domain (2) parts with '//'
-		url="${(j://:)${(s:/:)urls[$1]}[1,2]}"
-	  fi
-
-	  open_command "$url"
-	}
-
 #prompt
 	autoload -U promptinit
 	promptinit
@@ -183,16 +152,6 @@
 	alias slideshow='feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay'
 	# converts all .doc and .docx files in the local directory to pdfs using libreoffice
 	alias doc2pdf='loffice --convert-to pdf --headless *.docx#'
-
-
-	#web searches
-	alias ddg='web_search ddg'
-	alias github='web_search github'
-	alias wiki='web_search ddg \!w'
-	alias news='web_search ddg \!n'
-	alias youtube='web_search ddg \!yt'
-	alias map='web_search ddg \!m'
-	alias image='web_search ddg \!i'
 
 #setup grep to be a bit more nice
 	local GREP_OPTIONS=""
