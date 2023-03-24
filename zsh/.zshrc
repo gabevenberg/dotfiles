@@ -31,6 +31,8 @@
 	export LESSHISTFILE="/dev/null"
 	#set the w3m homepage
 	export WWW_HOME="duckduckgo.com/lite/"
+	#set ssh-agent to play nice with systemd.
+	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 #web_search from terminal
 	function web_search() {
