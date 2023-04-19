@@ -25,8 +25,8 @@ local on_attach = function()
 	set_keymap('', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 	set_keymap('', '<leader>le', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 	set_keymap('', '<leader>lo', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-	set_keymap('', '<leader>ln', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-	set_keymap('', '<leader>lp', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+	set_keymap('', '<leader>ln', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+	set_keymap('', '<leader>lp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 	set_keymap('', '<leader>lm', '<cmd>lua vim.lsp.buf.format {async=true}<CR>', opts)
 end
 require("mason-lspconfig").setup_handlers({

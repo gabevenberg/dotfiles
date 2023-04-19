@@ -33,6 +33,7 @@
 	export WWW_HOME="duckduckgo.com/lite/"
 	#set ssh-agent to play nice with systemd.
 	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+	export TIMEFMT="%J  %*U user %*S system %P cpu %*E total"
 
 #prompt
 	autoload -U promptinit
