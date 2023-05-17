@@ -175,3 +175,6 @@
 	#zsh completions, if it exists.
 	testPath=$(find /usr/share -path '*fzf/*completion.zsh' -print -quit 2> /dev/null)
 	[ -f "$testPath" ] && source $testPath
+	#if it was installed using git, can just source the one file:
+	testPath="$HOME/.fzf.zsh"
+	[ -f "$testPath" ] && source $testPath
