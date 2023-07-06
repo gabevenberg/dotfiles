@@ -152,6 +152,8 @@
 	alias slideshow='feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay'
 	# converts all .doc and .docx files in the local directory to pdfs using libreoffice
 	alias doc2pdf='loffice --convert-to pdf --headless *.docx#'
+	#common options for sshfs
+	alias sshmnt='sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15'
 
 #setup grep to be a bit more nice
 	local GREP_OPTIONS=""
