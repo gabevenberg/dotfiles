@@ -191,9 +191,10 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+control+plus exec --no-startup-id "xbacklight -inc 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
 		bindsym $mod+control+minus exec --no-startup-id "xbacklight -dec 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
 
-	#screenshot everything with mod+s, current window with mod+shift+s
+	#screenshot everything with mod+s, current window with mod+shift+s, selection with mod+ctrl+s
 		bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Whole-desktop screenshot taken'"
 		bindsym $mod+shift+s exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Window screenshot taken'"
+		bindsym $mod+ctrl+s exec --no-startup-id "maim -s ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Whole-desktop screenshot taken'"
 
 	#colour picker with xcolor
 		bindsym --release $mod+c exec --no-startup-id "xcolor -s"

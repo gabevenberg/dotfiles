@@ -153,6 +153,8 @@
 	alias slideshow='feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay'
 	# converts all .doc and .docx files in the local directory to pdfs using libreoffice
 	alias doc2pdf='loffice --convert-to pdf --headless *.docx#'
+	#common options for sshfs
+	alias sshmnt='sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15'
 
 #setup grep to be a bit more nice
 	local GREP_OPTIONS=""
@@ -175,4 +177,7 @@
 	[ -f "$testPath" ] && source $testPath
 	#zsh completions, if it exists.
 	testPath=$(find /usr/share -path '*fzf/*completion.zsh' -print -quit 2> /dev/null)
+	[ -f "$testPath" ] && source $testPath
+	#if it was installed using git, can just source the one file:
+	testPath="$HOME/.fzf.zsh"
 	[ -f "$testPath" ] && source $testPath
