@@ -14,7 +14,7 @@
 
 #set important shell variables
 	#fancy way of testing if a command exists
-	(($+command[ruby])) && export PATH="$PATH:$(ruby -e 'puts Gem.user_dir' 2> /dev/null)/bin"
+	ruby --version &>/dev/null && export PATH="$PATH:$(ruby -e 'puts Gem.user_dir' 2> /dev/null)/bin/"
 	#test that these nonstandard paths exist before adding to PATH.
 	testPath="$HOME/.local/bin"
 	[ -d "$testPath" ] && export PATH="$PATH:$testPath"
@@ -34,6 +34,7 @@
 	#set ssh-agent to play nice with systemd.
 	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 	export TIMEFMT="%J  %*U user %*S system %P cpu %*E total"
+	export PIPENV_VENV_IN_PROJECT=true
 
 #prompt
 	autoload -U promptinit
