@@ -183,7 +183,7 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+x exec --no-startup-id "~/dotfiles/scripts/screen_off $lock_command_nof"
 		bindsym $mod+shift+x exec --no-startup-id "$lock_command"; exec --no-startup-id "systemctl suspend"
 
-	# disable screen going to sleep with mod+b, enable screen going to sleep with mod+shift+c
+	# disable screen going to sleep with mod+b, enable screen going to sleep with mod+shift+b
 		bindsym $mod+b exec --no-startup-id "xset s off -dpms; notify-send --expire-time=500 'screen blanking off'"
 		bindsym $mod+shift+b  exec --no-startup-id "xset +dpms; notify-send --expire-time=500 'screen blanking on'"
 
@@ -196,8 +196,13 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+shift+s exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Window screenshot taken'"
 		bindsym $mod+ctrl+s exec --no-startup-id "maim -s ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Selection screenshot taken'"
 
+	#screenshot everything with mod+c, current window with mod+shift+c, selection with mod+ctrl+c (to clipboard)
+		bindsym $mod+c exec --no-startup-id "maim | xclip -selection clipboard -t image/png; notify-send --expire-time=1000 'Whole-desktop screenshot taken to clipboard'"
+		bindsym $mod+shift+c exec --no-startup-id "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png; notify-send --expire-time=1000 'Window screenshot taken to clipboard'"
+		bindsym $mod+ctrl+c exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png; notify-send --expire-time=1000 'Selection screenshot taken to clipboard'"
+
 	#colour picker with xcolor
-		bindsym --release $mod+c exec --no-startup-id "xcolor -s"
+		bindsym --release $mod+p exec --no-startup-id "xcolor -s"
 	
 	#mpd controls
 		bindsym $mod+mod1+p exec --no-startup-id "mpc toggle"
