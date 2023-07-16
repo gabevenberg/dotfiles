@@ -204,7 +204,6 @@ font pango:DejaVu Sans Mono 8
 	#colour picker with xcolor
 		bindsym --release $mod+p exec --no-startup-id "xcolor -s"
 
->>>>>>> 50dd73ec62e82ed8f43dfb3e5ebe68f49caa19f8
 	#mpd controls
 		bindsym $mod+mod1+p exec --no-startup-id "mpc toggle"
 		bindsym $mod+mod1+plus exec --no-startup-id "mpc volume +1; notify-send --expire-time=1000 $(mpc volume)"
