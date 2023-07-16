@@ -188,8 +188,8 @@ font pango:DejaVu Sans Mono 8
 		bindsym $mod+shift+b  exec --no-startup-id "xset +dpms; notify-send --expire-time=500 'screen blanking on'"
 
 	# change brightness
-		bindsym $mod+control+plus exec --no-startup-id "xbacklight -inc 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
-		bindsym $mod+control+minus exec --no-startup-id "xbacklight -dec 10; notify-send --expire-time=500 Brightness\ $(xbacklight -get | cut --delimiter=. -f 1)"
+		bindsym $mod+control+plus exec --no-startup-id "brightnessctl s +10%; notify-send --expire-time=500 Brightness\ $(brightnessctl -m| cut --delimiter=, -f 4)"
+		bindsym $mod+control+minus exec --no-startup-id "brightnessctl s 10%-; notify-send --expire-time=500 Brightness\ $(brightnessctl -m| cut --delimiter=, -f 4)"
 
 	#screenshot everything with mod+s, current window with mod+shift+s, selection with mod+ctrl+s
 		bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Whole-desktop screenshot taken'"
@@ -198,12 +198,12 @@ font pango:DejaVu Sans Mono 8
 
 	#colour picker with xcolor
 		bindsym --release $mod+c exec --no-startup-id "xcolor -s"
-	
+
 	#mpd controls
 		bindsym $mod+mod1+p exec --no-startup-id "mpc toggle"
 		bindsym $mod+mod1+plus exec --no-startup-id "mpc volume +1; notify-send --expire-time=1000 $(mpc volume)"
 		bindsym $mod+mod1+minus exec --no-startup-id "mpc volume -1; notify-send --expire-time=1000 $(mpc volume)"
-	
+
 	#open volume control
 		bindsym $mod+shift+p exec pavucontrol
 
