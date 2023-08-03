@@ -113,7 +113,7 @@ map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
 --open symbols-outline with leader+o
 map('n', '<leader>o', ':SymbolsOutline<CR>', opts)
 --telescope stuff
-map('n', '<leader>ff', ':lua require "telescope".extensions.file_browser.file_browser()<CR>', opts)
+map('n', '<leader>ff', ':Telescope find_files<CR>', opts)
 map('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
 map('n', '<leader>fb', ':Telescope buffers<CR>', opts)
 map('n', '<leader>fm', ':Telescope marks<CR>', opts)
@@ -124,6 +124,7 @@ map('n', '<leader>fz', ':Telescope current_buffer_fuzzy_find<CR>', opts)
 map('n', '<leader>fgc', ':Telescope git_commits<CR>', opts)
 map('n', '<leader>fgb', ':Telescope git_branches<CR>', opts)
 map('n', '<leader>fgs', ':Telescope git_stash<CR>', opts)
+map('n', '<leader>fto', ':TodoTelescope', opts)
 map('n', '<leader>ft', ':Telescope treesitter<CR>', opts)
 --Treesitter context
 map('n', '<leader>c', ':TSContextToggle<CR>', opts)

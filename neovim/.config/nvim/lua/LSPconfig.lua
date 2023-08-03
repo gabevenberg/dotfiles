@@ -28,6 +28,8 @@ local on_attach = function()
 	set_keymap('', '<leader>ln', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 	set_keymap('', '<leader>lp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 	set_keymap('', '<leader>lm', '<cmd>lua vim.lsp.buf.format {async=true}<CR>', opts)
+	set_keymap('', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+	set_keymap('', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 end
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
