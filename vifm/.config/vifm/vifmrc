@@ -176,7 +176,7 @@ set vicmd=nvim
 	fileviewer *.pdf pdftotext -nopgbrk %c -
 
 	"Image
-	fileviewer *.png,*jpeg,*jpg img2txt --width=100 %c
+	" fileviewer *.png,*jpeg,*jpg img2txt --width=100 %c
 
 	"previewing html docs
 	fileviewer *.html w3m %c

@@ -8,7 +8,4 @@ export QT_STYLE_OVERRIDE=adwaita-dark
 #export GDK_SCALE=2
 #export QT_AUTO_SCREEN_SCALE_FACTOR=1
 xrdb -merge ~/.Xresources
-#get gnome-keyring running
-dbus-update-activation-environment --all
-gnome-keyring-daemon --start --components=secrets
 i3

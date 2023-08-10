@@ -35,7 +35,6 @@ font pango:DejaVu Sans Mono 8
 
 	# start a terminal (uncomment urxvt/alacritty, but not both!)
 	bindsym $mod+Return exec --no-startup-id alacritty
-	# bindsym $mod+Return exec --no-startup-id urxvt
 	bindsym $mod+Shift+Return exec cool-retro-term
 
 	# kill focused window
@@ -230,11 +229,15 @@ bar {
 
 #startup applications
 
-	#geoclue
-	exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
-
 	#resetting the wallpaper. We are not setting it here, so we can have different wallpapers on different machines. use feh --bg-fill FILE to set it. it will write a .fehbg file.
 	exec --no-startup-id ~/.fehbg
 
 	#dunst
 	exec --no-startup-id /usr/bin/dunst
+
+	#get gnome-keyring running
+	exec --no-startup-id dbus-update-activation-environment --all
+	exec --no-startup-id gnome-keyring-daemon --start --components=secrets
+
+	#geoclue
+	exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
