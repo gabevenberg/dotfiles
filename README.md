@@ -1,4 +1,4 @@
-all of my dotfiles and text only plugins. (the few I have at the moment...)
+all of my dotfiles, managed with (https://www.gnu.org/software/stow/manual/stow.html)[stow]
 
 ## Dependencies:
 This does not list the package manager dependencies of the programs the dotfiles are for, but any extra dependencies that are needed for the specific configuration.
