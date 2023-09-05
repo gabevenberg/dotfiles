@@ -1,0 +1,8 @@
+---
+#this syncronizes with settings used by neovims treesitters so that the lsp formatting and treesitter formatting do not fight eatch other.
+IndentWidth:     4
+TabWidth:        4
+UseCRLF:         false
+UseTab:          true
+...
+
