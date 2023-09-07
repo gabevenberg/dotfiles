@@ -2,13 +2,14 @@
 local cmd = vim.cmd
 local opt = vim.opt
 local fn = vim.fn
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
+local wk = require("which-key")
 
 --leader key is set through a variable, for some reason.
 vim.g.mapleader = ';'
 
 --this plugin makes startup time a bit faster. To bootsrap configuration, you need to comment this one out, ignore any errors you get, do packersync, then uncomment it.
---require('impatient')
+require('impatient')
 --do package management
 require('packages')
 
@@ -33,7 +34,7 @@ opt.linebreak = true
 opt.breakindent = true
 --add ruler to side of screen.
 opt.number = true
-opt.numberwidth=2
+opt.numberwidth=3
 --displays cordinates of your cursor in statusbar
 opt.ruler = true
 --always leave 5 cells between cursor and side of window.
@@ -67,7 +68,7 @@ cmd([[source ~/.config/nvim/foldtext.vimrc]])
 opt.foldmethod = 'indent'
 opt.foldtext = 'minimal_foldtext()'
 opt.fillchars = 'stl:=,stlnc: ,vert:|,fold:-'
-opt.foldcolumn = '4'
+opt.foldcolumn = 'auto:4'
 opt.foldenable = true
 opt.foldignore = ''
 
@@ -96,52 +97,68 @@ function _G.Toggle_venn()
 end
 
 --keyboard mappings
-local opts = { noremap = true, silent = true }
+local function optsWithDesc(desc)
+	return {silent=true, desc=desc}
+end
 --toggle spell check
-map('n', '<leader>sp', ':setlocal spell!<CR>', opts)
+map('n', '<leader>sp', ':setlocal spell!<CR>', optsWithDesc("toggle spell check"))
 --use ctrl+direction to move between splits.
-map('n', '<C-h>', '<C-w>h', opts)
-map('n', '<C-j>', '<C-w>j', opts)
-map('n', '<C-k>', '<C-w>k', opts)
-map('n', '<C-l>', '<C-w>l', opts)
+map('n', '<C-h>', '<C-w>h', optsWithDesc("move to split to the right"))
+map('n', '<C-j>', '<C-w>j', optsWithDesc("move to split below"))
+map('n', '<C-k>', '<C-w>k', optsWithDesc("move to split above"))
+map('n', '<C-l>', '<C-w>l', optsWithDesc("move to split to the left"))
 --toggle folds with space.
-map('', '<Space>', 'za', opts)
+map('n', '<Space>', 'za', optsWithDesc("toggle fold"))
 --clear highlighting with leader+h
-map('', '<leader>h', ':nohls<CR>', opts)
---open nvim-tree with leader+t
-map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
+map('', '<leader>h', ':nohls<CR>', optsWithDesc("clear highlighting"))
+--open file browser with leader+t
+map('n', '<leader>t', ':NvimTreeToggle<CR>', optsWithDesc("toggle file browser"))
+--open terminal with ctrl-\
 --open symbols-outline with leader+o
-map('n', '<leader>o', ':SymbolsOutline<CR>', opts)
+map('n', '<leader>o', ':SymbolsOutline<CR>', optsWithDesc("toggle LSP symbol outline"))
 --telescope stuff
-map('n', '<leader>ff', ':Telescope find_files<CR>', opts)
-map('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
-map('n', '<leader>fb', ':Telescope buffers<CR>', opts)
-map('n', '<leader>fm', ':Telescope marks<CR>', opts)
-map('n', '<leader>fp', ':Telescope registers<CR>', opts)
-map('n', '<leader>fs', ':Telescope spell_suggest<CR>', opts)
-map('n', '<leader>fh', ':Telescope keymaps<CR>', opts)
-map('n', '<leader>fz', ':Telescope current_buffer_fuzzy_find<CR>', opts)
-map('n', '<leader>fgc', ':Telescope git_commits<CR>', opts)
-map('n', '<leader>fgb', ':Telescope git_branches<CR>', opts)
-map('n', '<leader>fgs', ':Telescope git_stash<CR>', opts)
-map('n', '<leader>fto', ':TodoTelescope', opts)
-map('n', '<leader>ft', ':Telescope treesitter<CR>', opts)
+--setup leader-f prefix in whitch-key
+wk.register {
+	["<leader>f"]={
+		name="+telescope"
+	}
+}
+map('n', '<leader>ff', ':Telescope find_files<CR>', optsWithDesc("find files"))
+map('n', '<leader>fg', ':Telescope live_grep<CR>', optsWithDesc("grep"))
+map('n', '<leader>fb', ':Telescope buffers<CR>', optsWithDesc("find buffers"))
+map('n', '<leader>fm', ':Telescope marks<CR>', optsWithDesc("find marks"))
+map('n', '<leader>fp', ':Telescope registers<CR>', optsWithDesc("search registers"))
+map('n', '<leader>fs', ':Telescope spell_suggest<CR>', optsWithDesc("search spelling suggestions"))
+map('n', '<leader>fh', ':Telescope keymaps<CR>', optsWithDesc("search keymaps"))
+map('n', '<leader>fz', ':Telescope current_buffer_fuzzy_find<CR>', optsWithDesc("fuzzy find"))
+map('n', '<leader>fgc', ':Telescope git_commits<CR>', optsWithDesc("search git commits"))
+map('n', '<leader>fgb', ':Telescope git_branches<CR>', optsWithDesc("search git branches"))
+map('n', '<leader>fgs', ':Telescope git_stash<CR>', optsWithDesc("search git stash"))
+map('n', '<leader>fto', ':TodoTelescope', optsWithDesc("search todos"))
+map('n', '<leader>ft', ':Telescope treesitter<CR>', optsWithDesc("search treesitter"))
 --Treesitter context
-map('n', '<leader>c', ':TSContextToggle<CR>', opts)
+map('n', '<leader>c', ':TSContextToggle<CR>', optsWithDesc("toggle ts context"))
 --tabline stuff (gt and gT are prev/next tab in stock vim)
-map('n', 'gf', ':TablineBufferNext<CR>', opts)
-map('n', 'gF', ':TablineBufferPrevious<CR>', opts)
+map('n', 'gf', ':TablineBufferNext<CR>', optsWithDesc("next buffer"))
+map('n', 'gF', ':TablineBufferPrevious<CR>', optsWithDesc("prev buffer"))
 --gitsigns
-map('n', '<leader>bl', ':Gitsigns toggle_current_line_blame<CR>', opts)
+map('n', '<leader>bl', ':Gitsigns toggle_current_line_blame<CR>', optsWithDesc("toggle inline git blame"))
 --trouble plugin.
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
-vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
-vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
-vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
-vim.keymap.set("n", "<leader>lR", "<cmd>TroubleToggle lsp_references<cr>", opts)
-vim.keymap.set("n", "<leader>lD", "<cmd>TroubleToggle lsp_definitions<cr>", opts)
+wk.register {
+	["<leader>x"]={
+		name="+trouble"
+	}
+}
+map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", optsWithDesc("toggle trouble"))
+map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", optsWithDesc("workspace diagnostics"))
+map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", optsWithDesc("document diagnostics"))
+map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", optsWithDesc("location list"))
+map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", optsWithDesc("quickfix list"))
+map("n", "<leader>lR", "<cmd>TroubleToggle lsp_references<cr>", optsWithDesc("lsp references"))
+map("n", "<leader>lD", "<cmd>TroubleToggle lsp_definitions<cr>", optsWithDesc("lsp definitions"))
 -- toggle keymappings for venn using <leader>v
-map('n', '<leader>v', ":lua Toggle_venn()<CR>", { noremap = true })
+map('n', '<leader>v', ":lua Toggle_venn()<CR>", optsWithDesc("toggle venn.nvim"))
 -- treesj
-map('n', '<leader>j', ':TSJToggle<CR>', opts)
+map('n', '<leader>j', ':TSJToggle<CR>', optsWithDesc("treesitter split/join"))
+
+

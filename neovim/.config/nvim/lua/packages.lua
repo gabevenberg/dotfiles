@@ -207,7 +207,6 @@ return require('packer').startup(function(use)
 			local opts = {
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
 			}
 			require("todo-comments").setup(opts)
 		end
@@ -340,7 +339,36 @@ return require('packer').startup(function(use)
 		end
 	}
 
+	use {
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			-- default kemaps that whitch-key misses.
+			local wk = require("which-key")
+			wk.register {
+				g = {
+					t = "next tab",
+					T = "previous tab"
+				},
+			}
+			require("which-key").setup {
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+				-- local wk = require("which-key")
+			}
+		end
+	}
+
 	--UI stuff
+
+	use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+		require("toggleterm").setup {
+			insert_mappings = false,
+			open_mapping = [[<c-\>]],
+		}
+	end }
 
 	use { 'simrat39/symbols-outline.nvim',
 		config = function()
@@ -451,7 +479,9 @@ return require('packer').startup(function(use)
 		config = function() require('gitsigns').setup() end
 	}
 
-	use 'chentau/marks.nvim'
+	use { 'chentau/marks.nvim' }
+
+	use { 'sitiom/nvim-numbertoggle' }
 
 	use { 'lukas-reineke/indent-blankline.nvim',
 		config = function()
