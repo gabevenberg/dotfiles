@@ -1,7 +1,7 @@
 ---
 #this syncronizes with settings used by neovims treesitters so that the lsp formatting and treesitter formatting do not fight eatch other.
 PointerAlignment: Left
-ColumnLimit: 120
+ColumnLimit: 80
 IndentWidth: 4
 TabWidth: 4
 UseCRLF: false
