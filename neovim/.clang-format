@@ -9,4 +9,6 @@ UseTab: AlignWithSpaces
 AlignAfterOpenBracket: BlockIndent
 AlwaysBreakBeforeMultilineStrings: true
 BreakBeforeBraces: Attach
+AlignOperands: Align
+BreakBeforeBinaryOperators: NonAssignment
 ...
