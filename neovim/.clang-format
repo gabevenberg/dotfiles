@@ -8,5 +8,5 @@ UseCRLF: false
 UseTab: AlignWithSpaces
 AlignAfterOpenBracket: BlockIndent
 AlwaysBreakBeforeMultilineStrings: true
+BreakBeforeBraces: Attach
 ...
-

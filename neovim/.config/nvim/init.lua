@@ -160,5 +160,3 @@ map("n", "<leader>lD", "<cmd>TroubleToggle lsp_definitions<cr>", optsWithDesc("l
 map('n', '<leader>v', ":lua Toggle_venn()<CR>", optsWithDesc("toggle venn.nvim"))
 -- treesj
 map('n', '<leader>j', ':TSJToggle<CR>', optsWithDesc("treesitter split/join"))
-
-
