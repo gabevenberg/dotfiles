@@ -5,7 +5,7 @@ ColumnLimit: 120
 IndentWidth: 4
 TabWidth: 4
 UseCRLF: false
-UseTab: AlignWithSpaces
+UseTab: Never
 AlignAfterOpenBracket: BlockIndent
 AlwaysBreakBeforeMultilineStrings: true
 BreakBeforeBraces: Attach
