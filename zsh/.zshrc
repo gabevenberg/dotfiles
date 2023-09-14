@@ -35,6 +35,7 @@
 	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 	export TIMEFMT="%J  %*U user %*S system %P cpu %*E total"
 	export PIPENV_VENV_IN_PROJECT=true
+	export POETRY_VIRTUALENVS_IN_PROJECT=true
 
 #prompt
 	autoload -U promptinit
@@ -155,6 +156,7 @@
 	alias doc2pdf='loffice --convert-to pdf --headless *.docx#'
 	#common options for sshfs
 	alias sshmnt='sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15'
+	alias pyactivate='source ./.venv/bin/activate'
 
 #setup grep to be a bit more nice
 	local GREP_OPTIONS=""
