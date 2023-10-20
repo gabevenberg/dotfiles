@@ -4,11 +4,16 @@ all of my dotfiles, managed with (https://www.gnu.org/software/stow/manual/stow.
 This does not list the package manager dependencies of the programs the dotfiles are for, but any extra dependencies that are needed for the specific configuration.
 
 ### Whole-repo
-
 GNU stow is used to manage individual dotfiles 'packages'.
 
 ### Aalacritty
-setup to use Hack Nerd Font for an icon-rich font, needed for the full nvim
+setup to use Hack Nerd Font (`ttf-hack-nerd`) for an icon-rich font, needed for the full nvim and for yazi
+
+### Kitty
+you dont need Hack Nerd Font, normal `ttf-hack` combined with `ttf-nerd-fonts-symbols` will do.
+
+### Yazi
+Will need https://github.com/jstkdng/ueberzugpp installed if using on alacritty, availible in AUR
 
 ### Latexmk
 Uses zathura as a pdf previewer.
@@ -25,23 +30,26 @@ These are all the programs that i3 calls somewhere in its config, whether that b
 * brightnessctl
 * xdotool
 * maim (screenshot program)
-* xcolour (colour picker)
+* xcolor (color picker)
 * mpc (mpd stuff, remove relevant keybinds if you dont use mpd)
 * pavucontrol
 * geoclue (geolocation dameon)
 * feh (for setting desktop wallpaper)
 * dunst
 * i3status
+* xclip
 * gnome-keyring (for login management in, for example, nextcloud. See https://gabevenberg.com/posts/autologinnextcloudclientonarch/ for details.)
-* geoclue (for geolocation)
 
 ### x11 and x11hidpi
-these are mutually exclusive directories, one is for hi-dpi screens. They have the same requirements otherwise.
+These are mutually exclusive directories, one is for hi-dpi screens. They have the same requirements otherwise.
 These .xinitrc's are setup to launch i3, with the config package in this repo.
+
+### xorg_conf
+Dont stow this directory, but place the files you want (each one has comments describing its purpose) into `/etc/X11/xorg.conf.d/`.
 
 ### Neovim
 
-If you want a neovim config that does not reqire external dependencies, install the nvim_minimal config.
+If you want a neovim config that does not require external dependencies, install the nvim_minimal config.
 
 For the status line, and other icons:
 any nerd font patched font, and your terminal setup to use it. (the included alacritty config is set up for it)
@@ -67,7 +75,7 @@ For treesitter:
 * node
 
 For neovim clipboard:
-* xsel if using x
+* xclip if using x
 * waycopy and waypaste, or wl-copy and wl-paste, if using wayland (untested)
 
 For telescope:
@@ -80,7 +88,7 @@ For telescope:
 * less
 * fzf
 
-software used by aliases:
+Software used by aliases:
 * nvim
 * neomutt
 * sudo
