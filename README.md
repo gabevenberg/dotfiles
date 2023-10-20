@@ -7,13 +7,13 @@ This does not list the package manager dependencies of the programs the dotfiles
 GNU stow is used to manage individual dotfiles 'packages'.
 
 ### Aalacritty
-setup to use Hack Nerd Font (`ttf-hack-nerd`) for an icon-rich font, needed for the full nvim and for yazi
+setup to use Hack Nerd Font (`ttf-hack-nerd`) for an icon-rich font, needed for the full nvim and for yazi. Can easily be changed to any other nerd-font patched font.
 
 ### Kitty
-you dont need Hack Nerd Font, normal `ttf-hack` combined with `ttf-nerd-fonts-symbols` will do.
+you dont need a patched Nerd Font, normal `ttf-cascadia-code` combined with `ttf-nerd-fonts-symbols` will do. Can also change what font is used easily, but always needs the nerd-font symbols.
 
 ### Yazi
-Will need https://github.com/jstkdng/ueberzugpp installed if using on alacritty, availible in AUR
+Will need https://github.com/jstkdng/ueberzugpp installed if using on alacritty, availible in AUR (only needed for image previews)
 
 ### Latexmk
 Uses zathura as a pdf previewer.
@@ -24,7 +24,7 @@ Setup to output audio through pipewire
 ### I3wm
 These are all the programs that i3 calls somewhere in its config, whether that be keybinds, startup applications, etc.
 
-* alacritty
+* alacritty or kitty (currently uses kitty, just comment out one line or the other in the i3 conf to switch)
 * cool retro term
 * i3-lock
 * brightnessctl
