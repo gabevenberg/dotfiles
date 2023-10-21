@@ -3,13 +3,10 @@ local cmd = vim.cmd
 local opt = vim.opt
 local fn = vim.fn
 local map = vim.keymap.set
-local wk = require("which-key")
 
 --leader key is set through a variable, for some reason.
 vim.g.mapleader = ';'
 
---this plugin makes startup time a bit faster. To bootsrap configuration, you need to comment this one out, ignore any errors you get, do packersync, then uncomment it.
-require('impatient')
 --do package management
 require('packages')
 
@@ -17,6 +14,8 @@ require('packages')
 local function keyCode(string)
 	return vim.api.nvim_replace_termcodes(str, true, true, true, true)
 end
+
+local wk = require("which-key")
 
 --options using vim.opt (aliased, of course.)
 opt.mouse = 'a'
@@ -117,7 +116,7 @@ map('n', '<leader>t', ':NvimTreeToggle<CR>', optsWithDesc("toggle file browser")
 --open symbols-outline with leader+o
 map('n', '<leader>o', ':SymbolsOutline<CR>', optsWithDesc("toggle LSP symbol outline"))
 --telescope stuff
---setup leader-f prefix in whitch-key
+-- setup leader-f prefix in whitch-key
 wk.register {
 	["<leader>f"]={
 		name="+telescope"
@@ -143,19 +142,6 @@ map('n', 'gf', ':TablineBufferNext<CR>', optsWithDesc("next buffer"))
 map('n', 'gF', ':TablineBufferPrevious<CR>', optsWithDesc("prev buffer"))
 --gitsigns
 map('n', '<leader>bl', ':Gitsigns toggle_current_line_blame<CR>', optsWithDesc("toggle inline git blame"))
---trouble plugin.
-wk.register {
-	["<leader>x"]={
-		name="+trouble"
-	}
-}
-map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", optsWithDesc("toggle trouble"))
-map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", optsWithDesc("workspace diagnostics"))
-map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", optsWithDesc("document diagnostics"))
-map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", optsWithDesc("location list"))
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", optsWithDesc("quickfix list"))
-map("n", "<leader>lR", "<cmd>TroubleToggle lsp_references<cr>", optsWithDesc("lsp references"))
-map("n", "<leader>lD", "<cmd>TroubleToggle lsp_definitions<cr>", optsWithDesc("lsp definitions"))
 -- toggle keymappings for venn using <leader>v
 map('n', '<leader>v', ":lua Toggle_venn()<CR>", optsWithDesc("toggle venn.nvim"))
 -- treesj

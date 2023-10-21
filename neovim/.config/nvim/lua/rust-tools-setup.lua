@@ -1,4 +1,3 @@
-local nvim_lsp = require'lspconfig'
 local opts = {
 	tools = {
 		autoSetHints = true,
@@ -15,7 +14,7 @@ local opts = {
 			-- whether to show parameter hints with the inlay hints or not
 			show_parameter_hints = true,
 			-- whether to show variable name before type hints with the inlay hints or not
-			show_variable_name = false,
+			show_variable_name = true,
 			-- prefix for parameter hints
 			parameter_hints_prefix = "<- ",
 			-- prefix for all the other hints (type, chaining)
@@ -27,7 +26,7 @@ local opts = {
 			-- whether to align to the extreme right or not
 			right_align = true,
 			-- padding from the right if right_align is true
-			right_align_padding = 7,
+			right_align_padding = 1,
 			-- The color of the hints
 			highlight = "Comment",
 		},
