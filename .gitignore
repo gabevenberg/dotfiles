@@ -10,3 +10,4 @@ __pycache__/
 neovim/.config/nvim/plugin/
 wget-log*
 *log*
+lazy-lock.json
