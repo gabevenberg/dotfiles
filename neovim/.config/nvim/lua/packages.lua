@@ -93,7 +93,7 @@ require('lazy').setup({
 	{
 		'hrsh7th/nvim-cmp',
 		config = function()
-			require('rust-tools-setup')
+			require('cmp-lsp')
 		end,
 		dependencies = {
 			'neovim/nvim-lspconfig',
