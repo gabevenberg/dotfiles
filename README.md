@@ -98,12 +98,10 @@ Software used by aliases:
 * sshfs
 
 ### Paru
-currently uses vifm, but I really need to change that
+uses yazi as a file explorer
 
-### Vifm
-* zathura
-* poppler
-* w3m
+### Yazi
+for accurate mimetype info, I suggest installing `perl-file-mimeinfo`
 
 ### Khal and Khard:
 both require the vdirsyncer program and config.

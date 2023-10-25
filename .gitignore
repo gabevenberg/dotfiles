@@ -2,8 +2,6 @@
 *.directory
 .netrwhist
 *.log
-vifminfo
-vifm-help.txt
 __pycache__/
 *.pickle
 *.spl
