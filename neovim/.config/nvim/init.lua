@@ -138,8 +138,8 @@ map('n', '<leader>ft', ':Telescope treesitter<CR>', optsWithDesc("search treesit
 --Treesitter context
 map('n', '<leader>c', ':TSContextToggle<CR>', optsWithDesc("toggle ts context"))
 --tabline stuff (gt and gT are prev/next tab in stock vim)
-map('n', 'gf', ':TablineBufferNext<CR>', optsWithDesc("next buffer"))
-map('n', 'gF', ':TablineBufferPrevious<CR>', optsWithDesc("prev buffer"))
+map('n', 'gf', ':bnext<CR>', optsWithDesc("next buffer"))
+map('n', 'gF', ':bprevious<CR>', optsWithDesc("prev buffer"))
 --gitsigns
 map('n', '<leader>bl', ':Gitsigns toggle_current_line_blame<CR>', optsWithDesc("toggle inline git blame"))
 -- toggle keymappings for venn using <leader>v

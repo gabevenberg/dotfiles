@@ -1,0 +1,6 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "rainbow_delimiters"
+    ]
+}

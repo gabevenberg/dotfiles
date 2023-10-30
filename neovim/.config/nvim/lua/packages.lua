@@ -211,7 +211,7 @@ require('lazy').setup({
 			sections = {
 				lualine_a = { 'mode' },
 				lualine_b = { 'branch', 'diff', 'diagnostics' },
-				lualine_c = { 'filename' },
+				lualine_c = { { 'filename', path = 1, } },
 				lualine_x = { 'encoding', 'fileformat', 'filetype' },
 				lualine_y = { 'progress' },
 				lualine_z = { 'location' }
@@ -224,34 +224,33 @@ require('lazy').setup({
 				lualine_y = {},
 				lualine_z = {}
 			},
+			tabline = {
+				lualine_a = { { 'buffers', mode = 4 } },
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = { { 'tabs', mode = 2 } }
+			},
+			winbar = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {}
+			},
+			inactive_winbar = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {}
+			},
 			extensions = {}
 		},
 
-	},
-	{
-		'kdheepak/tabline.nvim',
-		dependencies = { 'nvim-lualine/lualine.nvim' },
-		config = function()
-			require 'tabline'.setup {
-				-- Defaults configuration options
-				enable = true,
-				options = {
-					-- If lualine is installed tabline will use separators configured in lualine by default.
-					-- These options can be used to override those settings.
-					-- section_separators = {'', ''},
-					-- component_separators = {'', ''},
-					-- max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
-					show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
-					show_devicons = true, -- this shows devicons in buffer section
-					show_bufnr = true, -- this appends [bufnr] to buffer section,
-					show_filename_only = false, -- shows base filename only instead of relative path in filename
-				}
-			}
-			vim.cmd [[
-	set guioptions-=e " Use showtabline in gui vim
-	set sessionoptions+=tabpages,globals " store tabpages and globals in session
-	]]
-		end,
 	},
 	{
 		'romgrk/nvim-treesitter-context',
@@ -269,6 +268,31 @@ require('lazy').setup({
 		}
 	},
 	{
+		'hiphish/rainbow-delimiters.nvim',
+		dependencies = { 'nvim-treesitter/nvim-treesitter' },
+		config = function()
+			local rainbow_delimiters = require 'rainbow-delimiters'
+			vim.g.rainbow_delimiters = {
+				strategy = {
+					[''] = rainbow_delimiters.strategy['global'],
+				},
+				query = {
+					[''] = 'rainbow-delimiters',
+					lua = 'rainbow-blocks',
+				},
+				highlight = {
+					'RainbowDelimiterRed',
+					'RainbowDelimiterViolet',
+					'RainbowDelimiterCyan',
+					'RainbowDelimiterYellow',
+					'RainbowDelimiterBlue',
+					'RainbowDelimiterOrange',
+					'RainbowDelimiterGreen',
+				}
+			}
+		end
+	},
+	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {}
@@ -277,16 +301,14 @@ require('lazy').setup({
 		'lewis6991/gitsigns.nvim',
 		config = true,
 	},
-	'chentau/marks.nvim',
+	{'chentoast/marks.nvim',
+		config=true
+	},
 	'sitiom/nvim-numbertoggle',
 	{
 		'numToStr/Comment.nvim',
 		config = true,
 	},
-	-- {
-	-- 	"tversteeg/registers.nvim",
-	-- 	config = true,
-	-- },
 	{
 		'Wansmer/treesj',
 		dependencies = { 'nvim-treesitter' },
