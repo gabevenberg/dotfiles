@@ -281,13 +281,13 @@ require('lazy').setup({
 					lua = 'rainbow-blocks',
 				},
 				highlight = {
-					'RainbowDelimiterRed',
 					'RainbowDelimiterViolet',
 					'RainbowDelimiterCyan',
 					'RainbowDelimiterYellow',
 					'RainbowDelimiterBlue',
 					'RainbowDelimiterOrange',
 					'RainbowDelimiterGreen',
+					-- 'RainbowDelimiterRed',
 				}
 			}
 		end
