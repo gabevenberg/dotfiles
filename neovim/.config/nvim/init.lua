@@ -29,8 +29,10 @@ opt.formatoptions = 'rojq'
 opt.textwidth = 0
 opt.wrapmargin = 0
 opt.wrap = true
-opt.linebreak = true
+-- opt.linebreak = true
 opt.breakindent = true
+--highlight after col
+opt.colorcolumn = "80,100,120"
 --add ruler to side of screen.
 opt.number = true
 opt.numberwidth=3
