@@ -86,9 +86,6 @@ require('lazy').setup({
 	},
 	{
 		'simrat39/rust-tools.nvim',
-		-- config = function()
-		-- 	require('rust-tools-setup')
-		-- end
 	},
 	{
 		'hrsh7th/nvim-cmp',
@@ -301,8 +298,9 @@ require('lazy').setup({
 		'lewis6991/gitsigns.nvim',
 		config = true,
 	},
-	{'chentoast/marks.nvim',
-		config=true
+	{
+		'chentoast/marks.nvim',
+		config = true
 	},
 	'sitiom/nvim-numbertoggle',
 	{
@@ -331,5 +329,34 @@ require('lazy').setup({
 		'bluz71/vim-nightfly-guicolors',
 		lazy = true,
 	},
+	{
+		'AlexvZyl/nordic.nvim',
+		lazy = true,
+	},
+	{
+		'savq/melange-nvim',
+		lazy = true,
+	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = true,
+	},
+	{
+		'nyoom-engineering/oxocarbon.nvim',
+		lazy = true,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = true,
+	},
+	{
+		'rebelot/kanagawa.nvim',
+		lazy = true,
+	},
+	{
+		'ellisonleao/gruvbox.nvim',
+		lazy = true,
+	}
 
 })

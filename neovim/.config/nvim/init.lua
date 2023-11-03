@@ -72,7 +72,11 @@ opt.foldenable = true
 opt.foldignore = ''
 
 --sets colorscheme. to get a list of avalible options, do colorscheme <Space> <C-d>
-vim.cmd 'colorscheme moonfly'
+vim.opt.background="dark"
+-- vim.cmd 'colorscheme moonfly'
+-- vim.cmd 'colorscheme nightfly'
+-- vim.cmd 'colorscheme nordic'
+vim.cmd 'colorscheme gruvbox'
 
 --function for venn.nvim
 -- venn.nvim: enable or disable keymappings
