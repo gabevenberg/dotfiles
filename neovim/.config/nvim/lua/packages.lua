@@ -141,6 +141,12 @@ require('lazy').setup({
 		},
 	},
 	{
+		'ggandor/leap.nvim',
+		config = function()
+			require('leap').add_default_mappings()
+		end
+	},
+	{
 		'folke/which-key.nvim',
 		config = function()
 			vim.o.timeout = true
