@@ -14,7 +14,7 @@ you dont need a patched Nerd Font, normal `ttf-cascadia-code` combined with `ttf
 
 ### Yazi
 Will need https://github.com/jstkdng/ueberzugpp installed if using on alacritty, availible in AUR (only needed for image previews).
-also has optional dependencies on jq, unarchiver, ffmpegthumbnailer, fd, ripgrep, fzf, poppler, and zoxide.
+also has optional dependencies on jq, unarchiver, ffmpegthumbnailer, fd, ripgrep, fzf, and poppler
 
 ### Latexmk
 Uses zathura as a pdf previewer.
@@ -88,7 +88,6 @@ For telescope:
 * nvim ($EDITOR and $VISUAL is set to this)
 * less
 * fzf
-* zoxide
 
 Software used by aliases:
 * nvim
