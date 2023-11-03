@@ -13,7 +13,8 @@ setup to use Hack Nerd Font (`ttf-hack-nerd`) for an icon-rich font, needed for 
 you dont need a patched Nerd Font, normal `ttf-cascadia-code` combined with `ttf-nerd-fonts-symbols` will do. Can also change what font is used easily, but always needs the nerd-font symbols.
 
 ### Yazi
-Will need https://github.com/jstkdng/ueberzugpp installed if using on alacritty, availible in AUR (only needed for image previews)
+Will need https://github.com/jstkdng/ueberzugpp installed if using on alacritty, availible in AUR (only needed for image previews).
+also has optional dependencies on jq, unarchiver, ffmpegthumbnailer, fd, ripgrep, fzf, poppler, and zoxide.
 
 ### Latexmk
 Uses zathura as a pdf previewer.
@@ -87,6 +88,7 @@ For telescope:
 * nvim ($EDITOR and $VISUAL is set to this)
 * less
 * fzf
+* zoxide
 
 Software used by aliases:
 * nvim

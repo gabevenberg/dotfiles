@@ -183,3 +183,6 @@
 	#if it was installed using git, can just source the one file:
 	testPath="$HOME/.fzf.zsh"
 	[ -f "$testPath" ] && source $testPath
+
+# zoxide stuff
+	eval "$(zoxide init zsh)"
