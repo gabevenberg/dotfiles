@@ -10,7 +10,7 @@ GNU stow is used to manage individual dotfiles 'packages'.
 setup to use Hack Nerd Font (`ttf-hack-nerd`) for an icon-rich font, needed for the full nvim and for yazi. Can easily be changed to any other nerd-font patched font.
 
 ### Kitty
-you dont need a patched Nerd Font, normal `ttf-cascadia-code` combined with `ttf-nerd-fonts-symbols` will do. Can also change what font is used easily, but always needs the nerd-font symbols.
+you dont need a patched Nerd Font, normal `ttf-fira-code` combined with `ttf-nerd-fonts-symbols` will do. Can also change what font is used easily, but always needs the nerd-font symbols.
 
 ### Yazi
 Will need https://github.com/jstkdng/ueberzugpp installed if using on alacritty, availible in AUR (only needed for image previews).
