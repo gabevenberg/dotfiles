@@ -363,6 +363,6 @@ require('lazy').setup({
 	{
 		'ellisonleao/gruvbox.nvim',
 		lazy = true,
-	}
+	},
 
 })
