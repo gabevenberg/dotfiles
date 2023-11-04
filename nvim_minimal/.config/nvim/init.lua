@@ -2,10 +2,11 @@
 local cmd = vim.cmd
 local opt = vim.opt
 local fn = vim.fn
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 --leader key is set through a variable, for some reason.
 vim.g.mapleader = ';'
+
 
 --helper functions
 local function keyCode(string)
@@ -24,11 +25,13 @@ opt.formatoptions = 'rojq'
 opt.textwidth = 0
 opt.wrapmargin = 0
 opt.wrap = true
-opt.linebreak = true
+-- opt.linebreak = true
 opt.breakindent = true
+--highlight after col
+opt.colorcolumn = "80,100,120"
 --add ruler to side of screen.
 opt.number = true
-opt.numberwidth=2
+opt.numberwidth=3
 --displays cordinates of your cursor in statusbar
 opt.ruler = true
 --always leave 5 cells between cursor and side of window.
@@ -62,20 +65,28 @@ cmd([[source ~/.config/nvim/foldtext.vimrc]])
 opt.foldmethod = 'indent'
 opt.foldtext = 'minimal_foldtext()'
 opt.fillchars = 'stl:=,stlnc: ,vert:|,fold:-'
-opt.foldcolumn = '4'
+opt.foldcolumn = 'auto:4'
 opt.foldenable = true
 opt.foldignore = ''
 
 --keyboard mappings
+local function optsWithDesc(desc)
+	return {silent=true, desc=desc}
+end
 local opts = { noremap = true, silent = true }
 --toggle spell check
-map('n', '<leader>sp', ':setlocal spell!<CR>', opts)
+map('n', '<leader>sp', ':setlocal spell!<CR>', optsWithDesc("toggle spell check"))
+--buffer stuff (gt and gT are prev/next tab in stock vim)
+map('n', 'gf', ':bnext<CR>', optsWithDesc("next buffer"))
+map('n', 'gF', ':bprevious<CR>', optsWithDesc("prev buffer"))
 --use ctrl+direction to move between splits.
-map('n', '<C-h>', '<C-w>h', opts)
-map('n', '<C-j>', '<C-w>j', opts)
-map('n', '<C-k>', '<C-w>k', opts)
-map('n', '<C-l>', '<C-w>l', opts)
+map('n', '<C-h>', '<C-w>h', optsWithDesc("move to split to the right"))
+map('n', '<C-j>', '<C-w>j', optsWithDesc("move to split below"))
+map('n', '<C-k>', '<C-w>k', optsWithDesc("move to split above"))
+map('n', '<C-l>', '<C-w>l', optsWithDesc("move to split to the left"))
 --toggle folds with space.
-map('', '<Space>', 'za', opts)
+map('n', '<Space>', 'za', optsWithDesc("toggle fold"))
 --clear highlighting with leader+h
-map('', '<leader>h', ':nohls<CR>', opts)
+map('', '<leader>h', ':nohls<CR>', optsWithDesc("clear highlighting"))
+--open file browser with leader+t
+map('n', '<leader>t', ':Lexplore<CR>', optsWithDesc("toggle file browser"))

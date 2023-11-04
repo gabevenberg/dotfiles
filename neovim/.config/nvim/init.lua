@@ -107,6 +107,9 @@ local function optsWithDesc(desc)
 end
 --toggle spell check
 map('n', '<leader>sp', ':setlocal spell!<CR>', optsWithDesc("toggle spell check"))
+--buffer stuff (gt and gT are prev/next tab in stock vim)
+map('n', 'gf', ':bnext<CR>', optsWithDesc("next buffer"))
+map('n', 'gF', ':bprevious<CR>', optsWithDesc("prev buffer"))
 --use ctrl+direction to move between splits.
 map('n', '<C-h>', '<C-w>h', optsWithDesc("move to split to the right"))
 map('n', '<C-j>', '<C-w>j', optsWithDesc("move to split below"))
@@ -143,9 +146,6 @@ map('n', '<leader>fto', ':TodoTelescope', optsWithDesc("search todos"))
 map('n', '<leader>ft', ':Telescope treesitter<CR>', optsWithDesc("search treesitter"))
 --Treesitter context
 map('n', '<leader>c', ':TSContextToggle<CR>', optsWithDesc("toggle ts context"))
---tabline stuff (gt and gT are prev/next tab in stock vim)
-map('n', 'gf', ':bnext<CR>', optsWithDesc("next buffer"))
-map('n', 'gF', ':bprevious<CR>', optsWithDesc("prev buffer"))
 --gitsigns
 map('n', '<leader>bl', ':Gitsigns toggle_current_line_blame<CR>', optsWithDesc("toggle inline git blame"))
 -- toggle keymappings for venn using <leader>v
