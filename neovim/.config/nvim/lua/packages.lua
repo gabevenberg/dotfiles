@@ -69,8 +69,8 @@ require('lazy').setup({
 					'lua_ls',
 					'rust_analyzer',
 					'bashls',
-					'pylsp', -- run PylspInstall pylsp-rope python-lsp-black python-lsp-ruff
 					'pyright',
+					'ruff_lsp',
 					'texlab',
 					'clangd',
 				},
