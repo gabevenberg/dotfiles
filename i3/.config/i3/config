@@ -168,7 +168,7 @@ font pango:DejaVu Sans Mono 8
 		# back to normal: Enter or Escape or $mod+shift+r
 		bindsym Return mode "default"
 		bindsym Escape mode "default"
-		bindsym $mod+r mode "default"
+		bindsym $mod+ctrl+r mode "default"
 	}
 
 	bindsym $mod+ctrl+r mode "resize"
