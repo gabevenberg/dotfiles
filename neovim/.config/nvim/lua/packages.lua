@@ -51,6 +51,9 @@ require('lazy').setup({
 	},
 	{
 		'williamboman/mason.nvim',
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+		},
 		opts = {
 			ui = {
 				icons = {
@@ -63,6 +66,9 @@ require('lazy').setup({
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+		},
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
@@ -123,10 +129,10 @@ require('lazy').setup({
 		'nvim-telescope/telescope.nvim',
 		config = true,
 		dependencies = {
-			{ 'nvim-lua/popup.nvim' },
-			{ 'nvim-treesitter/nvim-treesitter' },
-			{ 'nvim-telescope/telescope-symbols.nvim' },
-			{ 'nvim-telescope/telescope-file-browser.nvim' },
+			'nvim-lua/popup.nvim',
+			'nvim-treesitter/nvim-treesitter',
+			'nvim-telescope/telescope-symbols.nvim',
+			'nvim-telescope/telescope-file-browser.nvim',
 		}
 	},
 	{
