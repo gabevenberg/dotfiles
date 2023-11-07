@@ -106,7 +106,7 @@ local function optsWithDesc(desc)
 	return {silent=true, desc=desc}
 end
 --toggle spell check
-map('n', '<leader>sp', ':setlocal spell!<CR>', optsWithDesc("toggle spell check"))
+map('n', '<leader>cs', ':setlocal spell!<CR>', optsWithDesc("toggle spell check"))
 --buffer stuff (gt and gT are prev/next tab in stock vim)
 map('n', 'gf', ':bnext<CR>', optsWithDesc("next buffer"))
 map('n', 'gF', ':bprevious<CR>', optsWithDesc("prev buffer"))
@@ -142,13 +142,19 @@ map('n', '<leader>fz', ':Telescope current_buffer_fuzzy_find<CR>', optsWithDesc(
 map('n', '<leader>fgc', ':Telescope git_commits<CR>', optsWithDesc("search git commits"))
 map('n', '<leader>fgb', ':Telescope git_branches<CR>', optsWithDesc("search git branches"))
 map('n', '<leader>fgs', ':Telescope git_stash<CR>', optsWithDesc("search git stash"))
-map('n', '<leader>fto', ':TodoTelescope', optsWithDesc("search todos"))
+map('n', '<leader>fto', ':TodoTelescope<CR>', optsWithDesc("search todos"))
 map('n', '<leader>ft', ':Telescope treesitter<CR>', optsWithDesc("search treesitter"))
 --Treesitter context
-map('n', '<leader>c', ':TSContextToggle<CR>', optsWithDesc("toggle ts context"))
+map('n', '<leader>co', ':TSContextToggle<CR>', optsWithDesc("toggle ts context"))
 --gitsigns
-map('n', '<leader>bl', ':Gitsigns toggle_current_line_blame<CR>', optsWithDesc("toggle inline git blame"))
+map('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>', optsWithDesc("toggle inline git blame"))
 -- toggle keymappings for venn using <leader>v
-map('n', '<leader>v', ":lua Toggle_venn()<CR>", optsWithDesc("toggle venn.nvim"))
+map('n', '<leader>v', ":lua Toggle_venn()", optsWithDesc("toggle venn.nvim"))
 -- treesj
 map('n', '<leader>j', ':TSJToggle<CR>', optsWithDesc("treesitter split/join"))
+-- a dedicated floating scratch terminal, seperate from the normal toggleterm terminals.
+local Terminal  = require('toggleterm.terminal').Terminal
+Floatingterm = Terminal:new({ hidden = true,
+direction="float"})
+
+vim.api.nvim_set_keymap("n", "<leader>s", ':lua Floatingterm:toggle()<CR>', optsWithDesc("open scratch terminal"))
