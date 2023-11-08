@@ -263,12 +263,12 @@ require('lazy').setup({
         'romgrk/nvim-treesitter-context',
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
         opts = {
-            enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-            max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-            trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+            enable = true,         -- Enable this plugin (Can be enabled/disabled later via commands)
+            max_lines = 0,         -- How many lines the window should span. Values <= 0 mean no limit.
+            trim_scope = 'outer',  -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
             min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
-            zindex = 200, -- The Z-index of the context window
-            mode = 'cursor', -- Line used to calculate context. Choices: 'cursor', 'topline'
+            zindex = 200,          -- The Z-index of the context window
+            mode = 'cursor',       -- Line used to calculate context. Choices: 'cursor', 'topline'
             -- Separator between context and content. Should be a single character string, like '-'.
             -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
             separator = nil,
@@ -312,7 +312,7 @@ require('lazy').setup({
         'chentoast/marks.nvim',
         config = true
     },
-    'sitiom/nvim-numbertoggle',
+    { 'sitiom/nvim-numbertoggle', },
     {
         'numToStr/Comment.nvim',
         config = true,
@@ -327,7 +327,13 @@ require('lazy').setup({
             max_join_length = 256,
         }
     },
-    "jbyuki/venn.nvim",
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = true,
+    },
+    { "jbyuki/venn.nvim", },
 
     --colorscheme
     {
