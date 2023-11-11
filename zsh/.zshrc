@@ -147,7 +147,7 @@
 	alias please='sudo $(fc -ln -1)'
 	alias la='ls -la'
 	alias ll='ls -l'
-	alias say='espeak -v default  -p 10 -s 150 -a 200 2> /dev/null'
+	alias say='espeak -p 10 -s 150 -a 200 2> /dev/null'
 	alias tmux='tmux -u'
 	alias pdfmk='latexmk -lualatex -pvc'
 	# needs to have a number immediately after it.
