@@ -183,3 +183,8 @@
 	#if it was installed using git, can just source the one file:
 	testPath="$HOME/.fzf.zsh"
 	[ -f "$testPath" ] && source $testPath
+
+#pyenv
+    export PYENV_ROOT="$HOME/.pyenv"
+    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
