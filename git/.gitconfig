@@ -1,11 +1,11 @@
 [user]
-	email = venberggabe@johndeere.com
+	email = gabevenberg@gmail.com
 	name = Gabe Venberg
 [alias]
 	hist = log --graph --date-order --date=short --pretty=format:'%C(auto)%h%d %C(reset)%s %C(bold blue)%ce %C(reset)%C(green)%cr (%cd)'
 	graph = log --graph --topo-order --all --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'
 [init]
-	defaultBranch = trunk
+	defaultBranch = main
 [push]
 	autoSetupRemote = true
 [difftool]
