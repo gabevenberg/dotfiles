@@ -122,8 +122,6 @@ map('', '<leader>h', ':nohls<CR>', optsWithDesc("clear highlighting"))
 --open file browser with leader+t
 map('n', '<leader>t', ':NvimTreeToggle<CR>', optsWithDesc("toggle file browser"))
 --open terminal with ctrl-\
---open symbols-outline with leader+o
-map('n', '<leader>o', ':SymbolsOutline<CR>', optsWithDesc("toggle LSP symbol outline"))
 --telescope stuff
 -- setup leader-f prefix in whitch-key
 wk.register {

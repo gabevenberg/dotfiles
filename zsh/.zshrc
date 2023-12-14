@@ -13,15 +13,6 @@
 
 
 #set important shell variables
-	#fancy way of testing if a command exists
-	ruby --version &>/dev/null && export PATH="$PATH:$(ruby -e 'puts Gem.user_dir' 2> /dev/null)/bin/"
-	#test that these nonstandard paths exist before adding to PATH.
-	testPath="$HOME/.local/bin"
-	[ -d "$testPath" ] && export PATH="$PATH:$testPath"
-	export PATH="$PATH:/opt"
-	testPath="$HOME/.cargo/bin"
-	[ -d "$testPath" ] && export PATH="$PATH:$testPath"
-	export PATH="$PATH:/opt"
 	#set default editor and pager.
 	export EDITOR=nvim
 	export VISUAL=nvim
@@ -36,6 +27,13 @@
 	export TIMEFMT="%J  %*U user %*S system %P cpu %*E total"
 	export PIPENV_VENV_IN_PROJECT=true
 	export POETRY_VIRTUALENVS_IN_PROJECT=true
+    #test that these nonstandard paths exist before adding to PATH.
+    testPath="$HOME/.local/bin"
+    [ -d "$testPath" ] && export PATH="$PATH:$testPath"
+    export PATH="$PATH:/opt"
+    testPath="$HOME/.cargo/bin"
+    [ -d "$testPath" ] && export PATH="$PATH:$testPath"
+    export PATH="$PATH:/opt"
 
 #prompt
 	autoload -U promptinit
@@ -184,7 +182,12 @@
 	testPath="$HOME/.fzf.zsh"
 	[ -f "$testPath" ] && source $testPath
 
-#pyenv
-    export PYENV_ROOT="$HOME/.pyenv"
-    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
+#check for existence of pyenv before setting it up.
+    if (($+commands[pyenv])); then
+        export PYENV_ROOT="$HOME/.pyenv"
+        [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+        eval "$(pyenv init -)"
+    fi
+
+#fancy way of testing if a command exists
+ruby --version &>/dev/null && export PATH="$PATH:$(ruby -e 'puts Gem.user_dir' 2> /dev/null)/bin/"
