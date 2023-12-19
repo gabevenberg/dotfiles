@@ -7,7 +7,7 @@ This does not list the package manager dependencies of the programs the dotfiles
 GNU stow is used to manage individual dotfiles 'packages'.
 
 ### Aalacritty
-setup to use Hack Nerd Font (`ttf-hack-nerd`) for an icon-rich font, needed for the full nvim and for yazi. Can easily be changed to any other nerd-font patched font.
+uses `hack` for a font, dont need a patched nerd font, normal `ttf-hack` (or any other font) combined with `ttf-nerd-fonts-symbols` will do.
 
 ### Kitty
 you dont need a patched Nerd Font, normal `ttf-fira-code` combined with `ttf-nerd-fonts-symbols` will do. Can also change what font is used easily, but always needs the nerd-font symbols.
