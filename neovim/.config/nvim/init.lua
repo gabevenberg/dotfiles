@@ -12,7 +12,7 @@ require('packages')
 
 --helper functions
 local function keyCode(string)
-	return vim.api.nvim_replace_termcodes(str, true, true, true, true)
+    return vim.api.nvim_replace_termcodes(str, true, true, true, true)
 end
 
 local wk = require("which-key")
@@ -35,7 +35,7 @@ opt.breakindent = true
 opt.colorcolumn = "80,100,120"
 --add ruler to side of screen.
 opt.number = true
-opt.numberwidth=3
+opt.numberwidth = 3
 --displays cordinates of your cursor in statusbar
 opt.ruler = true
 --always leave 5 cells between cursor and side of window.
@@ -58,8 +58,8 @@ opt.autoindent = true
 opt.smartindent = true
 opt.smarttab = true
 --space based tabs.
-opt.softtabstop=-1 --negative value inherrits shiftwidth.
-opt.expandtab=true
+opt.softtabstop = -1 --negative value inherrits shiftwidth.
+opt.expandtab = true
 --highlight search results as you type.
 opt.hlsearch = true
 opt.incsearch = true
@@ -72,9 +72,20 @@ opt.fillchars = 'stl:=,stlnc: ,vert:|,fold:-'
 opt.foldcolumn = 'auto:4'
 opt.foldenable = true
 opt.foldignore = ''
+--display whitespace as other chars:
+opt.list = true
+opt.listchars = {
+    tab = '>-',
+    eol = '↲',
+    nbsp='␣',
+    trail='•',
+    extends = '⟩',
+    precedes = '⟨'
+}
+opt.showbreak = '↪'
 
 --sets colorscheme. to get a list of avalible options, do colorscheme <Space> <C-d>
-vim.opt.background="dark"
+vim.opt.background = "dark"
 -- vim.cmd 'colorscheme moonfly'
 -- vim.cmd 'colorscheme nightfly'
 -- vim.cmd 'colorscheme nordic'
@@ -83,27 +94,27 @@ vim.cmd 'colorscheme gruvbox'
 --function for venn.nvim
 -- venn.nvim: enable or disable keymappings
 function _G.Toggle_venn()
-	local venn_enabled = vim.inspect(vim.b.venn_enabled)
-	if venn_enabled == "nil" then
-		vim.b.venn_enabled = true
-		vim.cmd [[setlocal ve=all]]
-		-- draw a line on HJKL keystokes
-		vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", { noremap = true })
-		vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", { noremap = true })
-		vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", { noremap = true })
-		vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", { noremap = true })
-		-- draw a box by pressing "f" with visual selection
-		vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", { noremap = true })
-	else
-		vim.cmd [[setlocal ve=]]
-		vim.cmd [[mapclear <buffer>]]
-		vim.b.venn_enabled = nil
-	end
+    local venn_enabled = vim.inspect(vim.b.venn_enabled)
+    if venn_enabled == "nil" then
+        vim.b.venn_enabled = true
+        vim.cmd [[setlocal ve=all]]
+        -- draw a line on HJKL keystokes
+        vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", { noremap = true })
+        -- draw a box by pressing "f" with visual selection
+        vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", { noremap = true })
+    else
+        vim.cmd [[setlocal ve=]]
+        vim.cmd [[mapclear <buffer>]]
+        vim.b.venn_enabled = nil
+    end
 end
 
 --keyboard mappings
 local function optsWithDesc(desc)
-	return {silent=true, desc=desc}
+    return { silent = true, desc = desc }
 end
 --toggle spell check
 map('n', '<leader>cs', ':setlocal spell!<CR>', optsWithDesc("toggle spell check"))
@@ -125,9 +136,9 @@ map('n', '<leader>t', ':NvimTreeToggle<CR>', optsWithDesc("toggle file browser")
 --telescope stuff
 -- setup leader-f prefix in whitch-key
 wk.register {
-	["<leader>f"]={
-		name="+telescope"
-	}
+    ["<leader>f"] = {
+        name = "+telescope"
+    }
 }
 map('n', '<leader>ff', ':Telescope find_files<CR>', optsWithDesc("find files"))
 map('n', '<leader>fg', ':Telescope live_grep<CR>', optsWithDesc("grep"))
@@ -151,8 +162,10 @@ map('n', '<leader>v', ":lua Toggle_venn()", optsWithDesc("toggle venn.nvim"))
 -- treesj
 map('n', '<leader>j', ':TSJToggle<CR>', optsWithDesc("treesitter split/join"))
 -- a dedicated floating scratch terminal, seperate from the normal toggleterm terminals.
-local Terminal  = require('toggleterm.terminal').Terminal
-Floatingterm = Terminal:new({ hidden = true,
-direction="float"})
+local Terminal = require('toggleterm.terminal').Terminal
+Floatingterm   = Terminal:new({
+    hidden = true,
+    direction = "float"
+})
 
 vim.api.nvim_set_keymap("n", "<leader>s", ':lua Floatingterm:toggle()<CR>', optsWithDesc("open scratch terminal"))

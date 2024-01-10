@@ -68,6 +68,17 @@ opt.fillchars = 'stl:=,stlnc: ,vert:|,fold:-'
 opt.foldcolumn = 'auto:4'
 opt.foldenable = true
 opt.foldignore = ''
+--display whitespace as other chars:
+opt.list = true
+opt.listchars = {
+    tab = '>-',
+    eol = '↲',
+    nbsp='␣',
+    trail='•',
+    extends = '⟩',
+    precedes = '⟨'
+}
+opt.showbreak = '↪'
 
 --keyboard mappings
 local function optsWithDesc(desc)
