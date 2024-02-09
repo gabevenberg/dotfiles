@@ -42,3 +42,5 @@ config
 nvim
 neovim
 config
+Syncthing
+homelab
