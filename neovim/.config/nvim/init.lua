@@ -57,9 +57,9 @@ opt.shiftwidth = 0 --zero inherrits tabstop.
 opt.autoindent = true
 opt.smartindent = true
 opt.smarttab = true
---space based tabs.
-opt.softtabstop = -1 --negative value inherrits shiftwidth.
+-- for space based tabs, change expandtab to false.
 opt.expandtab = true
+opt.softtabstop = -1 --negative value inherrits shiftwidth.
 --highlight search results as you type.
 opt.hlsearch = true
 opt.incsearch = true
