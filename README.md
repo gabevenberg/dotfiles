@@ -104,6 +104,9 @@ uses yazi as a file explorer
 ### Yazi
 for accurate mimetype info, I suggest installing `perl-file-mimeinfo`
 
+### Git
+For diff tools, install `git-delta` and `difftastic`. I also reccomend installing `lazygit` and/or `tig`
+
 ### Khal and Khard:
 both require the vdirsyncer program and config.
 
