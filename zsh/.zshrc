@@ -81,6 +81,9 @@
 	setopt ZLE
 	#Enable vi mode for the ZLE. it should be set by default due to our EDITOR and VISUAL, but this is just to be safe.
 	bindkey -v
+    #allow backspacing beyond the point you entered insert mode:
+    bindkey -v '^?' backward-delete-char
+    bindkey "^W" backward-kill-word 
 	# Sends cd commands without the need for 'cd'
 	setopt AUTO_CD
 	# Kill all child processes when we exit, dont leave them running
@@ -185,12 +188,15 @@
 #starship
 eval "$(starship init zsh)"
 
+#zoxide stuff
+	command -v zoxide && eval "$(zoxide init zsh)"
+
 #check for existence of pyenv before setting it up.
-    if (($+commands[pyenv])); then
+    if command -v pyenv &> /dev/null; then
         export PYENV_ROOT="$HOME/.pyenv"
         [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
         eval "$(pyenv init -)"
     fi
 
 #fancy way of testing if a command exists
-ruby --version &>/dev/null && export PATH="$PATH:$(ruby -e 'puts Gem.user_dir' 2> /dev/null)/bin/"
+command -v ruby &>/dev/null && export PATH="$PATH:$(ruby -e 'puts Gem.user_dir' 2> /dev/null)/bin/"
