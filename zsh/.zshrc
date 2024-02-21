@@ -182,6 +182,9 @@
 	testPath="$HOME/.fzf.zsh"
 	[ -f "$testPath" ] && source $testPath
 
+#starship
+eval "$(starship init zsh)"
+
 #check for existence of pyenv before setting it up.
     if (($+commands[pyenv])); then
         export PYENV_ROOT="$HOME/.pyenv"
