@@ -2,8 +2,6 @@
 
 format = """
 [](color_orange)\
-$os\
-[ ](bg:color_orange)\
 $hostname\
 [@](bg:color_orange)\
 $username\
@@ -45,31 +43,6 @@ style = "bg:color_orange"
 [fill]
 symbol = " "
 style = "bg:color_bg3"
-
-[os]
-disabled = false
-style = "bg:color_orange fg:color_fg0"
-
-[os.symbols]
-Windows = "󰍲"
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Android = ""
-Arch = "󰣇"
-Artix = "󰣇"
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
-NixOS = ""
 
 [username]
 show_always = true
