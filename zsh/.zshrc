@@ -36,6 +36,7 @@
     export PATH="$PATH:/opt"
 
 #prompt
+setprompt() {
 	autoload -U promptinit
 	promptinit
 	autoload -U colors
@@ -51,6 +52,7 @@
 		#when not in a repo, show full path to current directory. when in one, show path from base direcory of the repo.
 		zstyle ':vcs_info:*' nvcsformats '%~'
 		zstyle ':vcs_info:*' formats '%r/%S %F{green}[%b]%f'
+		zstyle ':vcs_info:*' actionformats '%r/%S %F{green}[%b] %F{red}<%a>%f'
 
 	#the precmd function, called just before printing the prompt. 
 	function precmd() {
@@ -58,10 +60,13 @@
 	}
 
 	#Make the right prompt blank, just to be sure.
-	RPROMPT=
+    RPROMPT=''
 
 	#on the top line, show a whole bunch of info. botton line should be as minimal as possilbe (just a single char to  input next to...)
-	PROMPT=$'%F{cyan}[%n@%m]%f%F{red}├────┤%f${vcs_info_msg_0_}\n»'
+	PROMPT=$'%F{cyan}[%n@%m]%f%F{red}├────┤%f${vcs_info_msg_0_} %F{white}[%D %T]%f\n»'
+}
+#starship if its installed, otherwise the prompt we just defined.
+	command -v starship &> /dev/null && eval "$(starship init zsh)" || setprompt
 
 #show dots while waiting for tab-completion
 	expand-or-complete-with-dots() {
@@ -76,14 +81,16 @@
 	zle -N expand-or-complete-with-dots
 	bindkey "^I" expand-or-complete-with-dots
 
-#misc
+# editing stuff
 	# Enable the ZLE line editor, which is default behavior, but to be sure
 	setopt ZLE
 	#Enable vi mode for the ZLE. it should be set by default due to our EDITOR and VISUAL, but this is just to be safe.
 	bindkey -v
-    #allow backspacing beyond the point you entered insert mode:
-    bindkey -v '^?' backward-delete-char
-    bindkey "^W" backward-kill-word 
+	#allow backspacing beyond the point you entered insert mode:
+	bindkey -v '^?' backward-delete-char
+	bindkey "^W" backward-kill-word 
+
+#misc
 	# Sends cd commands without the need for 'cd'
 	setopt AUTO_CD
 	# Kill all child processes when we exit, dont leave them running
@@ -161,16 +168,12 @@
 
 #setup grep to be a bit more nice
 	local GREP_OPTIONS=""
-
 	# color grep results
 	GREP_OPTIONS+=" --color=auto"
-
 	# ignore VCS folders (if the necessary grep flags are available)
 	local VCS_FOLDERS="{.bzr,CVS,.git,.hg,.svn}"
-
 	GREP_OPTIONS+=" --exclude-dir=$VCS_FOLDERS"
 	GREP_OPTIONS+=" --exclude=$VCS_FOLDERS"
-
 	# export grep settings
 	alias grep="grep $GREP_OPTIONS"
 
@@ -185,11 +188,8 @@
 	testPath="$HOME/.fzf.zsh"
 	[ -f "$testPath" ] && source $testPath
 
-#starship
-eval "$(starship init zsh)"
-
 #zoxide stuff
-	command -v zoxide && eval "$(zoxide init zsh)"
+	command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
 
 #check for existence of pyenv before setting it up.
     if command -v pyenv &> /dev/null; then
