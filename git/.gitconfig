@@ -39,3 +39,5 @@
 	sort = -committerdate
 [status]
 	submodulesummary = true
+[includeIf "gitdir:~/work/"]
+    path = ".config/git/work.gitconfig"
