@@ -28,8 +28,8 @@ mpd_music_dir = ~/music
 
 mpd_crossfade_time = 5
 
- Exclude pattern for random song action
- http://www.boost.org/doc/libs/1_46_1/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html
+## Exclude pattern for random song action
+## http://www.boost.org/doc/libs/1_46_1/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html
 random_exclude_pattern = "^(temp|midi_songs).*"
 
 ##### music visualizer #####

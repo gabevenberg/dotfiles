@@ -25,7 +25,7 @@ def_key "N"
     previous_found_item
 
 def_key "d"
-	delete_playlist_items
+    delete_playlist_items
 
 def_key "d"
   delete_stored_playlist

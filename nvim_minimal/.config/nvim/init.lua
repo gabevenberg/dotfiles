@@ -10,7 +10,7 @@ vim.g.mapleader = ';'
 
 --helper functions
 local function keyCode(string)
-	return vim.api.nvim_replace_termcodes(str, true, true, true, true)
+    return vim.api.nvim_replace_termcodes(str, true, true, true, true)
 end
 
 --options using vim.opt (aliased, of course.)
@@ -82,7 +82,7 @@ opt.showbreak = '↪'
 
 --keyboard mappings
 local function optsWithDesc(desc)
-	return {silent=true, desc=desc}
+    return {silent=true, desc=desc}
 end
 local opts = { noremap = true, silent = true }
 --toggle spell check

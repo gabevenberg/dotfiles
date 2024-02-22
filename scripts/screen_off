@@ -8,8 +8,8 @@ locker=$@
 
 #make sure we set screen back to defaults if we force close the script
 cleanup() {
-	xset dpms 0 0 600 #&& echo "cleaned up!"
-	exit
+    xset dpms 0 0 600 #&& echo "cleaned up!"
+    exit
 }
 
 trap "cleanup" EXIT

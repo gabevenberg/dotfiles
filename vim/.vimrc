@@ -23,96 +23,96 @@ filetype plugin on
 set noswapfile "disables creation of swap files
 
 "useful keybinds
-	let mapleader = "\\"
-	"spell checking
-		"toggle spell checking
-		noremap <leader>ss :setlocal spell!<CR>
+    let mapleader = "\\"
+    "spell checking
+        "toggle spell checking
+        noremap <leader>ss :setlocal spell!<CR>
 
-	"splitting panels with <leader>| or -
-		nnoremap <leader>\| :vs<Enter>
-		nnoremap <leader>\- :sp<Enter>
+    "splitting panels with <leader>| or -
+        nnoremap <leader>\| :vs<Enter>
+        nnoremap <leader>\- :sp<Enter>
 
-		" shortcuts using leader
-		" noremap <leader>sn ]s
-		" noremap <leader>sp [s
-		" noremap <leader>s? z=
+        " shortcuts using leader
+        " noremap <leader>sn ]s
+        " noremap <leader>sp [s
+        " noremap <leader>s? z=
 
-		"navigating splits: Control+hjkl will move from split to split
-			nnoremap <C-h> <C-w>h
-			nnoremap <C-j> <C-w>j
-			nnoremap <C-k> <C-w>k
-			nnoremap <C-l> <C-w>l
+        "navigating splits: Control+hjkl will move from split to split
+            nnoremap <C-h> <C-w>h
+            nnoremap <C-j> <C-w>j
+            nnoremap <C-k> <C-w>k
+            nnoremap <C-l> <C-w>l
 
-		"command mode keybinds
-			"w!! writes using sudo
-			"cnoremap w!! w !sudo tee % >/dev/null
+        "command mode keybinds
+            "w!! writes using sudo
+            "cnoremap w!! w !sudo tee % >/dev/null
 
 "user interface stuff
-	"disables the autocommenting stuff.
-		set formatoptions-=o
-		set formatoptions-=r
-		set formatoptions-=c
+    "disables the autocommenting stuff.
+        set formatoptions-=o
+        set formatoptions-=r
+        set formatoptions-=c
 
-	"disable text wrapping via carriage returns, should only wrap visually 
-		set textwidth=0
-		set wrapmargin=0
-		set wrap
-		set linebreak
-		set breakindent
+    "disable text wrapping via carriage returns, should only wrap visually 
+        set textwidth=0
+        set wrapmargin=0
+        set wrap
+        set linebreak
+        set breakindent
 
-	"adds a ruler to the side of the screen
-	set number
+    "adds a ruler to the side of the screen
+    set number
 
-	"displays the coordinates of your cursour in the statusbar
-	set ruler
+    "displays the coordinates of your cursour in the statusbar
+    set ruler
 
-	"scrollofff sets the number of lines from the top or bottom of the screen before vim will scroll. sidescroll off does the same thing for the sides of the window
-	set scrolloff=5
-	set sidescrolloff=5
+    "scrollofff sets the number of lines from the top or bottom of the screen before vim will scroll. sidescroll off does the same thing for the sides of the window
+    set scrolloff=5
+    set sidescrolloff=5
 
-	"better command line completion
-	set wildmenu
+    "better command line completion
+    set wildmenu
 
-	"ignore cases in search unless you have a capital letter in the search
-	set ignorecase
-	set smartcase
+    "ignore cases in search unless you have a capital letter in the search
+    set ignorecase
+    set smartcase
 
-	"this allows putting the cursor just after the last character of the line.
-	"set virtualedit=onemore
+    "this allows putting the cursor just after the last character of the line.
+    "set virtualedit=onemore
 
-	"show unfinished commands on the RIGHT side of the statusbar. yes, it is working.
-	set showcmd 
+    "show unfinished commands on the RIGHT side of the statusbar. yes, it is working.
+    set showcmd 
 
-	"make regex a bit easier to type
-		set magic
-		set hidden
+    "make regex a bit easier to type
+        set magic
+        set hidden
 
-	"always display status line
-	set laststatus=2
+    "always display status line
+    set laststatus=2
 
-	"keycodes time out fast, mappings have a bit longer
-	set timeout timeoutlen=1000 ttimeout ttimeoutlen=100
+    "keycodes time out fast, mappings have a bit longer
+    set timeout timeoutlen=1000 ttimeout ttimeoutlen=100
 
-	"make it so the session feature wont overwrite our vimrc if the vimrc has newer bindings than this session.
-	set sessionoptions-=options 
+    "make it so the session feature wont overwrite our vimrc if the vimrc has newer bindings than this session.
+    set sessionoptions-=options 
 
 "tab stuff
-	set tabstop=4
-	set shiftwidth=4
-	set autoindent
+    set tabstop=4
+    set shiftwidth=4
+    set autoindent
 
 "highlighting/colour stuff
-	"sets the colorscheme. to get a list of the available colors, do :colorscheme <Space> <C-d>
-	colorscheme ron 
+    "sets the colorscheme. to get a list of the available colors, do :colorscheme <Space> <C-d>
+    colorscheme ron 
 
-	syntax enable
+    syntax enable
 
 
-	"highlight search results
-	set hlsearch
+    "highlight search results
+    set hlsearch
 
-	"search as you type
-	set incsearch
+    "search as you type
+    set incsearch
 
-	"<leader> L clears the search highlighting
-	noremap <leader>l :nohls<CR>
+    "<leader> L clears the search highlighting
+    noremap <leader>l :nohls<CR>

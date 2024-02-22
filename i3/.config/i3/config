@@ -30,195 +30,195 @@ font pango:monospace 8
 font pango:DejaVu Sans Mono 8
 
 #keybinding stuff
-	# Use Mouse+$mod to drag floating windows to their wanted position
-	floating_modifier $mod
+    # Use Mouse+$mod to drag floating windows to their wanted position
+    floating_modifier $mod
 
-	# start a terminal
-	# bindsym $mod+Return exec --no-startup-id alacritty
-	bindsym $mod+Return exec --no-startup-id kitty
-	bindsym $mod+Shift+Return exec cool-retro-term
+    # start a terminal
+    # bindsym $mod+Return exec --no-startup-id alacritty
+    bindsym $mod+Return exec --no-startup-id kitty
+    bindsym $mod+Shift+Return exec cool-retro-term
 
-	# kill focused window
-	bindsym $mod+Shift+q kill
+    # kill focused window
+    bindsym $mod+Shift+q kill
 
-	#start rofi in desktop app mode
-	bindsym $mod+d exec rofi -modi window#run#drun -theme solarized -show drun
+    #start rofi in desktop app mode
+    bindsym $mod+d exec rofi -modi window#run#drun -theme solarized -show drun
 
-	# change focus
-		bindsym $mod+h focus left
-		bindsym $mod+j focus down
-		bindsym $mod+k focus up
-		bindsym $mod+l focus right
+    # change focus
+        bindsym $mod+h focus left
+        bindsym $mod+j focus down
+        bindsym $mod+k focus up
+        bindsym $mod+l focus right
 
-	# move focused window
-		bindsym $mod+Shift+h move left
-		bindsym $mod+Shift+j move down
-		bindsym $mod+Shift+k move up
-		bindsym $mod+Shift+l move right
+    # move focused window
+        bindsym $mod+Shift+h move left
+        bindsym $mod+Shift+j move down
+        bindsym $mod+Shift+k move up
+        bindsym $mod+Shift+l move right
 
-	# move workspace between monitors
-		bindsym $mod+ctrl+Shift+h move workspace to output left
-		bindsym $mod+ctrl+Shift+j move workspace to output down
-		bindsym $mod+ctrl+Shift+k move workspace to output up
-		bindsym $mod+ctrl+Shift+l move workspace to output right
+    # move workspace between monitors
+        bindsym $mod+ctrl+Shift+h move workspace to output left
+        bindsym $mod+ctrl+Shift+j move workspace to output down
+        bindsym $mod+ctrl+Shift+k move workspace to output up
+        bindsym $mod+ctrl+Shift+l move workspace to output right
 
-	# move container between monitors
-		bindsym $mod+ctrl+h move container to output left
-		bindsym $mod+ctrl+j move container to output down
-		bindsym $mod+ctrl+k move container to output up
-		bindsym $mod+ctrl+l move container to output right
+    # move container between monitors
+        bindsym $mod+ctrl+h move container to output left
+        bindsym $mod+ctrl+j move container to output down
+        bindsym $mod+ctrl+k move container to output up
+        bindsym $mod+ctrl+l move container to output right
 
-	## split in horizontal orientation
-	bindsym $mod+shift+backslash  split h
+    ## split in horizontal orientation
+    bindsym $mod+shift+backslash  split h
 
-	# split in vertical orientation
-	bindsym $mod+shift+minus split v
+    # split in vertical orientation
+    bindsym $mod+shift+minus split v
 
-	#enter fullscreen mode for the focused container
-	bindsym $mod+f fullscreen toggle
+    #enter fullscreen mode for the focused container
+    bindsym $mod+f fullscreen toggle
 
-	# change container layout (stacked, tabbed, toggle split)
-		bindsym $mod+e layout stacking
-		bindsym $mod+r layout tabbed
-		bindsym $mod+t layout toggle split
+    # change container layout (stacked, tabbed, toggle split)
+        bindsym $mod+e layout stacking
+        bindsym $mod+r layout tabbed
+        bindsym $mod+t layout toggle split
 
-	# toggle tiling / floating
-	bindsym $mod+Shift+space floating toggle
+    # toggle tiling / floating
+    bindsym $mod+Shift+space floating toggle
 
-	# change focus between tiling / floating windows
-	bindsym $mod+space focus mode_toggle
+    # change focus between tiling / floating windows
+    bindsym $mod+space focus mode_toggle
 
-	# focus the parent container
-	bindsym $mod+a focus parent
+    # focus the parent container
+    bindsym $mod+a focus parent
 
-	# focus the child container
-	bindsym $mod+z focus child
+    # focus the child container
+    bindsym $mod+z focus child
 
-	#make a floating window sticky (moves workspaces with you)
-	bindsym $mod+Shift+a sticky toggle
+    #make a floating window sticky (moves workspaces with you)
+    bindsym $mod+Shift+a sticky toggle
 
-	#make currently focused window a scratchpad
-	bindsym $mod+shift+o move scratchpad
-	#and hide and show it
-	bindsym $mod+o scratchpad show
+    #make currently focused window a scratchpad
+    bindsym $mod+shift+o move scratchpad
+    #and hide and show it
+    bindsym $mod+o scratchpad show
 
-	#workspace switching
-		# Define names for default workspaces for which we configure key bindings later on. We use variables to avoid repeating the names in multiple places.
-		set $ws1 "1"
-		set $ws2 "2"
-		set $ws3 "3"
-		set $ws4 "4"
-		set $ws5 "5"
-		set $ws6 "6"
-		set $ws7 "7"
-		set $ws8 "8"
-		set $ws9 "9"
-		set $ws10 "10"
+    #workspace switching
+        # Define names for default workspaces for which we configure key bindings later on. We use variables to avoid repeating the names in multiple places.
+        set $ws1 "1"
+        set $ws2 "2"
+        set $ws3 "3"
+        set $ws4 "4"
+        set $ws5 "5"
+        set $ws6 "6"
+        set $ws7 "7"
+        set $ws8 "8"
+        set $ws9 "9"
+        set $ws10 "10"
 
-		# switch to workspace
-		bindsym $mod+1 workspace $ws1
-		bindsym $mod+2 workspace $ws2
-		bindsym $mod+3 workspace $ws3
-		bindsym $mod+4 workspace $ws4
-		bindsym $mod+5 workspace $ws5
-		bindsym $mod+6 workspace $ws6
-		bindsym $mod+7 workspace $ws7
-		bindsym $mod+8 workspace $ws8
-		bindsym $mod+9 workspace $ws9
-		bindsym $mod+0 workspace $ws10
+        # switch to workspace
+        bindsym $mod+1 workspace $ws1
+        bindsym $mod+2 workspace $ws2
+        bindsym $mod+3 workspace $ws3
+        bindsym $mod+4 workspace $ws4
+        bindsym $mod+5 workspace $ws5
+        bindsym $mod+6 workspace $ws6
+        bindsym $mod+7 workspace $ws7
+        bindsym $mod+8 workspace $ws8
+        bindsym $mod+9 workspace $ws9
+        bindsym $mod+0 workspace $ws10
 
-		# move focused container to workspace
-		bindsym $mod+Shift+1 move container to workspace $ws1
-		bindsym $mod+Shift+2 move container to workspace $ws2
-		bindsym $mod+Shift+3 move container to workspace $ws3
-		bindsym $mod+Shift+4 move container to workspace $ws4
-		bindsym $mod+Shift+5 move container to workspace $ws5
-		bindsym $mod+Shift+6 move container to workspace $ws6
-		bindsym $mod+Shift+7 move container to workspace $ws7
-		bindsym $mod+Shift+8 move container to workspace $ws8
-		bindsym $mod+Shift+9 move container to workspace $ws9
-		bindsym $mod+Shift+0 move container to workspace $ws10
+        # move focused container to workspace
+        bindsym $mod+Shift+1 move container to workspace $ws1
+        bindsym $mod+Shift+2 move container to workspace $ws2
+        bindsym $mod+Shift+3 move container to workspace $ws3
+        bindsym $mod+Shift+4 move container to workspace $ws4
+        bindsym $mod+Shift+5 move container to workspace $ws5
+        bindsym $mod+Shift+6 move container to workspace $ws6
+        bindsym $mod+Shift+7 move container to workspace $ws7
+        bindsym $mod+Shift+8 move container to workspace $ws8
+        bindsym $mod+Shift+9 move container to workspace $ws9
+        bindsym $mod+Shift+0 move container to workspace $ws10
 
-	# reload the configuration file
-	bindsym $mod+Shift+n reload
-	# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-	bindsym $mod+Shift+r restart
-	# exit i3 (logs you out of your X session)
-	bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+    # reload the configuration file
+    bindsym $mod+Shift+n reload
+    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+    bindsym $mod+Shift+r restart
+    # exit i3 (logs you out of your X session)
+    bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-	# resize window (you can also use the mouse for that)
-	mode "resize" {
-		# These bindings trigger as soon as you enter the resize mode
+    # resize window (you can also use the mouse for that)
+    mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
 
-		# Pressing left will shrink the window’s width.
-		# Pressing right will grow the window’s width.
-		# Pressing up will shrink the window’s height.
-		# Pressing down will grow the window’s height.
-		bindsym h resize shrink width 10 px or 10 ppt
-		bindsym j resize grow height 10 px or 10 ppt
-		bindsym k resize shrink height 10 px or 10 ppt
-		bindsym l resize grow width 10 px or 10 ppt
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
-		# same bindings, but for the arrow keys
-		bindsym Left resize shrink width 10 px or 10 ppt
-		bindsym Down resize grow height 10 px or 10 ppt
-		bindsym Up resize shrink height 10 px or 10 ppt
-		bindsym Right resize grow width 10 px or 10 ppt
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
-		# back to normal: Enter or Escape or $mod+shift+r
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
-		bindsym $mod+ctrl+r mode "default"
-	}
+        # back to normal: Enter or Escape or $mod+shift+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+ctrl+r mode "default"
+    }
 
-	bindsym $mod+ctrl+r mode "resize"
+    bindsym $mod+ctrl+r mode "resize"
 
-	# lock and turn off the screen with mod+x, and lock+suspend computer with mod+shift+x
-		set $lock_command i3lock
-		set $lock_command_nof i3lock -n #versuon of $lock_command that does not fork.
-		bindsym $mod+x exec --no-startup-id "~/dotfiles/scripts/screen_off $lock_command_nof"
-		bindsym $mod+shift+x exec --no-startup-id "$lock_command"; exec --no-startup-id "systemctl suspend"
+    # lock and turn off the screen with mod+x, and lock+suspend computer with mod+shift+x
+        set $lock_command i3lock
+        set $lock_command_nof i3lock -n #versuon of $lock_command that does not fork.
+        bindsym $mod+x exec --no-startup-id "~/dotfiles/scripts/screen_off $lock_command_nof"
+        bindsym $mod+shift+x exec --no-startup-id "$lock_command"; exec --no-startup-id "systemctl suspend"
 
-	# disable screen going to sleep with mod+b, enable screen going to sleep with mod+shift+b
-		bindsym $mod+b exec --no-startup-id "xset s off -dpms; notify-send --expire-time=500 'screen blanking off'"
-		bindsym $mod+shift+b exec --no-startup-id "xset +dpms; notify-send --expire-time=500 'screen blanking on'"
+    # disable screen going to sleep with mod+b, enable screen going to sleep with mod+shift+b
+        bindsym $mod+b exec --no-startup-id "xset s off -dpms; notify-send --expire-time=500 'screen blanking off'"
+        bindsym $mod+shift+b exec --no-startup-id "xset +dpms; notify-send --expire-time=500 'screen blanking on'"
 
-	# change brightness
-		bindsym $mod+control+plus exec --no-startup-id "brightnessctl s +1%; notify-send -h string:x-dunst-stack-tag:brightness --expire-time=500 Brightness\ $(brightnessctl -m| cut --delimiter=, -f 4)"
-		bindsym $mod+control+minus exec --no-startup-id "brightnessctl s 1%-; notify-send -h string:x-dunst-stack-tag:brightness --expire-time=500 Brightness\ $(brightnessctl -m| cut --delimiter=, -f 4)"
+    # change brightness
+        bindsym $mod+control+plus exec --no-startup-id "brightnessctl s +1%; notify-send -h string:x-dunst-stack-tag:brightness --expire-time=500 Brightness\ $(brightnessctl -m| cut --delimiter=, -f 4)"
+        bindsym $mod+control+minus exec --no-startup-id "brightnessctl s 1%-; notify-send -h string:x-dunst-stack-tag:brightness --expire-time=500 Brightness\ $(brightnessctl -m| cut --delimiter=, -f 4)"
 
-	#screenshot everything with mod+s, current window with mod+shift+s, selection with mod+ctrl+s
-		bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Whole-desktop screenshot taken'"
-		bindsym $mod+shift+s exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Window screenshot taken'"
-		bindsym $mod+ctrl+s exec --no-startup-id "maim -s ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Selection screenshot taken'"
+    #screenshot everything with mod+s, current window with mod+shift+s, selection with mod+ctrl+s
+        bindsym $mod+s exec --no-startup-id "maim ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Whole-desktop screenshot taken'"
+        bindsym $mod+shift+s exec --no-startup-id "maim -i $(xdotool getactivewindow) ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Window screenshot taken'"
+        bindsym $mod+ctrl+s exec --no-startup-id "maim -s ~/Pictures/$(date +%s).png; notify-send --expire-time=1000 'Selection screenshot taken'"
 
-	#screenshot everything with mod+c, current window with mod+shift+c, selection with mod+ctrl+c (to clipboard)
-		bindsym $mod+c exec --no-startup-id "maim | xclip -selection clipboard -t image/png; notify-send --expire-time=1000 'Whole-desktop screenshot taken to clipboard'"
-		bindsym $mod+shift+c exec --no-startup-id "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png; notify-send --expire-time=1000 'Window screenshot taken to clipboard'"
-		bindsym $mod+ctrl+c exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png; notify-send --expire-time=1000 'Selection screenshot taken to clipboard'"
+    #screenshot everything with mod+c, current window with mod+shift+c, selection with mod+ctrl+c (to clipboard)
+        bindsym $mod+c exec --no-startup-id "maim | xclip -selection clipboard -t image/png; notify-send --expire-time=1000 'Whole-desktop screenshot taken to clipboard'"
+        bindsym $mod+shift+c exec --no-startup-id "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png; notify-send --expire-time=1000 'Window screenshot taken to clipboard'"
+        bindsym $mod+ctrl+c exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png; notify-send --expire-time=1000 'Selection screenshot taken to clipboard'"
 
-	#colour picker with xcolor
-		bindsym --release $mod+p exec --no-startup-id "xcolor -s"
+    #colour picker with xcolor
+        bindsym --release $mod+p exec --no-startup-id "xcolor -s"
 
-	#mpd controls
-		bindsym $mod+mod1+p exec --no-startup-id "mpc toggle"
-		bindsym $mod+mod1+plus exec --no-startup-id "mpc volume +1; notify-send MPD: \\"$(mpc volume)\\" --expire-time=1000 -h string:x-dunst-stack-tag:mpdVolume"
-		bindsym $mod+mod1+minus exec --no-startup-id "mpc volume -1; notify-send MPD: \\"$(mpc volume)\\" --expire-time=1000 -h string:x-dunst-stack-tag:mpdVolume"
+    #mpd controls
+        bindsym $mod+mod1+p exec --no-startup-id "mpc toggle"
+        bindsym $mod+mod1+plus exec --no-startup-id "mpc volume +1; notify-send MPD: \\"$(mpc volume)\\" --expire-time=1000 -h string:x-dunst-stack-tag:mpdVolume"
+        bindsym $mod+mod1+minus exec --no-startup-id "mpc volume -1; notify-send MPD: \\"$(mpc volume)\\" --expire-time=1000 -h string:x-dunst-stack-tag:mpdVolume"
 
-	#open volume control
-		bindsym $mod+shift+p exec pavucontrol
+    #open volume control
+        bindsym $mod+shift+p exec pavucontrol
 
-	#volume control
-		bindsym $mod+plus exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+; notify-send --expire-time=1000 -h string:x-dunst-stack-tag:volume $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
-		bindsym $mod+minus exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-; notify-send --expire-time=1000 -h string:x-dunst-stack-tag:volume $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
+    #volume control
+        bindsym $mod+plus exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+; notify-send --expire-time=1000 -h string:x-dunst-stack-tag:volume $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
+        bindsym $mod+minus exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-; notify-send --expire-time=1000 -h string:x-dunst-stack-tag:volume $(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
 
-	#open firefox
-		bindsym $mod+w exec firefox
+    #open firefox
+        bindsym $mod+w exec firefox
 
 #make certan windwows always floating
-	#volume control
-	for_window [class="Pavucontrol"] floating enable
-	for_window [title="Origin"] floating enable
+    #volume control
+    for_window [class="Pavucontrol"] floating enable
+    for_window [title="Origin"] floating enable
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -229,15 +229,15 @@ bar {
 
 #startup applications
 
-	#resetting the wallpaper. We are not setting it here, so we can have different wallpapers on different machines. use feh --bg-fill FILE to set it. it will write a .fehbg file.
-	exec --no-startup-id ~/.fehbg
+    #resetting the wallpaper. We are not setting it here, so we can have different wallpapers on different machines. use feh --bg-fill FILE to set it. it will write a .fehbg file.
+    exec --no-startup-id ~/.fehbg
 
-	#dunst
-	exec --no-startup-id /usr/bin/dunst
+    #dunst
+    exec --no-startup-id /usr/bin/dunst
 
-	#get gnome-keyring running
-	exec --no-startup-id dbus-update-activation-environment --all
-	exec --no-startup-id gnome-keyring-daemon --start --components=secrets
+    #get gnome-keyring running
+    exec --no-startup-id dbus-update-activation-environment --all
+    exec --no-startup-id gnome-keyring-daemon --start --components=secrets
 
-	#geoclue
-	exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+    #geoclue
+    exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent

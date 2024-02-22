@@ -1,22 +1,22 @@
 [user]
-	email = gabevenberg@gmail.com
-	name = Gabe Venberg
+    email = gabevenberg@gmail.com
+    name = Gabe Venberg
 [alias]
-	hist = log --graph --date-order --date=short --pretty=format:'%C(auto)%h%d %C(reset)%s %C(bold blue)%ce %C(reset)%C(green)%cr (%cd)'
-	graph = log --graph --topo-order --all --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'
+    hist = log --graph --date-order --date=short --pretty=format:'%C(auto)%h%d %C(reset)%s %C(bold blue)%ce %C(reset)%C(green)%cr (%cd)'
+    graph = log --graph --topo-order --all --pretty=format:'%C(auto)%h %C(cyan)%an %C(blue)%ar %C(auto)%d %s'
     recent = branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)'
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [push]
-	autoSetupRemote = true
-	default = current
+    autoSetupRemote = true
+    default = current
 [difftool]
-	prompt = false
+    prompt = false
 [diff]
     ; tool = nvimdiff
     tool = difftastic
-	algorithm = histogram
-	submodule = log
+    algorithm = histogram
+    submodule = log
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [difftool "difftastic"]
@@ -24,20 +24,20 @@
 [pager]
     difftool=true
 [pull]
-	ff = true
+    ff = true
 [merge]
-	conflictstyle = zdiff3
+    conflictstyle = zdiff3
 [rebase]
-	autoSquash = true
+    autoSquash = true
 [help]
-	autocorrect = prompt
+    autocorrect = prompt
 [core]
-	pager = delta
+    pager = delta
 [delta]
     side-by-side = true
 [branch]
-	sort = -committerdate
+    sort = -committerdate
 [status]
-	submodulesummary = true
+    submodulesummary = true
 [includeIf "gitdir:~/work/"]
     path = ".config/git/work.gitconfig"
