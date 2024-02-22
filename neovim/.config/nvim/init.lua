@@ -169,3 +169,6 @@ Floatingterm   = Terminal:new({
 })
 
 vim.api.nvim_set_keymap("n", "<leader>s", ':lua Floatingterm:toggle()<CR>', optsWithDesc("open scratch terminal"))
+
+-- load overrides from other stow packages.
+vim.cmd('runtime! override/**/*.lua')
