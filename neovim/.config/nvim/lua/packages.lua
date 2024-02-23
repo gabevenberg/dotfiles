@@ -41,6 +41,8 @@ require('lazy').setup({
                     'regex',
                     'rust',
                     'toml',
+                    'fish',
+                    'nu',
                 },
                 auto_install = true,
                 highlight = { enable = true },
@@ -48,6 +50,10 @@ require('lazy').setup({
                 incremental_selection = { enable = true }
             }
         end,
+        dependencies = {
+            -- NOTE: additional parser
+            { "nushell/tree-sitter-nu" },
+        },
     },
     {
         'williamboman/mason.nvim',

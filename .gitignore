@@ -9,3 +9,5 @@ neovim/.config/nvim/plugin/
 wget-log*
 *log*
 lazy-lock.json
+#nushell history
+history.sqlite3*

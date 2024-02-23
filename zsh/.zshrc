@@ -149,8 +149,8 @@ setprompt() {
     alias vim="nvim"
     alias vimdiff="nvim -d"
     alias please='sudo $(fc -ln -1)'
-    alias la='ls -la'
-    alias ll='ls -l'
+    alias la='ls -lha'
+    alias ll='ls -lh'
     alias say='espeak -p 10 -s 150 -a 200 2> /dev/null'
     alias tmux='tmux -u'
     alias pdfmk='latexmk -lualatex -pvc'

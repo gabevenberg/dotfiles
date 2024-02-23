@@ -83,18 +83,20 @@ For telescope:
 * ripgrep
 * fd
 
-### Zsh
+### Fish, zsh, and nushell
 
 * nvim ($EDITOR and $VISUAL is set to this)
 * less
 * fzf
-* optional: zoxide
+* optional: zoxide (nicer cd. mandatory for nushell)
+* optional: starship (nice prompt. mandatory for nushell)
 
 Software used by aliases:
 * nvim
-* neomutt
 * sudo
 * latexmk
+* espeak-ng
+* tre
 * feh
 * libreoffice (for word to pdf conversions)
 * sshfs
@@ -112,4 +114,10 @@ For diff tools, install `git-delta` and `difftastic`. I also reccomend installin
 both require the vdirsyncer program and config.
 
 ### vdirsyncer
-Dont use the config unmodified, as it currently points to my server, you will need to replace the relevant urls and usernames. Also, you will need pass installed and with your password set on your nextcloud domain.
+Dont use the config unmodified, as it currently points to my server, you will
+need to replace the relevant urls and usernames. Also, you will need pass
+installed and with your password set on your nextcloud domain.
+
+### starship
+starship is a program for a very nice CLI promt, including a ton of info about
+the current git repo. Optional for zsh and fish, mandatory for nushell.
