@@ -27,13 +27,10 @@
     export TIMEFMT="%J  %*U user %*S system %P cpu %*E total"
     export PIPENV_VENV_IN_PROJECT=true
     export POETRY_VIRTUALENVS_IN_PROJECT=true
-    #test that these nonstandard paths exist before adding to PATH.
-    testPath="$HOME/.local/bin"
-    [ -d "$testPath" ] && export PATH="$PATH:$testPath"
+    #turns out its ok to have nonexistent paths in $PATH
+    export PATH="$PATH:$HOME/.local/bin/"
     export PATH="$PATH:/opt"
-    testPath="$HOME/.cargo/bin"
-    [ -d "$testPath" ] && export PATH="$PATH:$testPath"
-    export PATH="$PATH:/opt"
+    export PATH="$PATH:$HOME/.cargo/bin"
 
 #prompt
 setprompt() {
@@ -151,7 +148,6 @@ setprompt() {
 #aliases
     alias vim="nvim"
     alias vimdiff="nvim -d"
-    alias mutt="neomutt"
     alias please='sudo $(fc -ln -1)'
     alias la='ls -la'
     alias ll='ls -l'
@@ -161,10 +157,11 @@ setprompt() {
     # needs to have a number immediately after it.
     alias slideshow='feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay'
     # converts all .doc and .docx files in the local directory to pdfs using libreoffice
-    alias doc2pdf='loffice --convert-to pdf --headless *.docx#'
+    alias doc2pdf='loffice --convert-to pdf --headless *.docx'
     #common options for sshfs
     alias sshmnt='sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15'
     alias pyactivate='source ./.venv/bin/activate'
+    tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 
 #setup grep to be a bit more nice
     local GREP_OPTIONS=""
@@ -178,11 +175,9 @@ setprompt() {
     alias grep="grep $GREP_OPTIONS"
 
 #fzf stuff
-    #zsh key bindings (different distros put these in different places.)
-    testPath=$(find /usr/share -path '*fzf/*key-bindings.zsh' -print -quit 2> /dev/null)
+    testPath="/usr/share/fzf/key-bindings.zsh"
     [ -f "$testPath" ] && source $testPath
-    #zsh completions, if it exists.
-    testPath=$(find /usr/share -path '*fzf/*completion.zsh' -print -quit 2> /dev/null)
+    testPath="/usr/share/fzf/completion.zsh"
     [ -f "$testPath" ] && source $testPath
     #if it was installed using git, can just source the one file:
     testPath="$HOME/.fzf.zsh"
