@@ -848,6 +848,9 @@ alias please = sudo (history | last | get command)
 alias say = espeak -p 10 -s 150 -a 200
 alias tmux = tmux -u
 alias pdfmk = latexmk -lualatex -pvc
+alias la = ls -a
+alias ll = ls -l
+alias lla = ls -la
 # needs to have a number immediately after it.
 alias slideshow = feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay
 # converts all .doc and .docx files in the local directory to pdfs using libreoffice
@@ -855,3 +858,18 @@ alias doc2pdf = loffice --convert-to pdf --headless *.docx
 #common options for sshfs
 alias sshmnt = sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15
 alias pyactivate = overlay use ./.venv/bin/activate
+
+# parses git log into a nushell table.
+def git-log [] {
+    git log --pretty=%h»¦«%H»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" commit full-commit subject name email date | upsert date {|d| $d.date | into datetime}
+}
+
+# parses git log into a nushell table, lists all commits
+def git-log-all [] {
+    git log --all --pretty=%h»¦«%H»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" commit full-commit subject name email date | upsert date {|d| $d.date | into datetime}
+}
+
+# lists all the authors and how many commits they made in a histogram
+def git-authors [] {
+    git-log-all | select name date | histogram name | select name count frequency
+}
