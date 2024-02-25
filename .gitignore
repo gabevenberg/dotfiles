@@ -11,3 +11,4 @@ wget-log*
 lazy-lock.json
 #nushell history
 history.sqlite3*
+history.txt

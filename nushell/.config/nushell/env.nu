@@ -106,14 +106,29 @@ def is-installed [ app: string ] {
 $env.PATH = ($env.PATH | split row (char esep) | append ($nu.home-path | path join ".local/bin/"))
 $env.PATH = ($env.PATH | split row (char esep) | append ($nu.home-path | path join ".cargo/bin/"))
 $env.PATH = ($env.PATH | split row (char esep) | append ($nu.home-path | path join "opt"))
-
-zoxide init nushell | save -f ~/.cache/zoxide.nu
-starship init nu | save -f ~/.cache/starship.nu
-
-# we use the ssh systemd service.
-$env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
-$env.EDITOR = nvim
-$env.VISUAL = nvim
 $env.PAGER = less
 $env.LESS = '-R'
 $env.LESSHISTFILE = '/dev/null'
+if "XDG_RUNTIME_DIR" in $env {
+    $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
+}
+
+const conditional_config = ($nu.temp-path | path join 'conditional-config.nu')
+'# This file is an ugly hack to conditionally source files and define aliases/custom commands.
+' | save --force $conditional_config
+
+if (is-installed zoxide) {
+    zoxide init nushell | save --append $conditional_config
+}
+if (is-installed starship) {
+    starship init nu | save --append $conditional_config
+}
+if (is-installed nvim) {
+    $env.EDITOR = nvim
+    $env.VISUAL = nvim
+    'alias vim = nvim
+    alias vimdiff = nvim -d
+    ' | save --append $conditional_config
+}
+ls ($nu.default-config-dir | path join 'scripts/**/*.nu') | 
+each { |it| $"source ($it.name)\n" | save --append $conditional_config} | null

@@ -88,8 +88,8 @@ For telescope:
 * nvim ($EDITOR and $VISUAL is set to this)
 * less
 * fzf
-* optional: zoxide (nicer cd. mandatory for nushell)
-* optional: starship (nice prompt. mandatory for nushell)
+* optional: zoxide (nicer cd)
+* optional: starship (nice prompt)
 
 Software used by aliases:
 * nvim
@@ -100,6 +100,10 @@ Software used by aliases:
 * feh
 * libreoffice (for word to pdf conversions)
 * sshfs
+
+### nushell
+
+Nushell currently also needs fish installed for comlpletions.
 
 ### Paru
 uses yazi as a file explorer

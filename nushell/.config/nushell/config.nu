@@ -136,14 +136,27 @@ let light_theme = {
     shape_vardecl: purple
 }
 
-# External completer example
-# let carapace_completer = {|spans|
-#     carapace $spans.0 nushell ...$spans | from json
-# }
+let fish_completer = {|spans|
+    fish --command $'complete "--do-complete=($spans | str join " ")"'
+    | $"value(char tab)description(char newline)" + $in
+    | from tsv --flexible --no-infer
+}
 
+let carapace_completer = {|spans: list<string>|
+    carapace $spans.0 nushell ...$spans
+    | from json
+    | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
+}
+
+let zoxide_completer = {|spans|
+    $spans | skip 1 | zoxide query -l $in | lines | where {|x| $x != $env.PWD}
+}
+
+# This completer will use carapace by default
+let external_completer = $fish_completer
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
-    show_banner: false # true or false to enable or disable the welcome banner at startup
+    show_banner: true # true or false to enable or disable the welcome banner at startup
 
     ls: {
         use_ls_colors: true # use the LS_COLORS environment variable to colorize output
@@ -210,7 +223,7 @@ $env.config = {
         external: {
             enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up may be very slow
             max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
-            completer: null # check 'carapace_completer' above as an example
+            completer: $external_completer # check 'carapace_completer' above as an example
         }
     }
 
@@ -222,7 +235,7 @@ $env.config = {
     cursor_shape: {
         emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
         vi_insert: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (block is the default)
-        vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
+        vi_normal: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
     color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
@@ -235,7 +248,8 @@ $env.config = {
     edit_mode: vi # emacs, vi
     shell_integration: true # enables terminal shell integration. Off by default, as some terminals have issues with this.
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
-    use_kitty_protocol: true # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
+    # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
+    use_kitty_protocol: ($env.TERM == 'xterm-kitty')
     highlight_resolved_externals: true # true enables highlighting of external commands in the repl resolved by which.
 
     plugins: {} # Per-plugin configuration. See https://www.nushell.sh/contributor-book/plugins.html#configuration.
@@ -839,37 +853,36 @@ $env.config = {
     ]
 }
 
-source ~/.cache/zoxide.nu
-use ~/.cache/starship.nu
-
-alias vim = nvim
-alias vimdiff = nvim -d
 alias please = sudo (history | last | get command)
-alias say = espeak -p 10 -s 150 -a 200
-alias tmux = tmux -u
-alias pdfmk = latexmk -lualatex -pvc
 alias la = ls -a
 alias ll = ls -l
 alias lla = ls -la
-# needs to have a number immediately after it.
-alias slideshow = feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay
+alias pyactivate = overlay use ./.venv/bin/activate
+alias say = espeak -p 10 -s 150 -a 200
+alias tmux = tmux -u
+alias pdfmk = latexmk -lualatex -pvc
 # converts all .doc and .docx files in the local directory to pdfs using libreoffice
 alias doc2pdf = loffice --convert-to pdf --headless *.docx
 #common options for sshfs
 alias sshmnt = sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15
-alias pyactivate = overlay use ./.venv/bin/activate
 
-# parses git log into a nushell table.
-def git-log [] {
-    git log --pretty=%h»¦«%H»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" commit full-commit subject name email date | upsert date {|d| $d.date | into datetime}
+# display a slideshow of all pics in a directory, recursively
+def slideshow [delay: int = 10] {
+    feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay $delay
 }
 
-# parses git log into a nushell table, lists all commits
-def git-log-all [] {
-    git log --all --pretty=%h»¦«%H»¦«%s»¦«%aN»¦«%aE»¦«%aD | lines | split column "»¦«" commit full-commit subject name email date | upsert date {|d| $d.date | into datetime}
+# parses git log into a nushell table.
+def --wrapped git-log [...rest] {
+    git log --pretty=%h»¦«%H»¦«%s»¦«%aN»¦«%aE»¦«%aD ...$rest | lines | split column "»¦«" commit full-commit subject name email date | upsert date {|d| $d.date | into datetime}
 }
 
 # lists all the authors and how many commits they made in a histogram
 def git-authors [] {
-    git-log-all | select name date | histogram name | select name count frequency
+    git-log --all | select name date | histogram name
 }
+
+# source the conditional config file that contains
+# all the definitions, aliases, and env vars we want to set conditionally.
+const conditional_config = ($nu.temp-path | path join 'conditional-config.nu')
+source $conditional_config
+rm $conditional_config
