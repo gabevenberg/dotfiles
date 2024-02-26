@@ -871,6 +871,11 @@ def slideshow [delay: int = 10] {
     feh --full-screen --randomize --auto-zoom --recursive --slideshow-delay $delay
 }
 
+#look up something on cheat.sh
+def cheat [query: string] {
+    curl $"cheat.sh/($query)"
+}
+
 # parses git log into a nushell table.
 def --wrapped git-log [...rest] {
     git log --pretty=%h»¦«%H»¦«%s»¦«%aN»¦«%aE»¦«%aD ...$rest | lines | split column "»¦«" commit full-commit subject name email date | upsert date {|d| $d.date | into datetime}
