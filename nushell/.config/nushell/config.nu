@@ -234,8 +234,8 @@ $env.config = {
 
     cursor_shape: {
         emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
-        vi_insert: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (block is the default)
-        vi_normal: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
+        vi_insert: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (block is the default)
+        vi_normal: blink_block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
     color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
@@ -874,6 +874,13 @@ def slideshow [delay: int = 10] {
 #look up something on cheat.sh
 def cheat [query: string] {
     curl $"cheat.sh/($query)"
+}
+#look up the weather
+def wttr [
+    location?: string
+    --format (-f): string
+] {
+    http get $"https://wttr.in/($location)?format=($format)"
 }
 
 # parses git log into a nushell table.
