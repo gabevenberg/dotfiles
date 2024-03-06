@@ -129,5 +129,5 @@ if (is-installed nvim) {
     alias vimdiff = nvim -d
     ' | save --append $conditional_config
 }
-ls ($nu.default-config-dir | path join 'scripts/**/*.nu') | 
+ls (($nu.default-config-dir | path join ('scripts/**/*.nu')) | into glob) | 
 each { |it| $"source ($it.name)\n" | save --append $conditional_config} | null
