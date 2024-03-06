@@ -1,6 +1,6 @@
 # Nushell Config File
 #
-# version = "0.90.1"
+# version = "0.91.0"
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html
@@ -248,8 +248,9 @@ $env.config = {
     edit_mode: vi # emacs, vi
     shell_integration: true # enables terminal shell integration. Off by default, as some terminals have issues with this.
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
-    # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
-    use_kitty_protocol: ($env.TERM == 'xterm-kitty')
+    # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this. 
+    # Zellij does not modify the term var, so we have to special-case it.
+    use_kitty_protocol: ($env.TERM == 'xterm-kitty' and $env.ZELLIJ? == null)
     highlight_resolved_externals: true # true enables highlighting of external commands in the repl resolved by which.
 
     plugins: {} # Per-plugin configuration. See https://www.nushell.sh/contributor-book/plugins.html#configuration.
