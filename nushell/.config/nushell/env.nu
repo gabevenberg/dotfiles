@@ -123,9 +123,10 @@ if (is-installed starship) {
 if (is-installed nvim) {
     $env.EDITOR = nvim
     $env.VISUAL = nvim
-    'alias vim = nvim
-    alias vimdiff = nvim -d
-    ' | save --append $conditional_config
+    [ "alias vim = nvim\n"
+    "alias vimdiff = nvim -d\n"] |
+    str join |
+    save --append $conditional_config
 }
 ls (($nu.default-config-dir | path join ('scripts/**/*.nu')) | into glob) | 
-each { |it| $"source ($it.name)\n" | save --append $conditional_config} | null
+each { |it| $"source ($it.name)\n" | save --append $conditional_config} | ignore

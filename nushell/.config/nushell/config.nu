@@ -897,5 +897,6 @@ def git-authors [] {
 # source the conditional config file that contains
 # all the definitions, aliases, and env vars we want to set conditionally.
 const conditional_config = ($nu.temp-path | path join 'conditional-config.nu')
+# open $conditional_config | print
 source $conditional_config
 rm $conditional_config
