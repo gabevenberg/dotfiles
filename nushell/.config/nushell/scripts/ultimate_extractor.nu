@@ -22,6 +22,6 @@ export def extract [name:string] {
         error make { msg: "unsupported file extension" }
     } else {
         let handler = ($maybe_handler | first)
-        nu -c ($handler.command + ' ' + $name)
+        nu -c ($handler.command + ' ' + $"'($name)'")
     }
 }
