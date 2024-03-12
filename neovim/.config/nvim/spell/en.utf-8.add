@@ -45,3 +45,11 @@ config
 Syncthing
 homelab
 microcontrollers
+nushell
+datatypes
+datetimes
+filesizes
+filetypes
+datastructures
+footguns
+csv
