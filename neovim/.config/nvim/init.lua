@@ -25,11 +25,11 @@ opt.autoread = true
 opt.swapfile = false
 opt.history = 500
 opt.formatoptions = 'rojq'
--- wrap at 80 cols.
-opt.textwidth = 80
+-- dont hard wrap.
+opt.textwidth = 0
 opt.wrapmargin = 0
 opt.wrap = true
--- opt.linebreak = true
+opt.linebreak = true
 opt.breakindent = true
 --highlight after col
 opt.colorcolumn = "80,100,120"
