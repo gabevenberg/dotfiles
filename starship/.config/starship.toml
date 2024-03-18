@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-continuation_prompt = '---> '
+continuation_prompt = ''
 
 format = """
 [](color_orange)\

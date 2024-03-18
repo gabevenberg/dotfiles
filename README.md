@@ -1,5 +1,12 @@
 all of my dotfiles, managed with (https://www.gnu.org/software/stow/manual/stow.html)[stow]
 
+## Nix
+
+I am working on migrating my dotfiles to nix, to allow configuration and installation in a single step.
+In order to use the nix setup, you need to install nix and enable flakes,
+then run `nix run --no-write-lock-file github:nix-community/home-manager/ -- --impure --flake . switch`, while in the nix directory.
+from then on, you can update your configuration after making a change with `home-manager --impure --flake . switch`
+
 ## Dependencies:
 This does not list the package manager dependencies of the programs the dotfiles are for, but any extra dependencies that are needed for the specific configuration.
 
