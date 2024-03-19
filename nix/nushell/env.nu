@@ -110,6 +110,7 @@ $env.PATH = ($env.PATH | uniq)
 
 $env.EDITOR = nvim
 $env.VISUAL = nvim
+$env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent"
 
 ls (($nu.default-config-dir | path join ('scripts/**/*.nu')) | into glob) | 
 each { |it| $"source ($it.name)\n" | save --append $conditional_config} | ignore
