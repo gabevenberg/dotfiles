@@ -3,3 +3,6 @@ switch:
 
 bootstrap:
     nix run --extra-experimental-features "nix-command flakes" --no-write-lock-file github:nix-community/home-manager/ -- --extra-experimental-features "nix-command flakes" --flake . switch
+
+check:
+    home-manager --flake . build

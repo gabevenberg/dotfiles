@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   #sessionVariables, sessionPath and shellAliases are not applied to nushell.

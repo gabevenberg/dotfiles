@@ -1,7 +1,6 @@
 {
   config,
   pgks,
-  lib,
   ...
 }: {
   programs.git = {
