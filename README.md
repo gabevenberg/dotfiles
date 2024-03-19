@@ -4,8 +4,8 @@ all of my dotfiles, managed with (https://www.gnu.org/software/stow/manual/stow.
 
 I am working on migrating my dotfiles to nix, to allow configuration and installation in a single step.
 In order to use the nix setup, you need to install nix and enable flakes,
-then run `nix run --extra-experimental-features "nix-command flakes" --no-write-lock-file github:nix-community/home-manager/ -- --extra-experimental-features "nix-command flakes" --impure --flake . switch`, while in the nix directory.
-from then on, you can update your configuration after making a change with `home-manager --impure --flake . switch`.
+then run `nix run --extra-experimental-features "nix-command flakes" --no-write-lock-file github:nix-community/home-manager/ -- --extra-experimental-features "nix-command flakes" --flake . switch`, while in the nix directory.
+from then on, you can update your configuration after making a change with `home-manager --flake . switch`.
 Alternatively, if you have `just` installed, you can use `just boostrap` and `just switch`, instead.
 
 ## Dependencies:

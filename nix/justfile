@@ -1,5 +1,5 @@
 switch:
-    home-manager --impure --flake . switch
+    home-manager --flake . switch
 
 bootstrap:
-    nix run --extra-experimental-features "nix-command flakes" --no-write-lock-file github:nix-community/home-manager/ -- --extra-experimental-features "nix-command flakes" --impure --flake . switch
+    nix run --extra-experimental-features "nix-command flakes" --no-write-lock-file github:nix-community/home-manager/ -- --extra-experimental-features "nix-command flakes" --flake . switch
