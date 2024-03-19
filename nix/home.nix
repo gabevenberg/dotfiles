@@ -15,6 +15,8 @@ in {
 
   home.packages = [
     pkgs.zellij
+    pkgs.sshfs
+
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -25,16 +27,15 @@ in {
   };
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
 
   home.sessionPath = [
+    "$HOME/.nix-profile/bin/"
     "$HOME/.local/bin/"
     "$HOME/.cargo/bin/"
     "/opt/"
-    "$HOME/.nix-profile/bin/"
   ];
 
   home.shellAliases = {
@@ -219,6 +220,7 @@ in {
     };
   };
 
+  #sessionVariables, sessionPath and shellAliases are not applied to nushell.
   programs.nushell = {
     enable = true;
     configFile.source = lib.path.append dotfilesDirectory "nushell/config.nu";
@@ -258,4 +260,10 @@ in {
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # enable flakes
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
 }

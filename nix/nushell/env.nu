@@ -89,6 +89,10 @@ def is-installed [ app: string ] {
   ((which $app | length) > 0)
 }
 
+const conditional_config = ($nu.temp-path | path join 'conditional-config.nu')
+'# This file is an ugly hack to conditionally source files and define aliases/custom commands.
+' | save --force $conditional_config
+
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 # $env.PATH = ($env.PATH | split row (char esep) | append ($nu.home-path | path join ".local/bin/"))
@@ -96,8 +100,16 @@ def is-installed [ app: string ] {
 # $env.PATH = ($env.PATH | split row (char esep) | append ($nu.home-path | path join "opt"))
 # An alternate way to add entries to $env.PATH is to use the custom command `path add`
 # which is built into the nushell stdlib:
-# use std "path add"
-# $env.PATH = ($env.PATH | split row (char esep))
+use std "path add"
+$env.PATH = ($env.PATH | split row (char esep))
+path add ($env.HOME | path join ".cargo " "bin")
+path add ($env.HOME | path join ".local" "bin")
+path add ($env.HOME | path join ".nix-profile" "bin")
+path add ('/opt')
+$env.PATH = ($env.PATH | uniq)
+
+$env.EDITOR = nvim
+$env.VISUAL = nvim
 
 ls (($nu.default-config-dir | path join ('scripts/**/*.nu')) | into glob) | 
 each { |it| $"source ($it.name)\n" | save --append $conditional_config} | ignore
