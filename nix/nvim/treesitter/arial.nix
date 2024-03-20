@@ -6,7 +6,7 @@
   programs.nixvim = {
     keymaps = [
       {
-        action = ":Outline<CR>";
+        action = ":AerialToggle!<CR>";
         key = "<leader>o";
         mode = "n";
         options = {
@@ -16,8 +16,8 @@
       }
     ];
     extraPlugins = [
-      pkgs.vimPlugins.outline-nvim
+        pkgs.vimPlugins.aerial-nvim
     ];
-    extraConfigLua=''require("outline").setup({})'';
+    extraConfigLua=''require("aerial").setup({})'';
   };
 }

@@ -16,6 +16,14 @@
     sshfs
     just
     espeak
+    fd
+    sd
+    hugo
+    scc
+    tre-command
+    diskonaut
+    hyperfine
+    curl
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

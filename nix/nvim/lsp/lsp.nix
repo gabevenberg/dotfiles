@@ -188,7 +188,7 @@
     ];
   };
   imports = [
-    ./outline.nix
+    # ./outline.nix
     ./rust-tools.nix
   ];
 }

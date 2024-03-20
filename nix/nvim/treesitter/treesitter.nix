@@ -15,8 +15,10 @@
     extraPlugins = [
       pkgs.vimPlugins.treesj
     ];
+    extraConfigLua=''require("treesj").setup({})'';
   };
   imports = [
     ./rainbow-delimiters.nix
+    ./arial.nix
   ];
 }
