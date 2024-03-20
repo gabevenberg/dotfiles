@@ -1,19 +1,19 @@
 {
   configs,
-  pkg,
+  pkgs,
   ...
 }: {
   programs.nixvim = {
-    plugins.toggleterm={
-      enable=true;
-      direction="horizontal";
-      insertMappings=false;
+    plugins.toggleterm = {
+      enable = true;
+      direction = "horizontal";
+      insertMappings = false;
     };
     keymaps = [
       {
         action = "function() Floatingterm:toggle() end";
         key = "<leader>s";
-        lua=true;
+        lua = true;
         mode = "n";
         options = {
           silent = true;
