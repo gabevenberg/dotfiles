@@ -7,6 +7,9 @@
     plugins.gitsigns = {
       enable = true;
     };
+    plugins.which-key.registrations = {
+      "<leader>g" = "+git";
+    };
     keymaps = [
       {
         action = ":Gitsigns toggle_current_line_blame<CR>";

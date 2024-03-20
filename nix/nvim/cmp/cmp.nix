@@ -5,7 +5,7 @@
 }: {
   programs.nixvim = {
     plugins.luasnip.enable = true;
-    plugins.friendly-snippets.enable=true;
+    plugins.friendly-snippets.enable = true;
     plugins.cmp = {
       enable = true;
       autoEnableSources = true;

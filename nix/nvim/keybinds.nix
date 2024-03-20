@@ -7,7 +7,9 @@
     globals = {
       mapleader = ";";
     };
-
+    plugins.which-key.registrations = {
+      "<leader>c" = "+check";
+    };
     keymaps = [
       {
         action = ":setlocal spell!<CR>";
