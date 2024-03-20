@@ -136,24 +136,24 @@ let light_theme = {
     shape_vardecl: purple
 }
 
-let fish_completer = {|spans|
-    fish --command $'complete "--do-complete=($spans | str join " ")"'
-    | $"value(char tab)description(char newline)" + $in
-    | from tsv --flexible --no-infer
-}
-
-let carapace_completer = {|spans: list<string>|
-    carapace $spans.0 nushell ...$spans
-    | from json
-    | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
-}
-
-let zoxide_completer = {|spans|
-    $spans | skip 1 | zoxide query -l $in | lines | where {|x| $x != $env.PWD}
-}
-
-# This completer will use carapace by default
-let external_completer = $fish_completer
+# let fish_completer = {|spans|
+#     fish --command $'complete "--do-complete=($spans | str join " ")"'
+#     | $"value(char tab)description(char newline)" + $in
+#     | from tsv --flexible --no-infer
+# }
+#
+# let carapace_completer = {|spans: list<string>|
+#     carapace $spans.0 nushell ...$spans
+#     | from json
+#     | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
+# }
+#
+# let zoxide_completer = {|spans|
+#     $spans | skip 1 | zoxide query -l $in | lines | where {|x| $x != $env.PWD}
+# }
+#
+# # This completer will use carapace by default
+let external_completer = null
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
     show_banner: true # true or false to enable or disable the welcome banner at startup

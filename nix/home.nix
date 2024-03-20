@@ -14,6 +14,8 @@
   home.packages = with pkgs; [
     zellij
     sshfs
+    just
+    espeak
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -36,7 +38,6 @@
 
   home.shellAliases = {
     say = "espeak -p 10 -s 150 -a 200";
-    tmux = "tmux -u";
     pdfmk = "latexmk -lualatex -pvc";
     doc2pdf = "loffice --convert-to-pdf --headless *.docx";
     sshmnt = "sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15";
@@ -50,11 +51,16 @@
     ./nvim/nvim.nix
   ];
 
-  programs.yazi.enable = true;
-
-  programs.zoxide.enable = true;
-
-  programs.fzf.enable = true;
+  programs = {
+    yazi.enable = true;
+    zoxide.enable = true;
+    fzf.enable = true;
+    ripgrep.enable = true;
+    bat.enable = true;
+    tealdeer.enable = true;
+    btop.enable = true;
+    carapace.enable = true;
+  };
 
   services.ssh-agent.enable = true;
 

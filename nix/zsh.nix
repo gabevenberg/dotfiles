@@ -7,6 +7,7 @@
   programs.fzf.enableZshIntegration = true;
   programs.zoxide.enableZshIntegration = true;
   programs.yazi.enableZshIntegration = true;
+  programs.carapace.enableZshIntegration = true;
   programs.zsh = {
     enable = true;
     enableCompletion = true;

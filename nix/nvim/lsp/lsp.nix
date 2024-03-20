@@ -4,32 +4,32 @@
   ...
 }: {
   programs.nixvim = {
-    plugins.lsp={
-      enable=true;
-      servers={
-        bashls.enable=true;
-        clangd.enable=true;
-        lua-ls.enable=true;
-        nil_ls.enable=true;
-        nushell.enable=true;
-        pyright.enable=true;
-        ruff-lsp.enable=true;
-        rust-analyzer={
-          enable=true;
-          installCargo=true;
-          installRustc=true;
+    plugins.lsp = {
+      enable = true;
+      servers = {
+        bashls.enable = true;
+        clangd.enable = true;
+        lua-ls.enable = true;
+        nil_ls.enable = true;
+        nushell.enable = true;
+        pyright.enable = true;
+        ruff-lsp.enable = true;
+        rust-analyzer = {
+          enable = true;
+          installCargo = true;
+          installRustc = true;
         };
-        texlab.enable=true;
-        typst-lsp.enable=true;
-        taplo.enable=true;
-        yamlls.enable=true;
-        marksman.enable=true;
-        jsonls.enable=true;
-        hls.enable=true;
+        texlab.enable = true;
+        typst-lsp.enable = true;
+        taplo.enable = true;
+        yamlls.enable = true;
+        marksman.enable = true;
+        jsonls.enable = true;
+        hls.enable = true;
       };
     };
-    plugins.cmp.settings.sources=[
-      {name="nvim_lsp";}
+    plugins.cmp.settings.sources = [
+      {name = "nvim_lsp";}
     ];
     plugins.which-key.registrations = {
       "<leader>l" = "+lsp";
