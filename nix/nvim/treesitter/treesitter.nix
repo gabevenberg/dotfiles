@@ -12,10 +12,10 @@
     };
     plugins.treesitter-context.enable = true;
     plugins.indent-blankline.enable = true;
-    extraPlugins = [
-      pkgs.vimPlugins.treesj
+    extraPlugins = with pkgs.vimPlugins; [
+      treesj
     ];
-    extraConfigLua=''require("treesj").setup({})'';
+    extraConfigLua = ''require("treesj").setup({})'';
   };
   imports = [
     ./rainbow-delimiters.nix

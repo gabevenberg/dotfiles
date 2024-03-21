@@ -12,8 +12,10 @@
       enable = true;
       addDefaultMappings = true;
     };
-    extraPlugins = [
-      pkgs.vimPlugins.vim-numbertoggle
+    extraPlugins = with pkgs.vimPlugins; [
+      vim-numbertoggle
+      dressing-nvim
     ];
+    extraConfigLua = ''require("dressing").setup({})'';
   };
 }

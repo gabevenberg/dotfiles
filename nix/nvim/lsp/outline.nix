@@ -15,9 +15,9 @@
         };
       }
     ];
-    extraPlugins = [
-      pkgs.vimPlugins.outline-nvim
+    extraPlugins = with pkgs.vimPlugins; [
+      outline-nvim
     ];
-    extraConfigLua=''require("outline").setup({})'';
+    extraConfigLua = ''require("outline").setup({})'';
   };
 }

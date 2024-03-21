@@ -35,6 +35,8 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
+    PIPENV_VENV_IN_PROJECT = 1;
+    POETRY_VIRTUALENVS_IN_PROJECT = 1;
   };
 
   home.sessionPath = [

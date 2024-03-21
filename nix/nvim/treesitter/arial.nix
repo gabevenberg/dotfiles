@@ -15,9 +15,9 @@
         };
       }
     ];
-    extraPlugins = [
-        pkgs.vimPlugins.aerial-nvim
+    extraPlugins = with pkgs.vimPlugins; [
+      aerial-nvim
     ];
-    extraConfigLua=''require("aerial").setup({})'';
+    extraConfigLua = ''require("aerial").setup({})'';
   };
 }

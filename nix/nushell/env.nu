@@ -110,6 +110,8 @@ $env.PATH = ($env.PATH | uniq)
 
 $env.EDITOR = nvim
 $env.VISUAL = nvim
+$env.PIPENV_VENV_IN_PROJECT = 1
+$env.POETRY_VIRTUALENVS_IN_PROJECT = 1
 $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent"
 
 ls (($nu.default-config-dir | path join ('scripts/**/*.nu')) | into glob) | 
