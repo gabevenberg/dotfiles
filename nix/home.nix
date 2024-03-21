@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  helpers,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -15,10 +14,8 @@
     zellij
     sshfs
     just
-    espeak
     fd
     sd
-    hugo
     scc
     tre-command
     diskonaut
@@ -47,8 +44,6 @@
   ];
 
   home.shellAliases = {
-    say = "espeak -p 10 -s 150 -a 200";
-    pdfmk = "latexmk -lualatex -pvc";
     doc2pdf = "loffice --convert-to-pdf --headless *.docx";
     sshmnt = "sshfs -o idmap=user,compression=no,reconnect,follow_symlinks,dir_cache=yes,ServerAliveInterval=15";
   };
@@ -59,6 +54,9 @@
     ./git.nix
     ./starship.nix
     ./nvim/nvim.nix
+    ./voice.nix
+    ./hugo.nix
+    ./latex.nix
   ];
 
   programs = {
