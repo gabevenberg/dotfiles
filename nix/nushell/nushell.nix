@@ -18,4 +18,13 @@
   programs.zoxide.enableNushellIntegration = true;
   programs.starship.enableNushellIntegration = true;
   programs.carapace.enableNushellIntegration = true;
+
+  services.pueue = {
+    enable = true;
+    settings = {
+      daemon = {
+        default_parallel_tasks = 5;
+      };
+    };
+  };
 }
