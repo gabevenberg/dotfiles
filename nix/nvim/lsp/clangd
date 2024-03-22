@@ -1,5 +1,0 @@
-# keeps clangd from choking when it sees a compiler flag for a different
-# compiler. (sutch as when acting as an lsp for a project that uses GCC.)
-CompileFlags:
-  Add: -Wno-unknown-warning-option
-  Remove: [-m*, -f*]

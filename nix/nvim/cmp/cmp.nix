@@ -21,7 +21,7 @@
           {name = "spell";}
         ];
         snippet = {
-          expand = "luasnip";
+          expand = "function(args) require('luasnip').lsp_expand(args.body) end";
         };
         mapping = {
           "<C-Space>" = "cmp.mapping.complete()";
