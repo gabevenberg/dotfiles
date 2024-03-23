@@ -11,7 +11,6 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    zellij
     sshfs
     just
     fd
@@ -26,7 +25,6 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".config/zellij/config.kdl".source = ./zellij/config.kdl;
   };
 
   home.sessionVariables = {
