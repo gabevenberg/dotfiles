@@ -30,6 +30,7 @@ set $mod Mod4
 font pango:Fira Code 8
 
 gaps inner 5
+smart_gaps on
 
 #keybinding stuff
     # Use Mouse+$mod to drag floating windows to their wanted position
