@@ -35,7 +35,7 @@ These are all the programs that i3 calls somewhere in its config, whether that b
 
 * alacritty or kitty (currently uses kitty, just comment out one line or the other in the i3 conf to switch)
 * cool retro term
-* i3-lock
+* betterlockscreen
 * brightnessctl
 * xdotool
 * maim (screenshot program)
@@ -45,8 +45,10 @@ These are all the programs that i3 calls somewhere in its config, whether that b
 * geoclue (geolocation dameon)
 * feh (for setting desktop wallpaper)
 * dunst
-* i3status
+* i3status-rust
 * xclip
+* playerctl
+* upower
 * gnome-keyring (for login management in, for example, nextcloud. See https://gabevenberg.com/posts/autologinnextcloudclientonarch/ for details.)
 
 ### x11 and x11hidpi
