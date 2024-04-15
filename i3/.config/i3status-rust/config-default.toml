@@ -23,12 +23,14 @@ format_alt = "$icon {$signal_strength $ssid.str(max_w:5,rot_interval:0.5) $frequ
 
 [[block]]
 block = "backlight"
+missing_format = ""
 
 [[block]]
 block = "battery"
 driver = "upower"
 device = "DisplayDevice"
 format = "$icon $percentage {$time|}"
+missing_format = ""
 
 [[block]]
 block = "sound"
