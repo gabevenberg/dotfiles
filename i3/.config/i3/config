@@ -202,7 +202,7 @@ smart_borders on
         bindsym $mod+ctrl+c exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png; dunstify --timeout=1000 'Selection screenshot taken to clipboard'"
 
     #colour picker with xcolor
-        bindsym --release $mod+p exec --no-startup-id "xcolor -s"
+        bindsym --release $mod+p exec --no-startup-id "xcolor | xclip -selection clipboard"
 
     #mpd controls
         bindsym $mod+mod1+p exec --no-startup-id "playerctl play-pause; dunstify -h string:x-dunst-stack-tag:playerstatus --timeout=500 Player $(playerctl status)"
