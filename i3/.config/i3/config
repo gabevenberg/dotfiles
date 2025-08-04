@@ -178,10 +178,9 @@ smart_borders on
     bindsym $mod+ctrl+r mode "resize"
 
     # lock and turn off the screen with mod+x, and lock+suspend computer with mod+shift+x
-        set $lock_command betterlockscreen --lock
-        set $lock_command_nof betterlockscreen --lock -- -n #version of $lock_command that does not fork.
-        bindsym $mod+x exec --no-startup-id "~/dotfiles/scripts/screen_off $lock_command_nof"
-        bindsym $mod+shift+x exec --no-startup-id "$lock_command"; exec --no-startup-id "systemctl suspend"
+        bindsym $mod+x exec --no-startup-id "betterlockscreen --lock --off 5"
+        # make sure to install the better lock screen systemd service.
+        bindsym $mod+shift+x exec --no-startup-id "systemctl suspend"
 
     # disable screen going to sleep with mod+b, enable screen going to sleep with mod+shift+b
         bindsym $mod+b exec --no-startup-id "xset s off -dpms; dunstify --timeout=500 'screen blanking off'"
